@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/blank-vax.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blank-vax.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blank-vax.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blank-vax.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blank-vax.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blank-vax.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blank-vax.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blank-vax.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Euler-Project,">
+
+
+
+
+
+  <link rel="alternate" href="/blank-vax.github.io/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="11. Largest product in a gridProblem DescriptionIn the 20×20 grid below, four numbers along a diagonal line have been marked in bold. 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 0849 49 9">
+<meta name="keywords" content="Euler-Project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Euler-Project(II)">
+<meta property="og:url" content="https://blank-vax.github.io/2020/10/25/Euler-Project(II)/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="11. Largest product in a gridProblem DescriptionIn the 20×20 grid below, four numbers along a diagonal line have been marked in bold. 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 0849 49 9">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/uyvffvzjqsggcoh2px3uvhaz/14_sufficiency.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/n7ypagm1g8czqrkn4z3txlq8/4.png">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/wlruky2d3a92kt7szsuxw4al/15_formula.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/p14xzlcma3agwuw1hg8xjio5/18_problem_1.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/63np17e8993jnuzuancgtixu/18_problem_2.PNG">
+<meta property="og:updated_time" content="2020-11-09T03:41:15.991Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Euler-Project(II)">
+<meta name="twitter:description" content="11. Largest product in a gridProblem DescriptionIn the 20×20 grid below, four numbers along a diagonal line have been marked in bold. 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 0849 49 9">
+<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/uyvffvzjqsggcoh2px3uvhaz/14_sufficiency.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blank-vax.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2020/10/25/Euler-Project(II)/">
+
+
+
+
+
+  <title>Euler-Project(II) | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blank-vax.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blank-vax.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blank-vax.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blank-vax.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blank-vax.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blank-vax.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blank-vax.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/blank-vax.github.io/2020/10/25/Euler-Project(II)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blank-vax.github.io/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Euler-Project(II)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-25T12:16:00+08:00">
+                2020-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blank-vax.github.io/categories/Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathematics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blank-vax.github.io/2020/10/25/Euler-Project(II)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blank-vax.github.io/2020/10/25/Euler-Project(II)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/blank-vax.github.io/2020/10/25/Euler-Project(II)/" class="leancloud_visitors" data-flag-title="Euler-Project(II)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,004
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  28
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="11-Largest-product-in-a-grid"><a href="#11-Largest-product-in-a-grid" class="headerlink" title="11. Largest product in a grid"></a>11. Largest product in a grid</h2><h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>In the 20×20 grid below, four numbers along a diagonal line have been marked in bold.</p>
+<p>08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08<br>49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00<br>81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65<br>52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91<br>22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80<br>24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50<br>32 98 81 28 64 23 67 10 <strong>26</strong> 38 40 67 59 54 70 66 18 38 64 70<br>67 26 20 68 02 62 12 20 95 <strong>63</strong> 94 39 63 08 40 91 66 49 94 21<br>24 55 58 05 66 73 99 26 97 17 <strong>78</strong> 78 96 83 14 88 34 89 63 72<br>21 36 23 09 75 00 76 44 20 45 35 <strong>14</strong> 00 61 33 97 34 31 33 95<br>78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92<br>16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57<br>86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58<br>19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40<br>04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66<br>88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69<br>04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36<br>20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16<br>20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54<br>01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48</p>
+<p>The product of these numbers is 26 × 63 × 78 × 14 = 1788696.</p>
+<p>What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Simply rotation and comparison in four types of direction</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">grid_given =<span class="string">'''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08</span></span><br><span class="line"><span class="string">49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00</span></span><br><span class="line"><span class="string">81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65</span></span><br><span class="line"><span class="string">52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91</span></span><br><span class="line"><span class="string">22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80</span></span><br><span class="line"><span class="string">24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50</span></span><br><span class="line"><span class="string">32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70</span></span><br><span class="line"><span class="string">67 26 20 68 02 62 12 20 95 63 94 39 63 08 40 91 66 49 94 21</span></span><br><span class="line"><span class="string">24 55 58 05 66 73 99 26 97 17 78 78 96 83 14 88 34 89 63 72</span></span><br><span class="line"><span class="string">21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 97 34 31 33 95</span></span><br><span class="line"><span class="string">78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92</span></span><br><span class="line"><span class="string">16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57</span></span><br><span class="line"><span class="string">86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58</span></span><br><span class="line"><span class="string">19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40</span></span><br><span class="line"><span class="string">04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66</span></span><br><span class="line"><span class="string">88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69</span></span><br><span class="line"><span class="string">04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36</span></span><br><span class="line"><span class="string">20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16</span></span><br><span class="line"><span class="string">20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54</span></span><br><span class="line"><span class="string">01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48'''</span></span><br><span class="line"><span class="comment"># Alist variable is used to slice the given grid</span></span><br><span class="line">alist = [re.split(<span class="string">' '</span>, everyrow) <span class="keyword">for</span> everyrow <span class="keyword">in</span> re.split(<span class="string">'\n'</span>, grid_given)]</span><br><span class="line">result_list = []</span><br><span class="line"><span class="comment"># rows</span></span><br><span class="line"><span class="keyword">for</span> row_index <span class="keyword">in</span> range(len(alist)):</span><br><span class="line">    <span class="keyword">for</span> columns_index <span class="keyword">in</span> xrange(len(alist[row_index])<span class="number">-3</span>):</span><br><span class="line">        result_list.append(int(alist[row_index][columns_index])*int(alist[row_index][columns_index+<span class="number">1</span>])*int(alist[row_index][columns_index+<span class="number">2</span>])*int(alist[row_index][columns_index+<span class="number">3</span>]))</span><br><span class="line"><span class="comment"># columns</span></span><br><span class="line"><span class="keyword">for</span> columns_index <span class="keyword">in</span> range(len(alist[<span class="number">0</span>])):</span><br><span class="line">    <span class="keyword">for</span> row_index <span class="keyword">in</span> xrange(len(alist)<span class="number">-3</span>):</span><br><span class="line">        result_list.append(int(alist[row_index][columns_index])*int(alist[row_index+<span class="number">1</span>][columns_index])*int(alist[row_index+<span class="number">2</span>][columns_index])*int(alist[row_index+<span class="number">3</span>][columns_index]))</span><br><span class="line"><span class="comment"># diagonal</span></span><br><span class="line"><span class="keyword">for</span> row_index <span class="keyword">in</span> range(len(alist)<span class="number">-3</span>):</span><br><span class="line">    <span class="keyword">for</span> columns_index <span class="keyword">in</span> range(len(alist[row_index])<span class="number">-3</span>):</span><br><span class="line">        <span class="comment"># main diagonal</span></span><br><span class="line">        result_list.append(int(alist[row_index][columns_index])*int(alist[row_index+<span class="number">1</span>][columns_index+<span class="number">1</span>])*int(alist[row_index+<span class="number">2</span>][columns_index+<span class="number">2</span>])*int(alist[row_index+<span class="number">3</span>][columns_index+<span class="number">3</span>]))</span><br><span class="line">        <span class="comment"># vice diagonal</span></span><br><span class="line">        result_list.append(int(alist[row_index+<span class="number">3</span>][columns_index])*int(alist[row_index+<span class="number">2</span>][columns_index+<span class="number">1</span>])*int(alist[row_index+<span class="number">1</span>][columns_index+<span class="number">2</span>])*int(alist[row_index][columns_index+<span class="number">3</span>]))</span><br><span class="line"><span class="keyword">print</span> max(result_list)</span><br></pre></td></tr></table></figure>
+<h2 id="12-Highly-divisible-triangular-number"><a href="#12-Highly-divisible-triangular-number" class="headerlink" title="12. Highly divisible triangular number"></a>12. Highly divisible triangular number</h2><h3 id="Problem-Description-1"><a href="#Problem-Description-1" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>The sequence of triangle numbers is generated by adding the natural numbers. So the 7th triangle number would be 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28. The first ten terms would be:</p>
+<p>1, 3, 6, 10, 15, 21, 28, 36, 45, 55, …</p>
+<p>Let us list the factors of the first seven triangle numbers:</p>
+<blockquote>
+<p> <strong>1</strong>: 1<br> <strong>3</strong>: 1,3<br> <strong>6</strong>: 1,2,3,6<br><strong>10</strong>: 1,2,5,10<br><strong>15</strong>: 1,3,5,15<br><strong>21</strong>: 1,3,7,21<br><strong>28</strong>: 1,2,4,7,14,28</p>
+</blockquote>
+<p>We can see that 28 is the first triangle number to have over five divisors.</p>
+<p>What is the value of the first triangle number to have over five hundred divisors?</p>
+<h3 id="Solution1"><a href="#Solution1" class="headerlink" title="Solution1"></a>Solution1</h3><p>通过观察可以发现，数字N的全部因子可分为大于$\sqrt{N}$和小于$\sqrt{N}$两部分，且这两部分的因子数量相等。故以$\sqrt{N}$为界限，统计前半部分因子数量，当大于250时跳出循环。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Triangular number</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">basic = <span class="number">1</span></span><br><span class="line">step = <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    basic += step</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= int(math.sqrt(basic)):</span><br><span class="line">        <span class="keyword">if</span> basic % i == <span class="number">0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> count &gt;= <span class="number">250</span>:</span><br><span class="line">        <span class="keyword">print</span> basic</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        step += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="Solution2"><a href="#Solution2" class="headerlink" title="Solution2"></a>Solution2</h3><p>每个整数N可以分解为如下模式：</p>
+<script type="math/tex; mode=display">N = p_{1}^{a1} * p_{2}^{a2} * p_{3}^{a3} * ...</script><p>此处$p<em>{n}$必为素数，$a</em>{n}$是其对应的幂指数。例如$28 = 2^{2} * 7^{1}$。继续推广下去，对于任意正整数N，其因子的数量D(N)可用如下式子表示：</p>
+<script type="math/tex; mode=display">D(N) = (a_{1}+1) * (a_{2}+1) * (a_{3}+1) * ...</script><p>故首先采用埃氏筛法构造大素数表，随后对循环内每个数字进行分解以获得$a<em>{1}，a</em>{2}，a_{3}$等参数，连乘可得D(N)。对该常规方法进行改进，首先对三角形数进行等差数列求和，结果为$t = n * (n+1) / 2$，此处n和n+1必互素。随后采用如下公式分解D(t)：</p>
+<p>$D(t) = D(n/2) * D(n+1)$, if n is even</p>
+<p>$D(t) = D(n) * D((n+1)/2)$, if n is odd</p>
+<p>实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Highly divisible triangular number</span></span><br><span class="line"><span class="comment"># First get the possible prime facotrs below 1000</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getPossiblePrimeFactors</span><span class="params">(upper_bound)</span>:</span></span><br><span class="line">    L = range(<span class="number">2</span>, upper_bound)</span><br><span class="line">    primes_list = findPrime(L)</span><br><span class="line">    <span class="keyword">return</span> primes_list</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findPrime</span><span class="params">(L)</span>:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> L[i]**<span class="number">2</span> &lt; L[<span class="number">-1</span>]:</span><br><span class="line">        <span class="comment"># Eratosthenes algorithm</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(L)):</span><br><span class="line">            <span class="keyword">if</span> L[j] % L[i] == <span class="number">0</span>:</span><br><span class="line">                L[j] = <span class="number">0</span></span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">        L.sort()</span><br><span class="line">        L = L[count:]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countD</span><span class="params">(n, Dn, count_range, primes_list)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> count &lt;= count_range:</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line">        n1 = n</span><br><span class="line">        <span class="keyword">if</span> n1 % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            n1 /= <span class="number">2</span></span><br><span class="line">        Dn1 = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, primes_list[<span class="number">-1</span>]):</span><br><span class="line">            <span class="keyword">if</span> primes_list[i]**<span class="number">2</span> &gt; n1:</span><br><span class="line">                <span class="string">'''</span></span><br><span class="line"><span class="string">                When the prime divisor would be greater than the residual n1, that residual n1 is the last prime factor with an exponent = 1</span></span><br><span class="line"><span class="string">                '''</span></span><br><span class="line">                Dn1 = <span class="number">2</span>*Dn1</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="comment"># ause D(n) = (a1+1)*(a2+1)*(a3+1)*...., so initialize the exponent to 1</span></span><br><span class="line">            exponent = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> n1 % primes_list[i] == <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># resolve n1 to the form of multiplication, count a1, a2, a3, ...</span></span><br><span class="line">                exponent += <span class="number">1</span></span><br><span class="line">                n1 = n1 // primes_list[i]</span><br><span class="line">            <span class="keyword">if</span> exponent &gt; <span class="number">1</span>:</span><br><span class="line">                Dn1 = Dn1*exponent</span><br><span class="line">            <span class="keyword">if</span> n1 == <span class="number">1</span>: <span class="keyword">break</span></span><br><span class="line">        count = Dn*Dn1</span><br><span class="line">        Dn = Dn1</span><br><span class="line">    <span class="keyword">return</span> n*(n<span class="number">-1</span>) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">n = <span class="number">3</span></span><br><span class="line">Dn = <span class="number">2</span></span><br><span class="line">primes_list = getPossiblePrimeFactors(<span class="number">1000</span>)</span><br><span class="line">final_result = countD(n, Dn, <span class="number">500</span>, primes_list)</span><br><span class="line"><span class="keyword">print</span> final_result</span><br></pre></td></tr></table></figure>
+<p>理解上述代码过程中，值得注意的是countD()函数的返回结果为n*(n-1) / 2而非n*(n+1) / 2，从而代码每次迭代计算的D(t)由传入while循环之前的n值表示，与上面提到的性质对应。</p>
+<h2 id="13-Large-sum"><a href="#13-Large-sum" class="headerlink" title="13. Large sum"></a>13. Large sum</h2><h3 id="Problem-Description-2"><a href="#Problem-Description-2" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.</p>
+<p>37107287533902102798797998220837590246510135740250<br>46376937677490009712648124896970078050417018260538<br>74324986199524741059474233309513058123726617309629<br>91942213363574161572522430563301811072406154908250<br>23067588207539346171171980310421047513778063246676<br>89261670696623633820136378418383684178734361726757<br>28112879812849979408065481931592621691275889832738<br>44274228917432520321923589422876796487670272189318<br>47451445736001306439091167216856844588711603153276<br>70386486105843025439939619828917593665686757934951<br>62176457141856560629502157223196586755079324193331<br>64906352462741904929101432445813822663347944758178<br>92575867718337217661963751590579239728245598838407<br>58203565325359399008402633568948830189458628227828<br>80181199384826282014278194139940567587151170094390<br>35398664372827112653829987240784473053190104293586<br>86515506006295864861532075273371959191420517255829<br>71693888707715466499115593487603532921714970056938<br>54370070576826684624621495650076471787294438377604<br>53282654108756828443191190634694037855217779295145<br>36123272525000296071075082563815656710885258350721<br>45876576172410976447339110607218265236877223636045<br>17423706905851860660448207621209813287860733969412<br>81142660418086830619328460811191061556940512689692<br>51934325451728388641918047049293215058642563049483<br>62467221648435076201727918039944693004732956340691<br>15732444386908125794514089057706229429197107928209<br>55037687525678773091862540744969844508330393682126<br>18336384825330154686196124348767681297534375946515<br>80386287592878490201521685554828717201219257766954<br>78182833757993103614740356856449095527097864797581<br>16726320100436897842553539920931837441497806860984<br>48403098129077791799088218795327364475675590848030<br>87086987551392711854517078544161852424320693150332<br>59959406895756536782107074926966537676326235447210<br>69793950679652694742597709739166693763042633987085<br>41052684708299085211399427365734116182760315001271<br>65378607361501080857009149939512557028198746004375<br>35829035317434717326932123578154982629742552737307<br>94953759765105305946966067683156574377167401875275<br>88902802571733229619176668713819931811048770190271<br>25267680276078003013678680992525463401061632866526<br>36270218540497705585629946580636237993140746255962<br>24074486908231174977792365466257246923322810917141<br>91430288197103288597806669760892938638285025333403<br>34413065578016127815921815005561868836468420090470<br>23053081172816430487623791969842487255036638784583<br>11487696932154902810424020138335124462181441773470<br>63783299490636259666498587618221225225512486764533<br>67720186971698544312419572409913959008952310058822<br>95548255300263520781532296796249481641953868218774<br>76085327132285723110424803456124867697064507995236<br>37774242535411291684276865538926205024910326572967<br>23701913275725675285653248258265463092207058596522<br>29798860272258331913126375147341994889534765745501<br>18495701454879288984856827726077713721403798879715<br>38298203783031473527721580348144513491373226651381<br>34829543829199918180278916522431027392251122869539<br>40957953066405232632538044100059654939159879593635<br>29746152185502371307642255121183693803580388584903<br>41698116222072977186158236678424689157993532961922<br>62467957194401269043877107275048102390895523597457<br>23189706772547915061505504953922979530901129967519<br>86188088225875314529584099251203829009407770775672<br>11306739708304724483816533873502340845647058077308<br>82959174767140363198008187129011875491310547126581<br>97623331044818386269515456334926366572897563400500<br>42846280183517070527831839425882145521227251250327<br>55121603546981200581762165212827652751691296897789<br>32238195734329339946437501907836945765883352399886<br>75506164965184775180738168837861091527357929701337<br>62177842752192623401942399639168044983993173312731<br>32924185707147349566916674687634660915035914677504<br>99518671430235219628894890102423325116913619626622<br>73267460800591547471830798392868535206946944540724<br>76841822524674417161514036427982273348055556214818<br>97142617910342598647204516893989422179826088076852<br>87783646182799346313767754307809363333018982642090<br>10848802521674670883215120185883543223812876952786<br>71329612474782464538636993009049310363619763878039<br>62184073572399794223406235393808339651327408011116<br>66627891981488087797941876876144230030984490851411<br>60661826293682836764744779239180335110989069790714<br>85786944089552990653640447425576083659976645795096<br>66024396409905389607120198219976047599490197230297<br>64913982680032973156037120041377903785566085089252<br>16730939319872750275468906903707539413042652315011<br>94809377245048795150954100921645863754710598436791<br>78639167021187492431995700641917969777599028300699<br>15368713711936614952811305876380278410754449733078<br>40789923115535562561142322423255033685442488917353<br>44889911501440648020369068063960672322193204149535<br>41503128880339536053299340368006977710650566631954<br>81234880673210146739058568557934581403627822703280<br>82616570773948327592232845941706525094512325230608<br>22918802058777319719839450180888072429661980811197<br>77158542502016545090413245809786882778948721859617<br>72107838435069186155435662884062257473692284509516<br>20849603980134001723930671666823555245252804609722<br>53503534226472524250874054075591789781264330331690</p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">all_numbers = given_50_digit_numbers</span><br><span class="line">sum_result = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> all_numbers.split(<span class="string">'\n'</span>):</span><br><span class="line">    <span class="keyword">if</span> item == <span class="string">''</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        sum_result += int(item)</span><br><span class="line"><span class="keyword">print</span> str(sum_result)[<span class="number">0</span>:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="14-Longest-Collatz-sequence"><a href="#14-Longest-Collatz-sequence" class="headerlink" title="14. Longest Collatz sequence"></a>14. Longest Collatz sequence</h2><h3 id="Problem-Description-3"><a href="#Problem-Description-3" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>The following iterative sequence is defined for the set of positive integers:</p>
+<p>n → n/2 (n is even)<br>n → 3n + 1 (n is odd)</p>
+<p>Using the rule above and starting with 13, we generate the following sequence:</p>
+<p>13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1</p>
+<p>It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.</p>
+<p>Which starting number, under one million, produces the longest chain?</p>
+<p><strong>NOTE:</strong> Once the chain starts the terms are allowed to go above one million.</p>
+<h3 id="Solution1-1"><a href="#Solution1-1" class="headerlink" title="Solution1"></a>Solution1</h3><p>按照题意直接进行暴力遍历，可以采用递归和迭代的方法。采用靠近计算机底层的位运算代替普通运算可以适当提高效率：n &amp; 1 代替 n % 2，n &gt;&gt; 1代替 n / 2。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Iteration</span></span><br><span class="line"><span class="comment"># Longest Collatz Sequence</span></span><br><span class="line"><span class="comment"># Which starting number, under one million, produces the longest chain</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCollatzSquence</span><span class="params">(n)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n != <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> n &amp; <span class="number">1</span> == <span class="number">0</span>:</span><br><span class="line">            n = n &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            n = <span class="number">3</span>*n+<span class="number">1</span></span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    maxlength = <span class="number">1</span></span><br><span class="line">    flag = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>, <span class="number">1000000</span>):</span><br><span class="line">        count_number = getCollatzSquence(i)</span><br><span class="line">        <span class="keyword">if</span> count_number &gt; maxlength:</span><br><span class="line">            maxlength = count_number</span><br><span class="line">            flag = i</span><br><span class="line">    <span class="keyword">print</span> (maxlength, flag)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recursion</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countCollatzChain</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> n &amp; <span class="number">1</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + countCollatzChain(n &gt;&gt; <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + countCollatzChain(<span class="number">3</span> * n + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    longest_chain = <span class="number">0</span></span><br><span class="line">    result = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> range(<span class="number">100</span>, <span class="number">10</span>**<span class="number">6</span><span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">if</span> countCollatzChain(number) &gt; longest_chain:</span><br><span class="line">            longest_chain = countCollatzChain(number)</span><br><span class="line">            result = number</span><br><span class="line">    <span class="keyword">print</span> result</span><br></pre></td></tr></table></figure>
+<p>二者效率对比如下，可以看出迭代调用所需时间明显小于递归调用。</p>
+<p><img src="http://static.zybuluo.com/B1ank/uyvffvzjqsggcoh2px3uvhaz/14_sufficiency.PNG" alt="14_sufficiency.PNG-10.6kB"></p>
+<h3 id="Solution2-1"><a href="#Solution2-1" class="headerlink" title="Solution2"></a>Solution2</h3><p>无论采用递归或是迭代的方法进行暴力遍历，我们都可以明确看出有部分数值经过重复计算，导致运算时间过长。于是进行以下优化：</p>
+<ul>
+<li>引入字典存储已经计算过的考拉兹链长度；</li>
+<li>根据考拉兹猜想提出的运算规则，我们可以得到Collatz(n) = Collatz(n/2) + 1。因此对于所有整数k，Collatz(2k) &gt; Collatz(k)必定成立，所以我们不必计算小于LIMIT/2的所有k值，本例中即无需计算低于500000的k的考拉兹链长度；</li>
+<li>若n是奇数，则3*n+1必定为偶数，从而n经过考拉兹变换后最终得到(3*n+1) / 2。故当n是奇数时，采用以下公式简化运算过程：Collatz(n) = Collatz((3*n+1) / 2) + 2。</li>
+</ul>
+<p>代码复现如下，但效率无法达到相关题解中提及的1.5s。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find the longest Collatz sequence chain</span></span><br><span class="line"><span class="comment"># Which starting number, under one million, produces the longest chain</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countCollatzChain</span><span class="params">(n, values)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n <span class="keyword">in</span> values.keys():</span><br><span class="line">        <span class="keyword">return</span> values[n]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> n &amp; <span class="number">1</span> == <span class="number">0</span>:</span><br><span class="line">        values[n] = <span class="number">1</span> + countCollatzChain(n &gt;&gt; <span class="number">1</span>, values)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        values[n] = <span class="number">2</span> + countCollatzChain((<span class="number">3</span> * n + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>, values)</span><br><span class="line">    <span class="keyword">return</span> values[n] </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    longest_chain = <span class="number">0</span></span><br><span class="line">    final_result = <span class="number">-1</span></span><br><span class="line">    values = &#123;<span class="number">1</span>: <span class="number">1</span>&#125;</span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> range(<span class="number">500000</span>, <span class="number">10</span>**<span class="number">6</span> - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> countCollatzChain(number, values) &gt; longest_chain:</span><br><span class="line">            longest_chain = countCollatzChain(number, values)</span><br><span class="line">            final_result = number</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">print</span> final_result</span><br></pre></td></tr></table></figure>
+<h2 id="15-Lattice-paths"><a href="#15-Lattice-paths" class="headerlink" title="15. Lattice paths"></a>15. Lattice paths</h2><h3 id="Problem-Description-4"><a href="#Problem-Description-4" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.</p>
+<p><img src="http://static.zybuluo.com/B1ank/n7ypagm1g8czqrkn4z3txlq8/4.png" alt="4.png-9.7kB"></p>
+<p>How many such routes are there through a 20×20 grid?</p>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h3><p>本题目为简单格子路径问题，可以采用迭代、递归与组合数三种方法求解。</p>
+<h4 id="Recursive-Solution"><a href="#Recursive-Solution" class="headerlink" title="Recursive Solution"></a>Recursive Solution</h4><p>将题目所给信息转换为一般问题，即求从(0, 0)点运动到(m, n)点的所有路径数量，该数量等于(0, 0)点到点(m-1, n)和(0, 0)点到点(m, n-1)的路径数量之和。以此类推，当m或n等于0时，(0, 0)点到达该点只存在一直向右或向下两条道路，此时递归算法返回1。值得注意的是，该方法存在重复计算问题，故可引入大容量数组存储可能需要的计算结果。</p>
+<h4 id="Iterative-Solution"><a href="#Iterative-Solution" class="headerlink" title="Iterative Solution"></a>Iterative Solution</h4><p>递归法较易编写，但需要消耗较多计算资源，故考虑结合动态规划进行迭代求解。如果说递归法是”执果索因”，动态规划就是”由因导果”。首先建立20x20数组，由于第一行和第一列所有元素到达点(0, 0)只有一条路径，故数组中对应位置全部设置为1。随后从第二行第二列开始按照<code>grid[i][j] = grid[i][j-1] + grid[i-1][j]</code>进行数组赋值，目标位置<code>grid[m][n]</code>即为待求结果。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Lattice paths problem</span></span><br><span class="line"><span class="comment"># Simple dynamic programming</span></span><br><span class="line"><span class="comment"># Solution1 </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getAllPaths</span><span class="params">(m, n)</span>:</span></span><br><span class="line">    dp = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        dp[i][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">        dp[<span class="number">0</span>][j] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            dp[k][l] = dp[k<span class="number">-1</span>][l] + dp[k][l<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">print</span> dp</span><br><span class="line">    <span class="keyword">return</span> dp[m<span class="number">-1</span>][n<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># Get all possible paths of 20 x 20 grids</span></span><br><span class="line">    final_result = getAllPaths(<span class="number">21</span>, <span class="number">21</span>)</span><br><span class="line">    <span class="keyword">print</span> final_result</span><br></pre></td></tr></table></figure>
+<h4 id="Combinatorial-Solution"><a href="#Combinatorial-Solution" class="headerlink" title="Combinatorial Solution"></a>Combinatorial Solution</h4><p>以上两种方法时间复杂度均为O(mn)，我们可以使用组合数学以提高效率。</p>
+<p>首先分析一般问题的本质，即从点(0, 0)到点(m, n)共需要走m+n步，其中需要向下走m步，向右走n步。于是引出简单无顺序组合问题即$\binom{m+n}{m}$。然而本题给出m=n=20，从而得到如下公式：</p>
+<p><img src="http://static.zybuluo.com/B1ank/wlruky2d3a92kt7szsuxw4al/15_formula.PNG" alt="15_formula.PNG-20.8kB"></p>
+<p>至此我们得到复杂度为O(n)的算法，实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Solution2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getAllPaths2</span><span class="params">(n)</span>:</span></span><br><span class="line">    result = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        result = result * (n+i) / i</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># Get all possible paths of 20 x 20 grids</span></span><br><span class="line">    final_result2 = getAllPaths2(<span class="number">20</span>)</span><br><span class="line">    <span class="keyword">print</span> final_result2</span><br></pre></td></tr></table></figure>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>方格问题升级之路（详细讨论格子路径问题）：<a href="https://blog.csdn.net/cookieZZ/article/details/70306757" target="_blank" rel="noopener">https://blog.csdn.net/cookieZZ/article/details/70306757</a></p>
+<p>格子路径问题+组合数学：<a href="https://www.cnblogs.com/yhm138/p/13610626.html#102-lattice-paths-without-restrictions-无限制格子路径" target="_blank" rel="noopener">https://www.cnblogs.com/yhm138/p/13610626.html#102-lattice-paths-without-restrictions-无限制格子路径</a></p>
+<h2 id="16-Power-digit-sum"><a href="#16-Power-digit-sum" class="headerlink" title="16. Power digit sum"></a>16. Power digit sum</h2><h3 id="Problem-Description-5"><a href="#Problem-Description-5" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>$2^{15} = 32768$ and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.</p>
+<p>What is the sum of the digits of the number $2^{1000}$?</p>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Power digit sum</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getDigitSum</span><span class="params">(input_number)</span>:</span></span><br><span class="line">    digitsum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> input_number != <span class="number">0</span>:</span><br><span class="line">        digitsum += input_number % <span class="number">10</span></span><br><span class="line">        input_number /= <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> digitsum</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    final_result = getDigitSum(<span class="number">2</span>**<span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">print</span> final_result</span><br></pre></td></tr></table></figure>
+<h2 id="17-Number-letter-counts"><a href="#17-Number-letter-counts" class="headerlink" title="17. Number letter counts"></a>17. Number letter counts</h2><h3 id="Problem-Description-6"><a href="#Problem-Description-6" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.</p>
+<p>If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?</p>
+<p><strong>NOTE:</strong> Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of “and” when writing out numbers is in compliance with British usage.</p>
+<h3 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h3><p>最简单的方法为建立三个字典，分别存储个位数字1-9，十位数字1-9（即10-90）以及11-19，然后判断输入数字的位数并进行相关处理。该方法需要讨论的情况较多，例如三位数字便需要讨论100，1X0，10X，11X，1XX五种情况，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Count the letters of numbers 1 to 1000</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countLetters</span><span class="params">(input_number, length, dict1, dict2, dict3)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> dict1[input_number]</span><br><span class="line">    <span class="keyword">elif</span> length == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">if</span> input_number / <span class="number">10</span> == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> dict2[input_number]</span><br><span class="line">        <span class="keyword">elif</span> input_number % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> dict3[input_number/<span class="number">10</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> dict3[input_number/<span class="number">10</span>] + dict1[input_number%<span class="number">10</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> input_number % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> dict1[input_number/<span class="number">100</span>] + <span class="number">7</span></span><br><span class="line">        <span class="keyword">elif</span> input_number % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> dict1[input_number/<span class="number">100</span>] + dict3[input_number%<span class="number">100</span>/<span class="number">10</span>] + <span class="number">10</span></span><br><span class="line">        <span class="keyword">elif</span> input_number / <span class="number">10</span> % <span class="number">10</span> == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> dict1[input_number/<span class="number">100</span>] + <span class="number">10</span> + dict2[input_number%<span class="number">100</span>]</span><br><span class="line">        <span class="keyword">elif</span> input_number / <span class="number">10</span> % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> dict1[input_number/<span class="number">100</span>] + <span class="number">10</span> + dict1[input_number%<span class="number">10</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> dict1[input_number/<span class="number">100</span>] + dict3[input_number%<span class="number">100</span>/<span class="number">10</span>] + dict1[input_number%<span class="number">10</span>] + <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># digits</span></span><br><span class="line">    dict1 = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">3</span>, <span class="number">3</span>:<span class="number">5</span>, <span class="number">4</span>:<span class="number">4</span>, <span class="number">5</span>:<span class="number">4</span>, <span class="number">6</span>:<span class="number">3</span>, <span class="number">7</span>:<span class="number">5</span>, <span class="number">8</span>:<span class="number">5</span>, <span class="number">9</span>:<span class="number">4</span>&#125;</span><br><span class="line">    <span class="comment"># 10-tens</span></span><br><span class="line">    dict2 = &#123;<span class="number">10</span>:<span class="number">3</span>, <span class="number">11</span>:<span class="number">6</span>, <span class="number">12</span>:<span class="number">6</span>, <span class="number">13</span>:<span class="number">8</span>, <span class="number">14</span>:<span class="number">8</span>, <span class="number">15</span>:<span class="number">7</span>, <span class="number">16</span>:<span class="number">7</span>, <span class="number">17</span>:<span class="number">9</span>, <span class="number">18</span>:<span class="number">8</span>, <span class="number">19</span>:<span class="number">8</span>&#125;</span><br><span class="line">    <span class="comment"># tens</span></span><br><span class="line">    dict3 = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">6</span>, <span class="number">3</span>:<span class="number">6</span>, <span class="number">4</span>:<span class="number">5</span>, <span class="number">5</span>:<span class="number">5</span>, <span class="number">6</span>:<span class="number">5</span>, <span class="number">7</span>:<span class="number">7</span>, <span class="number">8</span>:<span class="number">6</span>, <span class="number">9</span>:<span class="number">6</span>&#125;</span><br><span class="line">    total_sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> xrange(<span class="number">1</span>, <span class="number">1000</span>):</span><br><span class="line">        <span class="keyword">print</span> item</span><br><span class="line">        item_length = len(str(item))</span><br><span class="line">        <span class="comment"># print item_length</span></span><br><span class="line">        total_sum += countLetters(item, item_length, dict1, dict2, dict3)</span><br><span class="line">    </span><br><span class="line">    total_sum += <span class="number">11</span></span><br><span class="line">    <span class="keyword">print</span> total_sum</span><br></pre></td></tr></table></figure>
+<p>由于三位数字与两位数字相比仅增加了对百位数字的讨论，本质为增加<code>X hundred and</code>这几个字符。故可以1-99为基础进行适当求和，从而省略了三位数字包含字符数量的判断，节约了运算时间，关键代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> xrange(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">        item_length = len(str(item))</span><br><span class="line">        total_sum += countLetters(item, item_length, dict1, dict2, dict3)</span><br><span class="line">    block_sum = total_sum</span><br><span class="line">    <span class="keyword">for</span> hundredstype <span class="keyword">in</span> xrange(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">        total_sum += dict1[hundredstype] + <span class="number">7</span> + (dict1[hundredstype] + <span class="number">10</span>) * <span class="number">99</span> + block_sum</span><br><span class="line">    total_sum += <span class="number">11</span></span><br><span class="line">    <span class="keyword">print</span> total_sum</span><br></pre></td></tr></table></figure>
+<h2 id="18-Maximum-path-sum-I"><a href="#18-Maximum-path-sum-I" class="headerlink" title="18. Maximum path sum I"></a>18. Maximum path sum I</h2><h3 id="Problem-Description-7"><a href="#Problem-Description-7" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.</p>
+<p><img src="http://static.zybuluo.com/B1ank/p14xzlcma3agwuw1hg8xjio5/18_problem_1.PNG" alt="18_problem_1.PNG-2.4kB"></p>
+<p>That is, 3 + 7 + 4 + 9 = 23.</p>
+<p>Find the maximum total from top to bottom of the triangle below:</p>
+<p><img src="http://static.zybuluo.com/B1ank/63np17e8993jnuzuancgtixu/18_problem_2.PNG" alt="18_problem_2.PNG-29.6kB"></p>
+<p><strong>NOTE:</strong> As there are only 16384 routes, it is possible to solve this problem by trying every route. However, <a href="https://projecteuler.net/problem=67" target="_blank" rel="noopener">Problem 67</a>, is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)</p>
+<h3 id="Solution-5"><a href="#Solution-5" class="headerlink" title="Solution"></a>Solution</h3><p>根据题目说明采用动态规划进行逐级递归。</p>
+<p>首先将所给的字符串类型转换为二维数组，随后进行分析，核心思想为<strong>将上一行的数字更新为其本身与下一行相邻两数字中较大数字之和</strong>：以倒数第二行元素为例，63可更新为63+max(04, 62)即125，66可更新为66+max(62, 98)即164…以此类推，更新结束后二维数组第一个元素即为所求最长路径。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find the maximum total from top to bottom of the triangle below:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">transformToList</span><span class="params">(grid_string)</span>:</span></span><br><span class="line">    <span class="comment"># First transform the string to list</span></span><br><span class="line">    tmp_list = [item.split(<span class="string">' '</span>) <span class="keyword">for</span> item <span class="keyword">in</span> grid_string.split(<span class="string">'\n'</span>)]</span><br><span class="line">    <span class="comment"># print tmp_list</span></span><br><span class="line">    list_length = len(tmp_list)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(list_length):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>):</span><br><span class="line">            tmp_list[i][j] = int(tmp_list[i][j])</span><br><span class="line">    <span class="keyword">return</span> tmp_list</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dynamicProgramming</span><span class="params">(grid_list)</span>:</span></span><br><span class="line">    list_length = len(grid_list)</span><br><span class="line">    <span class="comment"># Start from the last but one line</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(list_length<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>):</span><br><span class="line">            grid_list[i][j] = grid_list[i][j] + max(grid_list[i+<span class="number">1</span>][j], grid_list[i+<span class="number">1</span>][j+<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> grid_list[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    grid = <span class="string">'''75</span></span><br><span class="line"><span class="string">95 64</span></span><br><span class="line"><span class="string">17 47 82</span></span><br><span class="line"><span class="string">18 35 87 10</span></span><br><span class="line"><span class="string">20 04 82 47 65</span></span><br><span class="line"><span class="string">19 01 23 75 03 34</span></span><br><span class="line"><span class="string">88 02 77 73 07 63 67</span></span><br><span class="line"><span class="string">99 65 04 28 06 16 70 92</span></span><br><span class="line"><span class="string">41 41 26 56 83 40 80 70 33</span></span><br><span class="line"><span class="string">41 48 72 33 47 32 37 16 94 29</span></span><br><span class="line"><span class="string">53 71 44 65 25 43 91 52 97 51 14</span></span><br><span class="line"><span class="string">70 11 33 28 77 73 17 78 39 68 17 57</span></span><br><span class="line"><span class="string">91 71 52 38 17 14 91 43 58 50 27 29 48</span></span><br><span class="line"><span class="string">63 66 04 68 89 53 67 30 73 16 69 87 40 31</span></span><br><span class="line"><span class="string">04 62 98 27 23 09 70 98 73 93 38 53 60 04 23'''</span></span><br><span class="line">    result_list = transformToList(grid)</span><br><span class="line">    final_result = dynamicProgramming(result_list)</span><br><span class="line">    <span class="keyword">print</span> final_result</span><br></pre></td></tr></table></figure>
+<h2 id="19-Counting-Sundays"><a href="#19-Counting-Sundays" class="headerlink" title="19. Counting Sundays"></a>19. Counting Sundays</h2><h3 id="Problem-Description-8"><a href="#Problem-Description-8" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>You are given the following information, but you may prefer to do some research for yourself.</p>
+<ul>
+<li>1 Jan 1900 was a Monday.</li>
+<li>Thirty days has September,<br>April, June and November.<br>All the rest have thirty-one,<br>Saving February alone,<br>Which has twenty-eight, rain or shine.<br>And on leap years, twenty-nine.</li>
+<li>A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.</li>
+</ul>
+<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
+<h3 id="Solution1-2"><a href="#Solution1-2" class="headerlink" title="Solution1"></a>Solution1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</span></span><br><span class="line"><span class="comment"># First we need to find the sum of the days from Febrary to December every year from 1901 to 2000</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countSundaysPerYear</span><span class="params">(input_year, first_day)</span>:</span></span><br><span class="line">    <span class="comment"># 31 days per month</span></span><br><span class="line">    month_list1 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">12</span>]</span><br><span class="line">    <span class="comment"># 30 days per month</span></span><br><span class="line">    month_list2 = [<span class="number">4</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">11</span>]</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    month = <span class="number">1</span></span><br><span class="line">    <span class="comment"># input the location of the first day in this year as variable first_day</span></span><br><span class="line">    <span class="keyword">while</span> month &lt;= <span class="number">12</span>:</span><br><span class="line">        <span class="keyword">if</span> first_day % <span class="number">7</span> == <span class="number">0</span>:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> month <span class="keyword">in</span> month_list1:</span><br><span class="line">            first_day += <span class="number">31</span></span><br><span class="line">        <span class="keyword">elif</span> month <span class="keyword">in</span> month_list2:</span><br><span class="line">            first_day += <span class="number">30</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> (input_year % <span class="number">4</span> == <span class="number">0</span> <span class="keyword">and</span> input_year % <span class="number">100</span> != <span class="number">0</span>) <span class="keyword">or</span> (input_year % <span class="number">400</span> == <span class="number">0</span>):</span><br><span class="line">                first_day += <span class="number">29</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                first_day += <span class="number">28</span></span><br><span class="line">        month += <span class="number">1</span></span><br><span class="line">    <span class="comment"># print count</span></span><br><span class="line">    <span class="keyword">return</span> (first_day % <span class="number">7</span>, count)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start_day = <span class="number">2</span></span><br><span class="line">    final_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> year <span class="keyword">in</span> xrange(<span class="number">1901</span>, <span class="number">2001</span>):</span><br><span class="line">        <span class="comment"># print (year, start_day)</span></span><br><span class="line">        <span class="comment"># print "-------"</span></span><br><span class="line">        result_tuple = countSundaysPerYear(year, start_day)</span><br><span class="line">        start_day = result_tuple[<span class="number">0</span>]</span><br><span class="line">        final_count += result_tuple[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">print</span> final_count</span><br></pre></td></tr></table></figure>
+<h3 id="Solution2-2"><a href="#Solution2-2" class="headerlink" title="Solution2"></a>Solution2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line">result_list = [calendar.weekday(year,month,<span class="number">1</span>) <span class="keyword">for</span> year <span class="keyword">in</span> range(<span class="number">1901</span>, <span class="number">2001</span>) <span class="keyword">for</span> month <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">13</span>)]</span><br><span class="line"><span class="keyword">print</span> result_list.count(<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<p>python提供<code>calendar</code>模块实现日历功能，提供对日期的操作函数，常用函数说明如下：<a href="https://www.cnblogs.com/liuxiaowei/p/7263888.html。" target="_blank" rel="noopener">https://www.cnblogs.com/liuxiaowei/p/7263888.html。</a></p>
+<h2 id="20-Factorial-digit-sum"><a href="#20-Factorial-digit-sum" class="headerlink" title="20. Factorial digit sum"></a>20. Factorial digit sum</h2><h3 id="Problem-Description-9"><a href="#Problem-Description-9" class="headerlink" title="Problem Description"></a>Problem Description</h3><p><em>n</em>! means <em>n</em> × (<em>n</em> − 1) × … × 3 × 2 × 1</p>
+<p>For example, 10! = 10 × 9 × … × 3 × 2 × 1 = 3628800,<br>and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.</p>
+<p>Find the sum of the digits in the number 100!</p>
+<h3 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Count the sum of digits of 100!</span></span><br><span class="line"><span class="keyword">import</span> math </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countDigitSum</span><span class="params">(input_number)</span>:</span></span><br><span class="line">    sum_number = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> input_number != <span class="number">0</span>:</span><br><span class="line">        sum_number += input_number % <span class="number">10</span></span><br><span class="line">        input_number /= <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> sum_number</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    final_result = countDigitSum(math.factorial(<span class="number">100</span>))</span><br><span class="line">    <span class="keyword">print</span> final_result</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blank-vax.github.io/tags/Euler-Project/" rel="tag"><i class="fa fa-tag"></i> Euler-Project</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/10/13/Euler-Project(I)/" rel="next" title="Euler-Project(I)">
+                <i class="fa fa-chevron-left"></i> Euler-Project(I)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/blank-vax.github.io/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blank-vax.github.io/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blank-vax.github.io/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blank-vax.github.io/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/blank-vax.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://59lx.github.io" title="rt95" target="_blank">rt95</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Largest-product-in-a-grid"><span class="nav-number">1.</span> <span class="nav-text">11. Largest product in a grid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Highly-divisible-triangular-number"><span class="nav-number">2.</span> <span class="nav-text">12. Highly divisible triangular number</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution2"><span class="nav-number">2.3.</span> <span class="nav-text">Solution2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Large-sum"><span class="nav-number">3.</span> <span class="nav-text">13. Large sum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-2"><span class="nav-number">3.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Longest-Collatz-sequence"><span class="nav-number">4.</span> <span class="nav-text">14. Longest Collatz sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-3"><span class="nav-number">4.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution1-1"><span class="nav-number">4.2.</span> <span class="nav-text">Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution2-1"><span class="nav-number">4.3.</span> <span class="nav-text">Solution2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-Lattice-paths"><span class="nav-number">5.</span> <span class="nav-text">15. Lattice paths</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-4"><span class="nav-number">5.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2"><span class="nav-number">5.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Recursive-Solution"><span class="nav-number">5.2.1.</span> <span class="nav-text">Recursive Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Iterative-Solution"><span class="nav-number">5.2.2.</span> <span class="nav-text">Iterative Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Combinatorial-Solution"><span class="nav-number">5.2.3.</span> <span class="nav-text">Combinatorial Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">5.3.</span> <span class="nav-text">Reference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-Power-digit-sum"><span class="nav-number">6.</span> <span class="nav-text">16. Power digit sum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-5"><span class="nav-number">6.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-3"><span class="nav-number">6.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Number-letter-counts"><span class="nav-number">7.</span> <span class="nav-text">17. Number letter counts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-6"><span class="nav-number">7.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-4"><span class="nav-number">7.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-Maximum-path-sum-I"><span class="nav-number">8.</span> <span class="nav-text">18. Maximum path sum I</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-7"><span class="nav-number">8.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-5"><span class="nav-number">8.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-Counting-Sundays"><span class="nav-number">9.</span> <span class="nav-text">19. Counting Sundays</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-8"><span class="nav-number">9.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution1-2"><span class="nav-number">9.2.</span> <span class="nav-text">Solution1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution2-2"><span class="nav-number">9.3.</span> <span class="nav-text">Solution2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-Factorial-digit-sum"><span class="nav-number">10.</span> <span class="nav-text">20. Factorial digit sum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-9"><span class="nav-number">10.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-6"><span class="nav-number">10.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共123.2k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blank-vax.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '9OdpjYSHQirwAMeIVy8C5SBk-gzGzoHsz',
+        appKey: 'WoxonMaRanAKt1yVo9JgIS7n',
+        placeholder: 'Let's Chat',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/blank-vax.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

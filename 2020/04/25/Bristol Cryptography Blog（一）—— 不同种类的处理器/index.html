@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/blank-vax.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blank-vax.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blank-vax.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blank-vax.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blank-vax.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blank-vax.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blank-vax.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blank-vax.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Notes,">
+
+
+
+
+
+  <link rel="alternate" href="/blank-vax.github.io/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言本文为布里斯托大学推出的52 Things Every PhD Student Should Know to do Cryptography系列学习笔记中的第一篇。原文连接：52 Things:Number 1 : Different Types of Processors。 核心问题本篇的核心问题可以概括为以下问题：  通用处理器 具有指令集扩展的通用处理器 专用处理器或协同处理器 FPGA">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bristol Cryptography Blog（一）—— 不同种类的处理器">
+<meta property="og:url" content="https://blank-vax.github.io/2020/04/25/Bristol Cryptography Blog（一）—— 不同种类的处理器/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="前言本文为布里斯托大学推出的52 Things Every PhD Student Should Know to do Cryptography系列学习笔记中的第一篇。原文连接：52 Things:Number 1 : Different Types of Processors。 核心问题本篇的核心问题可以概括为以下问题：  通用处理器 具有指令集扩展的通用处理器 专用处理器或协同处理器 FPGA">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/3tk6lqk6u66do6sjbrwhbgw1/Turing_Machine.jpg">
+<meta property="og:updated_time" content="2020-11-09T03:26:09.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bristol Cryptography Blog（一）—— 不同种类的处理器">
+<meta name="twitter:description" content="前言本文为布里斯托大学推出的52 Things Every PhD Student Should Know to do Cryptography系列学习笔记中的第一篇。原文连接：52 Things:Number 1 : Different Types of Processors。 核心问题本篇的核心问题可以概括为以下问题：  通用处理器 具有指令集扩展的通用处理器 专用处理器或协同处理器 FPGA">
+<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/3tk6lqk6u66do6sjbrwhbgw1/Turing_Machine.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blank-vax.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2020/04/25/Bristol Cryptography Blog（一）—— 不同种类的处理器/">
+
+
+
+
+
+  <title>Bristol Cryptography Blog（一）—— 不同种类的处理器 | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blank-vax.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blank-vax.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blank-vax.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blank-vax.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blank-vax.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blank-vax.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blank-vax.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/blank-vax.github.io/2020/04/25/Bristol Cryptography Blog（一）—— 不同种类的处理器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blank-vax.github.io/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Bristol Cryptography Blog（一）—— 不同种类的处理器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T17:58:00+08:00">
+                2020-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blank-vax.github.io/categories/Crypto-Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Crypto_Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blank-vax.github.io/2020/04/25/Bristol Cryptography Blog（一）—— 不同种类的处理器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blank-vax.github.io/2020/04/25/Bristol Cryptography Blog（一）—— 不同种类的处理器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/blank-vax.github.io/2020/04/25/Bristol Cryptography Blog（一）—— 不同种类的处理器/" class="leancloud_visitors" data-flag-title="Bristol Cryptography Blog（一）—— 不同种类的处理器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,813
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文为布里斯托大学推出的<code>52 Things Every PhD Student Should Know to do Cryptography</code>系列学习笔记中的第一篇。原文连接：<a href="http://bristolcrypto.blogspot.com/2014/10/52-things-number-1-different-types-of.html" target="_blank" rel="noopener">52 Things:Number 1 : Different Types of Processors</a>。</p>
+<h2 id="核心问题"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题</h2><p>本篇的核心问题可以概括为以下问题：</p>
+<ul>
+<li>通用处理器</li>
+<li>具有指令集扩展的通用处理器</li>
+<li>专用处理器或协同处理器</li>
+<li>FPGA</li>
+</ul>
+<p>以上四种硬件的差异体现在哪些方面？</p>
+<h2 id="通用处理器"><a href="#通用处理器" class="headerlink" title="通用处理器"></a>通用处理器</h2><p>尽管通用处理器没有严格的定义，但是将具有图灵完备的处理器称为通用处理器这一理论被广泛接受。通用处理器包含可以计算任何实际可计算的处理器，它们都可以解决图灵机可以解决的任何问题。在现代处理器背景下，大多数可编程CPU被认为是通用的。</p>
+<h2 id="具有指令集扩展的通用处理器"><a href="#具有指令集扩展的通用处理器" class="headerlink" title="具有指令集扩展的通用处理器"></a>具有指令集扩展的通用处理器</h2><p><strong>处理器达到通用目的的代价通常会导致性能方面的不足</strong>。换句话说，通用处理器也许能够计算任何可计算的东西，但其无法胜任复杂的重复任务。针对那些各类应用程序中在通用处理上有规律地重复执行的任务，处理器设计师可以通过将指令集扩展合并到基本微体系结构中来适应该类任务。尽管微体系结构在功能上差异不大，但实际上用户会获得巨大的性能提升。对于CPU来说，基本的指令集相差甚微，但是许多厂家为了提升某一方面的性能，又开发了扩展指令集，<strong>扩展指令集定义了新的数据和指令，能够大大提高某方面数据处理的能力</strong>，但是对软件支持提出了新的需求。</p>
+<p>我们举一个有关指令集扩展的密码学示例——<strong>具有AES加密磁盘的台式机</strong>。</p>
+<p>该情况下，任何从二级存储（即磁盘）中读取的数据，都需要一个CPU中断来先对数据块进行解密，然后才能加载到内存处理。由于从缓存访问磁盘会影响访问性能，这就需要在磁盘上增加一个解密程序，于是一个值得重新考虑磁盘加密的瓶颈出现了。显然，AES加密是我们选择的复杂重复任务，给定一个简单指令集的通用CPU，我们别无选择只能以线性流操作的方法实现解密。Intel和AMD都意识到磁盘加密的需求，并且自2010年以来完成了<code>AES-NI x86</code>指令集扩展的生产，从而加快了台式机CPU系列磁盘加密的速度。</p>
+<h2 id="专用处理器-协同处理器"><a href="#专用处理器-协同处理器" class="headerlink" title="专用处理器/协同处理器"></a>专用处理器/协同处理器</h2><p>如果希望针对任何计算进行全面加速，最优选择就是专用处理器或专用集成电路ASIC。这样可以实现性能提升，但作为代价会失去通用处理器的灵活性。这些类型的处理器通常紧密耦合到通用处理器中，因此称为协同处理器。需要注意的是，协同处理器可能与通用处理器存在于同一封装体系，但不一定集成到通用体系结构中。如果我们将目光转向现代处理器体系结构，Intel和AMD都将声卡、图形处理器和DSP引擎集成到了它们的CPU中，这种情况下附加功能通过专用寄存器公开，协同处理器被当作单独组件由通用处理器进行管理。</p>
+<h2 id="Field-Programmable-Gate-Array"><a href="#Field-Programmable-Gate-Array" class="headerlink" title="Field Programmable Gate Array"></a>Field Programmable Gate Array</h2><p>场可编程门阵列处于通用处理器和专用处理器的中间地带。如果一个应用需要高性能的吞吐量，同时对修改次数要求较少，那么FPGA可能是最好的选择。</p>
+<p>FPGA的工作原理说明如下：参考一个非常大的电子面包板，其周围遍布成千上万个逻辑门和查找表（通过多路复用的方式附着于内存）。如果将应用描述为一组门和时序约束的集合，那么可以在电路板上用导线将其连接形成一个电路，该电路可以用于计算目标应用。一个FPGA能提供可重编程的灵活性，同时通过生成专用逻辑电路来计算一个目标应用。与通用程序相比，FPGA需要使用硬件描述语言（VHDL或Verilog）来设计和构建你的应用。</p>
+<p>当然，FPGA并非没有缺点。对于大型应用，使用低级构建模块来设计程序是非常麻烦的。此外与通用嵌入式集成电路相比，其具有更高的能耗和硬件成本。由于制造商Xilinx将ARM通用核装载在FPGA上，并封装在一个单独的包中。这使得FPGA可以作为ARM核的一个灵活的协同处理器进行使用，因此可以构建专门的逻辑电路来检测密码原语，以便实现密码操作的加速。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>通用处理器能够计算任何可以计算的任务。</p>
+</li>
+<li><p>拥有指令集扩展的通用处理器与通用处理器类似，不过其针对一些特定的应用能够更高效地执行。</p>
+</li>
+<li><p>专用处理器/协同处理器在计算一些特定任务时很快，但无法计算其它应用。</p>
+</li>
+<li><p>FPGA可以用于构建以上所有硬件，但是与ASIC比较，其通过牺牲速度的方法来保证灵活性。</p>
+</li>
+</ul>
+<p>CPU与FPGA的根本区别在于软件和硬件的差异。CPU为冯诺依曼结构，串行地执行一系列指令；而FPGA可以实现并行操作。一般来说，CPU可以实现的功能，都可以通过硬件设计的方法由FPGA实现。</p>
+<h2 id="附加：图灵机与图灵完备"><a href="#附加：图灵机与图灵完备" class="headerlink" title="附加：图灵机与图灵完备"></a>附加：图灵机与图灵完备</h2><p>上述通用处理器的定义过程中运用到图灵完备的相关知识，以前也接触过这个概念但一直没有仔细记录，现特记录如下。</p>
+<h3 id="图灵机-Turing-Machine"><a href="#图灵机-Turing-Machine" class="headerlink" title="图灵机 Turing Machine"></a>图灵机 Turing Machine</h3><p>图灵机是图灵在1936年发表的<code>On Computable Numbers, with an Application to the Entscheidungsproblem</code>中提出的数学模型。在文章中图灵描述了它的具体定义，并且证明了<strong>只要图灵机可以被实现，就可以用来解决任何可计算问题</strong>。</p>
+<p>图灵机由以下几个部分构成：</p>
+<ul>
+<li>一条无限长的纸带(tape)，纸带被分成一个个相邻的格子(square)，每个格子都可以写上至多一个字符(symbol)。</li>
+<li>一个字符表(alphabet)即字符的集合，它包含纸带上可能出现的所有字符。特殊字符blank意味着此格子中没有任何字符。</li>
+<li>一个读写头(head)，可以理解为指向其中一个格子的指针。它可以实现对当前格子内容的读取/写入/擦除，此外也可以每次向左/右移动一个格子。</li>
+<li>一个状态寄存器(state register)，它追踪着每一步运算过程中，整个机器所处的状态，包含运行和终止两个状态。当状态从运行变为终止时，运算结束，机器停机并交回控制权。</li>
+<li>一个有限的指令集(instructions table)，它记录着读写头在特定情况下应该执行的行为。</li>
+</ul>
+<p><img src="http://static.zybuluo.com/B1ank/3tk6lqk6u66do6sjbrwhbgw1/Turing_Machine.jpg" alt="Turing_Machine.jpg-16.8kB"></p>
+<p>有两点需要注意：</p>
+<ul>
+<li>计算开始前，纸带可以是完全空白或者在某些格子里预先初始化数据。</li>
+<li>运算开始时，读写头从某一位置开始，严格按照此刻的配置（当前所处位置+当前格子内容）来一步步对照指令集进行操作，直到状态变为停止。</li>
+</ul>
+<p>假设上述模型提到的功能都能被以某种形式物理实现，那么任意可计算问题均可被解决。这里的计算问题泛指一切与计算相关的问题。</p>
+<blockquote>
+<p>A computational problem is a mathematical object representing a collection of questions that computers might be able to solve.</p>
+</blockquote>
+<p>也存在一些不可计算的计算问题，比如著名的停机问题(Halting Problem)。</p>
+<blockquote>
+<p>Halting Problem: given the description of an arbitrary program and a finite input, decide whether the program finished running or will run forever.</p>
+</blockquote>
+<p>该问题是一个不可计算问题即不存在一个通用算法，可以在任意输入下解决此问题。</p>
+<h3 id="图灵完备-Turing-Completeness"><a href="#图灵完备-Turing-Completeness" class="headerlink" title="图灵完备 Turing Completeness"></a>图灵完备 Turing Completeness</h3><p>图灵完备性是针对一套数据操作规则而言的概念。数据操作规则可以是编程语言，也可以是计算机里具体实现的指令集。当这套规则<strong>可以实现图灵机模型里的全部功能</strong>时，就称它具有图灵完备性。下面我们以一套编程语言为例对图灵完备性质进行说明。</p>
+<h3 id="Brainfuck语言"><a href="#Brainfuck语言" class="headerlink" title="Brainfuck语言"></a>Brainfuck语言</h3><blockquote>
+<p>Brainfuck is fully Turing-complete.</p>
+</blockquote>
+<p>首先它存储数据的方式是一个不限长的一维整数数组，里面的数值全部初始化为0.此外有一数据指针，每一时刻都指向数组的某一元素，指针可以向左/向右移动，也可以对当前值进行读取/修改。该语言由8个有效字符组成，分别为：</p>
+<ul>
+<li><p><code>&gt;</code> </p>
+<p>指针向右移动一格</p>
+</li>
+<li><p><code>&lt;</code></p>
+<p>指针向左移动一格</p>
+</li>
+<li><p><code>+</code></p>
+<p>指针当前指向格子中的数值加一</p>
+</li>
+<li><p><code>-</code></p>
+<p>指针当前指向格子中的数值减一</p>
+</li>
+<li><p><code>.</code></p>
+<p>把当前指向格子中的数值按照ASCII表输出到终端</p>
+</li>
+<li><p><code>,</code></p>
+<p>从终端接受一字节的数据，将其ASCII数值存储到当前格</p>
+</li>
+<li><p><code>[</code></p>
+<p>当指针当前值为0时，跳转到与之对应的<code>]</code>符号之后，否则程序正常执行</p>
+</li>
+<li><p><code>]</code></p>
+<p>程序跳转回与之对应的<code>[</code>处</p>
+</li>
+</ul>
+<p>可以看到，该语言针对数域上的运算引入了加法和减法（乘法可以分解为加法而除法可以分解为减法），针对ASCII码与字母的转换引入了转换符号，针对循环问题引入了循环符号，同时引入左移右移符号从而控制每个格子。解决了可计算问题，符合图灵机的定义，故该语言图灵完备。</p>
+<p>此外，Brainfuck还可以用于检测编程语言的完备性。对于一个语法功能复杂的新语言，使用数学证明的方式确定性说明其图灵完备较为麻烦，但是只要能够使用这门新语言实现一个Brainfuck解释器，那么就可以证明其图灵完备。</p>
+<p>可视化Brainfuck语言运作流程：<a href="http://link.zhihu.com/?target=http%3A//fatiherikli.github.io/brainfuck-visualizer/" target="_blank" rel="noopener">Brainfuck Visualizer</a>。</p>
+<h3 id="图灵完备判断"><a href="#图灵完备判断" class="headerlink" title="图灵完备判断"></a>图灵完备判断</h3><p>对于一个编程语言，我们可以通过它是否能够模拟出图灵机的运作流程来判断其是否具有图灵完备性。例如，图灵不完备的语言常见原因有循环或递归受限（即无法写出不终止的程序），无法开辟数组和列表这一类数据结构（无法模拟无限长的纸带）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blank-vax.github.io/tags/Notes/" rel="tag"><i class="fa fa-tag"></i> Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/04/25/码云合作办公指南/" rel="next" title="码云合作办公指南">
+                <i class="fa fa-chevron-left"></i> 码云合作办公指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/05/05/Bristol-Cryptography-Blog（二）——-多核处理器和向量处理器/" rel="prev" title="Bristol Cryptography Blog（二）—— 多核处理器和向量处理器">
+                Bristol Cryptography Blog（二）—— 多核处理器和向量处理器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/blank-vax.github.io/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blank-vax.github.io/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blank-vax.github.io/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blank-vax.github.io/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/blank-vax.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://59lx.github.io" title="rt95" target="_blank">rt95</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心问题"><span class="nav-number">2.</span> <span class="nav-text">核心问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通用处理器"><span class="nav-number">3.</span> <span class="nav-text">通用处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具有指令集扩展的通用处理器"><span class="nav-number">4.</span> <span class="nav-text">具有指令集扩展的通用处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#专用处理器-协同处理器"><span class="nav-number">5.</span> <span class="nav-text">专用处理器/协同处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Field-Programmable-Gate-Array"><span class="nav-number">6.</span> <span class="nav-text">Field Programmable Gate Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加：图灵机与图灵完备"><span class="nav-number">8.</span> <span class="nav-text">附加：图灵机与图灵完备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图灵机-Turing-Machine"><span class="nav-number">8.1.</span> <span class="nav-text">图灵机 Turing Machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图灵完备-Turing-Completeness"><span class="nav-number">8.2.</span> <span class="nav-text">图灵完备 Turing Completeness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brainfuck语言"><span class="nav-number">8.3.</span> <span class="nav-text">Brainfuck语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图灵完备判断"><span class="nav-number">8.4.</span> <span class="nav-text">图灵完备判断</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共123.2k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blank-vax.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '9OdpjYSHQirwAMeIVy8C5SBk-gzGzoHsz',
+        appKey: 'WoxonMaRanAKt1yVo9JgIS7n',
+        placeholder: 'Let's Chat',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/blank-vax.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

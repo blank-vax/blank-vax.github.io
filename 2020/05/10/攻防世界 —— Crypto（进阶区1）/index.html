@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/blank-vax.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blank-vax.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blank-vax.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blank-vax.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blank-vax.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blank-vax.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blank-vax.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blank-vax.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="攻防世界,经验文章,">
+
+
+
+
+
+  <link rel="alternate" href="/blank-vax.github.io/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="0x00 前言更新完Crypto新手区的题目之后，接下来开始练习进阶区的题目。本系列文章持续更新中~ 0x01 告诉你个秘密解题思路打开附件发现为两行十六进制数据，一开始考虑将其转换成十进制，后来发现转完之后不易和字符串建立联系，遂考虑直接将其转换为字符串。 这里使用python的binascii库中的binascii.a2b_hex(hex)实现将十六进制字符串转换成ASCII字符串并输出。输出">
+<meta name="keywords" content="攻防世界,经验文章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界 —— Crypto（进阶区1）">
+<meta property="og:url" content="https://blank-vax.github.io/2020/05/10/攻防世界 —— Crypto（进阶区1）/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="0x00 前言更新完Crypto新手区的题目之后，接下来开始练习进阶区的题目。本系列文章持续更新中~ 0x01 告诉你个秘密解题思路打开附件发现为两行十六进制数据，一开始考虑将其转换成十进制，后来发现转完之后不易和字符串建立联系，遂考虑直接将其转换为字符串。 这里使用python的binascii库中的binascii.a2b_hex(hex)实现将十六进制字符串转换成ASCII字符串并输出。输出">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/z9j4icbmpvvzmpep45u3b7o6/%E5%91%8A%E8%AF%89%E4%BD%A0%E4%B8%AA%E7%A7%98%E5%AF%86.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/sb9mauwpmxxbkihdl3bro6a2/hex_to_string.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/hnmhfbjcdzqiqm1eejeyxlnp/Basic%20Broadcast%20Attack.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/7xmysk8mnvmaeejut6pb0y2m/flag_in_your_hand1.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/4ke5xx1ohv8a1h2r1r7vate5/flag_in_your_hand11.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/05/10/攻防世界%20——%20Crypto（进阶区1）/C:/Users/B1ank/Desktop/攻防世界/Crypto/工业控制协议1.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/tkv073onf40rhwf1qrq4xyfa/fanfie.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/8trausp5ssc517e8e3w9x5ty/wtc_rsa_bbq.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/yl9ag00nxiqztluenw5wvyyj/pollard_p-1.png">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/7ilsjwliubokdro7w0vkfgzh/%E5%B7%A5%E6%8E%A72.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/u5dfguc0vwe8xewspa8uxmqz/%E5%B7%A5%E6%8E%A723.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/omejzdg7g7p2xvtxyqdcfl1a/%E5%B7%A5%E6%8E%A722.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/tfsdr97jbo5jf18yfjdhs8tr/%E5%B7%A5%E6%8E%A73.PNG">
+<meta property="og:updated_time" content="2020-11-09T03:27:21.106Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="攻防世界 —— Crypto（进阶区1）">
+<meta name="twitter:description" content="0x00 前言更新完Crypto新手区的题目之后，接下来开始练习进阶区的题目。本系列文章持续更新中~ 0x01 告诉你个秘密解题思路打开附件发现为两行十六进制数据，一开始考虑将其转换成十进制，后来发现转完之后不易和字符串建立联系，遂考虑直接将其转换为字符串。 这里使用python的binascii库中的binascii.a2b_hex(hex)实现将十六进制字符串转换成ASCII字符串并输出。输出">
+<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/z9j4icbmpvvzmpep45u3b7o6/%E5%91%8A%E8%AF%89%E4%BD%A0%E4%B8%AA%E7%A7%98%E5%AF%86.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blank-vax.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2020/05/10/攻防世界 —— Crypto（进阶区1）/">
+
+
+
+
+
+  <title>攻防世界 —— Crypto（进阶区1） | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blank-vax.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blank-vax.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blank-vax.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blank-vax.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blank-vax.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blank-vax.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blank-vax.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/blank-vax.github.io/2020/05/10/攻防世界 —— Crypto（进阶区1）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blank-vax.github.io/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">攻防世界 —— Crypto（进阶区1）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-10T11:07:00+08:00">
+                2020-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blank-vax.github.io/categories/CTF-Writeup/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF_Writeup</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blank-vax.github.io/2020/05/10/攻防世界 —— Crypto（进阶区1）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blank-vax.github.io/2020/05/10/攻防世界 —— Crypto（进阶区1）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/blank-vax.github.io/2020/05/10/攻防世界 —— Crypto（进阶区1）/" class="leancloud_visitors" data-flag-title="攻防世界 —— Crypto（进阶区1）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,000
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>更新完Crypto新手区的题目之后，接下来开始练习进阶区的题目。本系列文章持续更新中~</p>
+<h2 id="0x01-告诉你个秘密"><a href="#0x01-告诉你个秘密" class="headerlink" title="0x01 告诉你个秘密"></a>0x01 告诉你个秘密</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>打开附件发现为两行十六进制数据，一开始考虑将其转换成十进制，后来发现转完之后不易和字符串建立联系，遂考虑直接将其转换为字符串。</p>
+<p>这里使用python的binascii库中的<code>binascii.a2b_hex(hex)</code>实现将十六进制字符串转换成ASCII字符串并输出。输出结果显然为Base64加密，直接解密得到如下结果：</p>
+<p><img src="http://static.zybuluo.com/B1ank/z9j4icbmpvvzmpep45u3b7o6/%E5%91%8A%E8%AF%89%E4%BD%A0%E4%B8%AA%E7%A7%98%E5%AF%86.PNG" alt="告诉你个秘密.PNG-3.6kB"></p>
+<p>乍看是一堆无意义的字符串，但注意其使用空格作为分隔符分开，考虑到键盘密码，与键盘上的字母对应得到最后的flag。注意本题flag的格式直接为最后得到的字符串，没有任何前缀。</p>
+<h3 id="解题脚本"><a href="#解题脚本" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line">cipher1 = <span class="string">'636A56355279427363446C4A49454A7154534230526D6843'</span></span><br><span class="line">cipher2 = <span class="string">'56445A31614342354E326C4B4946467A5769426961453067'</span></span><br><span class="line">final_plain = binascii.a2b_hex(cipher1) + binascii.a2b_hex(cipher2)</span><br><span class="line">final_plain2 = base64.b64decode(final_plain).decode()</span><br><span class="line">print(final_plain2)</span><br></pre></td></tr></table></figure>
+<h3 id="一些经验"><a href="#一些经验" class="headerlink" title="一些经验"></a>一些经验</h3><p>下面来讨论一下使用binascii库进行ASCII字符串与十六进制字符串转换的细节。</p>
+<p><img src="http://static.zybuluo.com/B1ank/sb9mauwpmxxbkihdl3bro6a2/hex_to_string.PNG" alt="hex_to_string.PNG-37.9kB"></p>
+<p>由上图可知，在ASCII字符串与十六进制字符串转换过程中，binascii库提供了四个函数。</p>
+<p>我们可以使用<code>binascii.a2b_hex(hex_string)</code>和<code>binascii.unhexlify(hex_string)</code>这两个函数实现从十六进制字符串到ASCII字符串的转换过程。可以使用<code>binascii.b2a_hex(ASCII_string)</code>和<code>binascii.hexlify(ASCII_string)</code>这两个函数实现从ASCII字符串到十六进制字符串的转换过程。值得注意的是，在python3中，互相转换的数据类型为byte型而非string型，否则就会出现TypeError报错。</p>
+<h2 id="0x02-Broadcast"><a href="#0x02-Broadcast" class="headerlink" title="0x02 Broadcast"></a>0x02 Broadcast</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>本题目提供了加密脚本<code>task.py</code>，Bob、Dan、Carol和Erin的pem与enc文件。单独看这道题目确实很简单，因为flag直接包含在题目给出的脚本中。但是如果对题目提供的加密方式进行挖掘，可以得到许多有趣的信息。</p>
+<p>题目名字为Broadcast，实际上并不是简单的广播攻击。对于RSA的简单广播攻击，其前提是对同一个m加密，攻击细节如下图：</p>
+<p><img src="http://static.zybuluo.com/B1ank/hnmhfbjcdzqiqm1eejeyxlnp/Basic%20Broadcast%20Attack.PNG" alt="Basic Broadcast Attack.PNG-69.2kB"></p>
+<p>分析加密脚本中对待加密信息的处理过程：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">'from'</span>: sha256( <span class="string">b'Alice'</span> ).hexdigest(),</span><br><span class="line">        <span class="string">'to'</span>  : sha256( name.encode() ).hexdigest(),</span><br><span class="line">        <span class="string">'msg'</span> : msg</span><br><span class="line">       &#125;</span><br><span class="line">data = json.dumps(data, sort_keys=<span class="literal">True</span>)</span><br><span class="line">m = number.bytes_to_long( data.encode() )</span><br></pre></td></tr></table></figure>
+<p>显然每一次的m不同，并且取<code>e=3</code>和<code>e=5</code>时分别只有两个其他明密文对，无法使用应对传统广播攻击的方法进行处理。</p>
+<p>观察可知，每次m都由以下内容构成：</p>
+<blockquote>
+<ul>
+<li>from Alice（每次相同）</li>
+<li>to name（每次不同）</li>
+<li>msg（每次相同）</li>
+</ul>
+</blockquote>
+<p>其中只有<code>to: name</code>每次变化，而另外两个参数保持不变。由于引入语句<code>data = json.dumps(data, sort_keys=True)</code>，在加密之前会根据data字典的key进行排序，由于三个键的首字母排序为<code>from-msg-to</code>，可以发现msg被放到中间位置。即<code>m = high + mid + low</code>。</p>
+<p>对于每次构造的信息m，其高、中位(<code>&#39;from&#39;:Alice</code>，<code>&#39;msg&#39;: msg</code>)都是不变的，只是低位由于每次接收方不同有所不同。由于<code>high</code>和<code>low</code>已知的（可以通过构造过程中提供的方法进行计算），我们只需要求出<code>mid</code>部分即可。</p>
+<p>由于<code>low</code>部分包含64位的sha256摘要信息以及12位其他符号，故构造m如下：</p>
+<script type="math/tex; mode=display">m_{i} = (high << 1368) + (x << 608) + low_{i}</script><script type="math/tex; mode=display">m_{i} = a*x*2^{608} + b_{i}</script><p>其中a = 1, $b<em>{i} = high*2^{1368} + low</em>{i}$</p>
+<p>且x仅为95*8=760位</p>
+<p>此时可以利用<a href="https://en.wikipedia.org/wiki/Coppersmith%27s_attack#Generalizations" target="_blank" rel="noopener">Broad Attack with Linear Padding</a>结合Copper Smith Attack进行求解。</p>
+<p>构造多项式$f(x) = (x*2^{608} + b) ^{3} - c (mod n<em>{1}n</em>{2})$的<code>small root</code>。</p>
+<p>需要注意的是，<code>small root</code>要求小于模数n的1/e次方，而x为760位，760<em>3 = 2280 &gt; 2048 = 1024</em>2，所以需要使用两组加密信息使得模数的位数增大为4096位，从而760位的x满足<code>small root</code>的条件。 </p>
+<h3 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h3><p>根据以上分析，根据给出的pem和enc文件提取两对使用3作为加密指数的(n, c)对，编写sage脚本解密如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line">n = [<span class="number">11743537468135317101480488020144809201914936988461977176868954193874417724397531738707729413940060004291802011501577549223271797288223565654061393379024948557114873802484065401046235691942131446370168987779343797500311519782297945918303703564655987952282482715476136773764831205732478344688915636069116516770855051840466960976764092858799500910720099908106249684080240663853178927556249049193503151085654884527269002477666950572742679984293662085069728877459286849951188181117702216469759179036558783079196215512501682142798495265635852347494193629555160491782509569392767123686061925883459482937083314597325931324903</span>,</span><br><span class="line">    <span class="number">14457209969884668177708697333084651442256193118762305783886170334587420837310297145702128170106972242068185696834421424217621080232658721763477597612126355466640947700608787202555955170003838596141926637700553638034795412618607691704863949191711837596504911369550275265047485577345602266210861036695691235637536527380239331718278464709412846966181787795995822367966392084870050879397930114908541580226650851547317522603090899886280170245299959983054236157294287800393659291904879499563552223080590816177114742527572796924746954499447982388532224932540152177949556088321209870823140903366811600475984145194404542130227</span>]</span><br><span class="line">c = [<span class="number">8190049298225986645065639656298172597926128706450768371303258134744480067344252838541490888036183464705944304534788993901104793815361341756431217860700928158019252752618919437673052832128577726977953950790902559970309709239504865249701468783648614158118356226876181834829777260079340923537145106302704145961190836661375363413110097880213997662546161624163926197325967768410253429584704238310212909716376684130921549808859640649278922277248496022978656354003386568276074858346316327173050731369576404526308212891898482132494538059251451015302281630189059974681450654073047538089109981563439870031087270051532901896822</span>,</span><br><span class="line">    <span class="number">12118101166054737713386215385862569765107262982956699621223784645643668203345111850159614142861485707244381466506582226100758646240135249724760825645393433062905277245716757630096083674730526877271237776864887538290354358982569685278734177038607779153674199245850037034568957234569159850767151815484600506473286544739506911281943726669304436835800686344966600632518764992677531015390701093253398220813342080495059893716294823513371481710159387645437923515728187314225175839309059255201792376404426500260584133880852811820804606509557432184294402579927159295465411669899092463872169344366863225658285149101653314280770</span>]</span><br><span class="line">a = [<span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># b_i = high + low_i</span></span><br><span class="line">b=[<span class="number">15544274873612998989866379328566946388285248570806564503108352867340017880252665817613208325183832507901409765669821491355202065667225050801744228447515864518584620720787409961012061302114074543857882368586098987225919736280924738224995075370843988377198544539266275729089636607095220506662375139381261384398438998662059177913249680151096549632879238896603189241688956490787338355571799212913598318011639865738648621731434747681682396930715043552472778331701738091587062917693835229391950847730617837543337471998802061973389340720433170042633451884844390746043635079083497185464124715717119052915013438803576714502781</span>,</span><br><span class="line">   <span class="number">15544274873612998989866379328566946388285248570806564503108352867340017880252665817613208325183832507901409765669821491355202065667225050801744228447515864518584620720787409961012061302114074543857882368586098987225919736280924738224995075370843988377198544539266275729089636607095220506662375139381261384398438998662059177913249680151096549632879238896603189241688956490787338355571799212913598318011639865738648621731434747681682396930715043552472778331701733991049485714120357663081338580983163588987883815040112341393183479429685436337175694444720513269496978577270272192766705854550355666404326847416678342795901</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chinese_remainder</span><span class="params">(n, a)</span>:</span></span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    prod = reduce(<span class="keyword">lambda</span> a, b: a * b, n)</span><br><span class="line">    <span class="keyword">for</span> n_i, a_i <span class="keyword">in</span> zip(n, a):</span><br><span class="line">        p = prod // n_i</span><br><span class="line">        sum += a_i * inverse_mod(p, n_i) * p</span><br><span class="line">    <span class="keyword">return</span> int(sum % prod)</span><br><span class="line"></span><br><span class="line">T = []</span><br><span class="line">T.append(chinese_remainder([n[<span class="number">0</span>],n[<span class="number">1</span>]],[<span class="number">1</span>,<span class="number">0</span>]))</span><br><span class="line">T.append(chinese_remainder([n[<span class="number">1</span>],n[<span class="number">0</span>]],[<span class="number">1</span>,<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">N = n[<span class="number">0</span>]*n[<span class="number">1</span>]</span><br><span class="line">P.&lt;x&gt; = PolynomialRing(Zmod(N))</span><br><span class="line"></span><br><span class="line">g=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    g += ((a[i]*x *<span class="number">2</span>^<span class="number">608</span> + b[i])^<span class="number">3</span> - c[i])*T[i]</span><br><span class="line">g = g.monic()</span><br><span class="line">x = g.small_roots()[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">print</span> x</span><br><span class="line"><span class="keyword">print</span> hex(long(x))[<span class="number">2</span>:].strip(<span class="string">'L'</span>).decode(<span class="string">'hex'</span>)</span><br><span class="line"><span class="comment"># 1714661166087377473014475529806516832214035482305327415277479703776481564871479523924321275498885242003713793314464965569235093750357822116766965311615937698169583931123673327349849371866141948995747458407120138743748898874096942</span></span><br><span class="line"><span class="comment"># Hahaha, Hastad's method don't work on this. Flag is flag&#123;6b6c9731-5189-4937-9ead-310494b8f05b&#125;.</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x03-cr3-what-is-this-encryption"><a href="#0x03-cr3-what-is-this-encryption" class="headerlink" title="0x03 cr3-what-is-this-encryption"></a>0x03 cr3-what-is-this-encryption</h2><h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题以十六进制明文的方式给出了<code>p, q, e</code>这三个RSA解密需要的参数以及密文<code>c</code>，直接编写脚本解密即可。需要用到<code>gmpy2</code>和<code>binascii</code>这两个库。</p>
+<h3 id="解题脚本-1"><a href="#解题脚本-1" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line">p=<span class="string">'0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9'</span> </span><br><span class="line">q=<span class="string">'0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307'</span> </span><br><span class="line">e=<span class="string">'0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41'</span></span><br><span class="line">c=<span class="string">'0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520'</span></span><br><span class="line"></span><br><span class="line">p_decimal = int(p, <span class="number">16</span>)</span><br><span class="line">q_decimal = int(q, <span class="number">16</span>)</span><br><span class="line">e_decimal = int(e, <span class="number">16</span>)</span><br><span class="line">c_decimal = int(c, <span class="number">16</span>)</span><br><span class="line">phi_n = (p_decimal<span class="number">-1</span>) * (q_decimal<span class="number">-1</span>)</span><br><span class="line">d = gmpy2.invert(e_decimal, phi_n)</span><br><span class="line">m_decimal = pow(c_decimal, d, (p_decimal)*(q_decimal))</span><br><span class="line">final_message = binascii.a2b_hex(hex(m_decimal)[<span class="number">2</span>:])</span><br><span class="line">print(final_message.decode())</span><br></pre></td></tr></table></figure>
+<h2 id="0x04-flag-in-your-hand1-amp-flag-in-your-hand"><a href="#0x04-flag-in-your-hand1-amp-flag-in-your-hand" class="headerlink" title="0x04 flag_in_your_hand1 &amp; flag_in_your_hand"></a>0x04 flag_in_your_hand1 &amp; flag_in_your_hand</h2><h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p>这两个题的思路和flag都是一样的（小声逼逼</p>
+<p>下载附件并解压，文件夹中有一个<code>html</code>页面和一个js脚本。首先进入页面，容易得到flag的获取流程为：手动输入Token，并运行<code>getFlag()</code>函数，步进查看该函数细节。</p>
+<p><img src="http://static.zybuluo.com/B1ank/7xmysk8mnvmaeejut6pb0y2m/flag_in_your_hand1.PNG" alt="flag_in_your_hand1.PNG-17.3kB"></p>
+<p>可以很清楚地看到，该函数首先获取输入框中的Token值，并将其传入<code>checkToken()</code>函数，返回结果为ic，然后将其传入<code>bm()</code>函数，该函数返回结果为fg。进入提供的js脚本中查看这两个函数，可以发现<code>bm()</code>函数与flag的生成过程有关，分析可以得到其运用单表替换的编码方式。单独查看<code>checkToken()</code>函数可以发现其返回结果为false。但结合<code>bm()</code>函数的运行流程可以发现，ic的值会通过<code>ck()</code>函数覆盖。</p>
+<p><img src="http://static.zybuluo.com/B1ank/4ke5xx1ohv8a1h2r1r7vate5/flag_in_your_hand11.PNG" alt="flag_in_your_hand11.PNG-35.6kB"></p>
+<p>观察<code>ck()</code>函数内部可知，其检验过程要求输入Token中每个字母的ASCII值与数组a中的对应位置ASCII值相差3，于是可以编写脚本得到验证正确的Token，输入以获得flag。</p>
+<h3 id="解题脚本-2"><a href="#解题脚本-2" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">password = <span class="string">''</span></span><br><span class="line">a = [<span class="number">118</span>, <span class="number">104</span>, <span class="number">102</span>, <span class="number">120</span>, <span class="number">117</span>, <span class="number">108</span>, <span class="number">119</span>, <span class="number">124</span>, <span class="number">48</span>,<span class="number">123</span>,<span class="number">101</span>,<span class="number">120</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a:</span><br><span class="line">    password += chr(item - <span class="number">3</span>)</span><br><span class="line">print(password)</span><br></pre></td></tr></table></figure>
+<h2 id="0x05-工业协议分析1"><a href="#0x05-工业协议分析1" class="headerlink" title="0x05 工业协议分析1"></a>0x05 工业协议分析1</h2><h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p>下载附件后发现其为<code>pacap</code>文件，记录网络流量。使用wireshark打开后，追踪TCP流，在结果中搜索flag字符串，发现<code>flag.txt</code>字样，考虑网络流量中包含与flag相关的txt文件。</p>
+<p>在命令行中搜索发现<code>flag.txt</code>结果不存在有意义的明文，遂搜索其他可能发送的文件类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;.txt&quot; -a sample.pcap</span><br><span class="line">grep &quot;.rar&quot; -a sample.pcap</span><br><span class="line">grep &quot;.zip&quot; -a sample.pcap</span><br><span class="line">grep &quot;.png&quot; -a sample.pcap</span><br></pre></td></tr></table></figure>
+<p>当搜索png图片相关时，发现网络环境中传送了base64加密的图片。</p>
+<p><img src="/2020/05/10/攻防世界 —— Crypto（进阶区1）/C:/Users\B1ank\Desktop\攻防世界\Crypto\工业控制协议1.PNG" alt="工业控制协议1"></p>
+<p>编写脚本解密即可得到flag。</p>
+<h3 id="解题脚本-3"><a href="#解题脚本-3" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="comment"># 将上图中的base64加密结果存入./final_result.txt文件中</span></span><br><span class="line">base_result = open(<span class="string">'./final_result.txt'</span>, <span class="string">'r'</span>)</span><br><span class="line">png_result = base_result.read()</span><br><span class="line">png_after_decode = base64.b64decode(png_result)</span><br><span class="line">result = open(<span class="string">'./result.png'</span>, <span class="string">'wb'</span>)</span><br><span class="line">result.write(png_after_decode)</span><br></pre></td></tr></table></figure>
+<h2 id="0x06-你猜猜"><a href="#0x06-你猜猜" class="headerlink" title="0x06 你猜猜"></a>0x06 你猜猜</h2><h3 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h3><p>下载并打开题目给出的附件，发现其开头为<code>50 4B 03 04</code>显然是<code>zip</code>格式压缩包的开头，我们将其复制粘贴到Winhex中，注意保存的时候选择<code>ASCII Hex</code>选项，可以看到其ASCII字符以PK开头并且内部包含flag.txt。</p>
+<p>将该压缩包解压发现需要密码，首先考虑zip伪加密发现不符合要求，于是使用密钥爆破软件进行爆破，得到最终密码为123456，解压得flag。</p>
+<h3 id="一些经验-1"><a href="#一些经验-1" class="headerlink" title="一些经验"></a>一些经验</h3><p>先知社区有一篇非常详细的手撕压缩包过程，对压缩包结构的理解有一些帮助：<a href="https://xz.aliyun.com/t/3994" target="_blank" rel="noopener">从做CTF题到手撕ZIP</a>。</p>
+<h2 id="0x07-fanfie"><a href="#0x07-fanfie" class="headerlink" title="0x07 fanfie"></a>0x07 fanfie</h2><h3 id="解题思路-6"><a href="#解题思路-6" class="headerlink" title="解题思路"></a>解题思路</h3><p>攻防世界上的题目既没有提示也没有flag格式，直接给了一堆看上去像base32编码的字符串，完全没有思路。于是找到原题得到两个重要提示。这样我们有如下题目条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.flag的格式为:BITSCTF&#123;&#125;</span><br><span class="line">2.Brute and get the base 32 format of flag</span><br><span class="line">3.encrypted.txt : MZYVMIWLGBL7CIJOGJQVOA3IN5BLYC3NHI</span><br></pre></td></tr></table></figure>
+<p>可以看到题目提供的密文是对base32加密结果进行未知方式加密的结果。所以我们需要将提供的密文先还原成base32加密的结果，再进行base32解密得到最终flag。</p>
+<p>base32转换过程中将明文按照每五个字符为一组进行分组，将结果进行base32加密后长度填充为8的倍数。由于已知flag以<code>BITSCTF</code>开头，我们取前五个字符进行base32加密，得到结果为<code>MZYVMIWL</code>，看起来该未知加密方式为单表替代加密。构建字母表并寻找对应关系如下：</p>
+<p><img src="http://static.zybuluo.com/B1ank/tkv073onf40rhwf1qrq4xyfa/fanfie.PNG" alt="fanfie.PNG-17.5kB"></p>
+<p>整理得到如下关系式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3-&gt;11</span><br><span class="line">4-&gt;24</span><br><span class="line">8-&gt;12</span><br><span class="line">9-&gt;25</span><br><span class="line">20-&gt;8</span><br><span class="line">21-&gt;21</span><br><span class="line">26-&gt;22</span><br></pre></td></tr></table></figure>
+<p>假设为仿射密码，可以解出<code>a = 13, b = 4, modulus = 27</code>，编写脚本解密后将结果进行长度填充至8的倍数，再进行一次base32解密即可。原来这个题目的名字进行移位之后会变成affine啊（小声逼逼</p>
+<h3 id="解题脚本-4"><a href="#解题脚本-4" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">str = <span class="string">'BITSC'</span></span><br><span class="line">print(base64.b32encode(str.encode()))</span><br><span class="line">a = <span class="number">13</span></span><br><span class="line">b = <span class="number">4</span></span><br><span class="line">mod = <span class="number">32</span></span><br><span class="line">a_modinv = gmpy2.invert(a, mod)</span><br><span class="line">print(type(a_modinv))</span><br><span class="line">base32_result_after_encode = <span class="string">'MZYVMIWLGBL7CIJOGJQVOA3IN5BLYC3NHI'</span></span><br><span class="line">alphabet = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'</span></span><br><span class="line">base32_result_after_decode = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> base32_result_after_encode:</span><br><span class="line">    index = alphabet.find(item)</span><br><span class="line">    base32_result_after_decode += alphabet[a_modinv*(index - b) % mod]</span><br><span class="line">print(base32_result_after_decode)</span><br><span class="line">flag = base64.b32decode(base32_result_after_decode+<span class="string">"="</span>*<span class="number">6</span>)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<h2 id="0x08-wtc-rsa-bbq"><a href="#0x08-wtc-rsa-bbq" class="headerlink" title="0x08 wtc rsa bbq"></a>0x08 wtc rsa bbq</h2><h3 id="解题思路-7"><a href="#解题思路-7" class="headerlink" title="解题思路"></a>解题思路</h3><p>拿到该题目的附件并解压，发现其包括<code>key.pem</code>和<code>cipher.bin</code>，说明密钥以证书的形式存在，而加密结果以二进制文件的形式存在。</p>
+<p>进入到Kali中使用系统自带OpenSSL的命令：<code>rsa -pubin -text -modulus -in warmup -in key.pem</code>，获取公钥对如下：</p>
+<p><img src="http://static.zybuluo.com/B1ank/8trausp5ssc517e8e3w9x5ty/wtc_rsa_bbq.PNG" alt="wtc_rsa_bbq.PNG-112.8kB"></p>
+<p>可以发现其模数N非常大，e为标准加密指数。编写脚本将密文以十六进制的形式从<code>cipher.bin</code>中读出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ciphertext = open(<span class="string">'./cipher.bin'</span>, <span class="string">'rb'</span>).read().encode(<span class="string">'hex'</span>)</span><br></pre></td></tr></table></figure>
+<p>至此，解密数据的提取过程完成。</p>
+<p>整道题目没有其他可以操作的参数，我们只能分解模数。观察模数N，发现其位数较多，显然直接分解这条路行不通（指factordb，这里使用yafu的话理论上是可以跑出来的，我们考虑费马分解法。</p>
+<p>费马分解法适用于RSA加密过程中选取的大素数p,q较为相近的情况，运用到了<code>|p-q|</code>这一参数较小的原理进行爆破，从而实现分解模数N的功能。编写费马分解函数将N分解之后即可正常解密得flag。</p>
+<h3 id="解题脚本-5"><a href="#解题脚本-5" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fermat_resolve</span><span class="params">(N)</span>:</span></span><br><span class="line">    B = math.factorial(<span class="number">2</span>**<span class="number">14</span>)</span><br><span class="line">    u = <span class="number">0</span>;v = <span class="number">0</span>; i = <span class="number">0</span></span><br><span class="line">    u0 = gmpy2.iroot(N, <span class="number">2</span>)[<span class="number">0</span>] + <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=(B<span class="number">-1</span>)):</span><br><span class="line">        u = (u0+i)*(u0+i)-N</span><br><span class="line">        <span class="keyword">if</span> gmpy2.is_square(u):</span><br><span class="line">            v = gmpy2.isqrt(u)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    p = u0+i+v</span><br><span class="line">    <span class="keyword">return</span> p</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">()</span>:</span></span><br><span class="line">    decimal_e = <span class="number">65537</span></span><br><span class="line">    n = <span class="string">'62D3D61C92452630147E89670FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'</span></span><br><span class="line">    decimal_n = int(n, <span class="number">16</span>)</span><br><span class="line">    p = fermat_resolve(decimal_n)</span><br><span class="line">    q = decimal_n // p</span><br><span class="line">    print(<span class="string">'p = '</span> + str(p))</span><br><span class="line">    print(<span class="string">'q = '</span> + str(q))</span><br><span class="line">    phi_n = (p<span class="number">-1</span>) * (q<span class="number">-1</span>)</span><br><span class="line">    d = gmpy2.invert(decimal_e, phi_n)</span><br><span class="line">    ciphertext = <span class="string">'04940e995809b8346a7225a4ef8f175ef3031d33f975b5398cae11e0accb9195c4e351274bb9dbac1d1b9819ae679e8d300457f3e5f8f31150648f8393cbf503e40b11140b8a8a51d22bc5bc74fdbfda0e8dabcc6704d128aa29fe480538801bd4de422e6f1a221e471f75d855a49033289e1f58e0db5e8d2a2dab473912b1b35ed0552890c8b73246266c27edb90b1509a2d5d209236e23050c45acf812df98b1be3a8bcdff9891c773daa17b72db3fd59cd2b65ee103ec7b24e1358ebe14ccb86831a617df10674dd842939ddd455e741d4fc8f1421917b782d1660651a5396928a94661bcdf9f0d2f956fc6ca238478ef44701eefb3b0e5610dd5562fce66be11b1b5d9ffca636a52037d7ce6cd44ea810ba84c49c02ae29bd2de3ffa03ae8f05b3e633f0f11c513528f1404c66217b9d5605e6f0869c25bf024b93ce35aef2ab16d0f14f34c850ec1d13c73e46bd58686903bf63740142579095d7d293f8bd35abf653729ecd0e84954a73a07d8504ca03d3aa44a6b08d776ecf8949c5b71d52e2000ebd6610a3e18f7f739e4958e070ec9b9c9493c990d637850d2aad752fb60859f676a76fc1f3e2956abedd2bdb8eb49f88ac0b9ae01d3c848187536803c7a99e61e9e4d9e10ad60952e9387b4242c24d06f3fdb247f4c8b85425b49a8db6a716144a0e62273cb722709f96f9c254eae9d5fc9b1a0abae30af9da49af765572908251e99beaf1605a40043b7ce8cfbdd49cdbc33c0216d966165a5f04599db3dcc2404139249be6cae78b5794293451a6902c18b7719759475b31b976e40c8d579f84202808836f5ddf04d4a1edf22555c7612df1973e45b343045d02b5a90a760cebb69ef862ffe2c023ee3ee5f3968c07120e9b8d036fdeccaed9f1b7ce678f44c3e507bf5015751078f990efe248fef787f34570134679207d599cab2d58524265167d3af2208325a671f9a0ced94b902121eaa6ee982d4c23b543f863580291aab134fea82c9a711d12d2bc19efa168c05be070258442c46da95ab6f1dbf5bef845fa48524ebcda31d5e19ccb69835bd50812ef0117ff33f4319072f94359cb69eb951133afb2d72e2773a5480d04969389153d831be6007915c571f8817d6d56ed6ed5dfda5d855e4ddab32ecfdabc2b5d2235712d13226093bdac6c7c283415cdde559b638d42a19ca97a842c01bf88bdc3ec55f71dcce5b0dad2527004601ae2b49c5c1a13ecfb7e7170938382b77724c208aed8d7cb1fb23a28596c1e43b64d46336c10dae18146faf4d5eb8c42c167410903d76f80fdde479beffb56a07bb9cef7a559579b637d625b783e74c495c495b162a98340c11ccdc3fd6a127f163757f94cbffc4542b913e993258ffdf85f7b04be637126dc195a7a6910d942cc870214a198a5e984a44a92c0827786515280bf7379bebdefe579c7e5a9a69116f603911d01010d1ca93882c8fe4791bf580a60731444eb09f1f50fca0ddfb9d99310a9ed699551eb17c16433'</span></span><br><span class="line">    c = int(ciphertext, <span class="number">16</span>)</span><br><span class="line">    plaintext = int(pow(c, d, p*q))</span><br><span class="line">    message = binascii.a2b_hex(hex(plaintext)[<span class="number">2</span>:])</span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    decode()</span><br></pre></td></tr></table></figure>
+<h3 id="一些经验-2"><a href="#一些经验-2" class="headerlink" title="一些经验"></a>一些经验</h3><p>当题目只给出一个加密过程（广播攻击不适用）且其他参数没有明显可以攻击的特征时，我们只能考虑直接分解模数N。对于模数N的分解，我们常使用两种方法：借助<a href="www.factordb.com">大整数分解网站</a>和使用Windows自带的工具yafu。前者只适合分解一些初级题目中位数较小的模数，后者包含多种模数分解方法，但效率较低。除此之外我们可以参考GitHub上的CtfRSATools这一项目，其中模数分解环节提供了许多常见的分解算法。</p>
+<p>所有分解算法中，费马分解法和Pollard p-1分解法。下面简要介绍这两种分解方法并给出分解脚本。</p>
+<h4 id="费马分解法"><a href="#费马分解法" class="headerlink" title="费马分解法"></a>费马分解法</h4><p>该方法适用于构成模数N的两个大素数p,q相近即<code>|p-q|</code>较小的情况。过程如下：</p>
+<p>任何一个正整数n都能拆成$n = 2^{k} <em> a$的形式，其中a为一个奇数。若$a = c</em>d$，则令$x = (c+d)/2$，$y = (c-d)/2$，则$x^{2} - y^{2} = a$，枚举$x^{2}$观察$x^{2}-a$是否为完全平方数，如果是，则$c  = x+(x^{2}-a)^{(1/2)}$和$d = x-(x^{2}-a)^{(1/2)}$就是a的因子。我们通过枚举$x^{2}$可以找到a的所有因子。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fermat_resolve</span><span class="params">(N)</span>:</span></span><br><span class="line">    B = math.factorial(<span class="number">2</span>**<span class="number">14</span>)</span><br><span class="line">    u = <span class="number">0</span>;v = <span class="number">0</span>; i = <span class="number">0</span></span><br><span class="line">    u0 = gmpy2.iroot(N, <span class="number">2</span>)[<span class="number">0</span>] + <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=(B<span class="number">-1</span>)):</span><br><span class="line">        u = (u0+i)*(u0+i)-N</span><br><span class="line">        <span class="keyword">if</span> gmpy2.is_square(u):</span><br><span class="line">            v = gmpy2.isqrt(u)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    p = u0+i+v</span><br><span class="line">    <span class="keyword">return</span> p</span><br></pre></td></tr></table></figure>
+<h4 id="Pollard-p-1分解法"><a href="#Pollard-p-1分解法" class="headerlink" title="Pollard p-1分解法"></a>Pollard p-1分解法</h4><p>Pollard p-1方法由Pollard提出，适用于p-1或q-1能够被小素数整除的情况。具体流程如下：</p>
+<p><img src="http://static.zybuluo.com/B1ank/yl9ag00nxiqztluenw5wvyyj/pollard_p-1.png" alt="pollard_p-1.png-64.9kB"></p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pollard_p</span><span class="params">(N)</span>:</span></span><br><span class="line">    B = <span class="number">2</span>**<span class="number">20</span></span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,B+<span class="number">1</span>):</span><br><span class="line">        a = pow(a, i, N)</span><br><span class="line">        d = gmpy2.gcd(a<span class="number">-1</span>, n)</span><br><span class="line">        <span class="keyword">if</span> d&gt;=<span class="number">2</span> <span class="keyword">and</span> d&lt;=(n<span class="number">-1</span>):</span><br><span class="line">            q = n // d</span><br><span class="line">            n = q*d</span><br><span class="line">    <span class="keyword">return</span> d</span><br></pre></td></tr></table></figure>
+<h2 id="0x09-工业协议分析2"><a href="#0x09-工业协议分析2" class="headerlink" title="0x09 工业协议分析2"></a>0x09 工业协议分析2</h2><h3 id="解题思路-8"><a href="#解题思路-8" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目给出pcap附件，可以想到为流量分析，使用wireshark打开，发现存在关于ARP、UDP、SNA协议的流量包以及大量的UDP流量包。</p>
+<p>观察UDP流量包的长度，可以看到有些长度仅出现一次，其余长度多次出现。于是猜测这些流量包存在异常。分别分析这些流量包，发现长度为147和179的流量包出现异常字符串：</p>
+<p><img src="http://static.zybuluo.com/B1ank/7ilsjwliubokdro7w0vkfgzh/%E5%B7%A5%E6%8E%A72.PNG" alt="工控2.PNG-13kB"></p>
+<p><img src="http://static.zybuluo.com/B1ank/u5dfguc0vwe8xewspa8uxmqz/%E5%B7%A5%E6%8E%A723.PNG" alt="工控23.PNG-13.5kB"></p>
+<p>长度为147的流量包传输的数据以<code>flag</code>结尾。故推测下一个从<code>192.168.1.123</code>向<code>192.168.1.181</code>发送的流量包可能包含flag信息。果然从长度为179的数据包中发现可疑数据：</p>
+<p><img src="http://static.zybuluo.com/B1ank/omejzdg7g7p2xvtxyqdcfl1a/%E5%B7%A5%E6%8E%A722.PNG" alt="工控22.PNG-16.7kB"></p>
+<p>将末尾的十六进制字符串转换为ASCII字符串可得flag。</p>
+<h2 id="0x0A-工控安全取证"><a href="#0x0A-工控安全取证" class="headerlink" title="0x0A 工控安全取证"></a>0x0A 工控安全取证</h2><h3 id="解题思路-9"><a href="#解题思路-9" class="headerlink" title="解题思路"></a>解题思路</h3><p>题目给出<code>.log</code>文件并要求查找发起第四次扫描时的数据包编号。使用wireshark打开，发现有UDP，ICMP和TCP三种类型的数据包，并存在大量的TCP流量。</p>
+<p>观察发现，UDP流量只有三条记录，TCP流量记录过多，显然第四次扫描时的数据包不在这两类流量中。接着分析剩下的ICMP数据包，可以看到每次发送大量TCP数据包之前，先发送ICMP数据包。找到第四次建立连接发送的ICMP数据包，其编号为flag。</p>
+<p><img src="http://static.zybuluo.com/B1ank/tfsdr97jbo5jf18yfjdhs8tr/%E5%B7%A5%E6%8E%A73.PNG" alt="工控3.PNG-47.7kB"></p>
+<h2 id="0x0B-小结"><a href="#0x0B-小结" class="headerlink" title="0x0B 小结"></a>0x0B 小结</h2><p>这十道题目里面需要特别注意的是第二题Broadcast和第八题wtc rsa bbq。前者提供了一种与普通RSA广播攻击不同的情形，引入了Hastad Attack以及Broadcast Attack with Linear Padding，并且其结合sagemath编写的解题模板值得借鉴。后者考察了只提供一对<code>(c, n, e)</code>情况下对参数n的处理，除在线网站及yafu分解外，还可以考虑Fermat Resolve和Pollard p-1 Resolve，注意二者适用的p,q对应情况。</p>
+<p>以及，高校战疫的Crypto题目真的好少。pwntools杀我，这辈子都不想再看到EOFError了！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blank-vax.github.io/tags/攻防世界/" rel="tag"><i class="fa fa-tag"></i> 攻防世界</a>
+          
+            <a href="/blank-vax.github.io/tags/经验文章/" rel="tag"><i class="fa fa-tag"></i> 经验文章</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/05/05/Bristol-Cryptography-Blog（二）——-多核处理器和向量处理器/" rel="next" title="Bristol Cryptography Blog（二）—— 多核处理器和向量处理器">
+                <i class="fa fa-chevron-left"></i> Bristol Cryptography Blog（二）—— 多核处理器和向量处理器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/05/10/Bristol-Cryptography-Blog（三）——-不同组件的计算和存储能力/" rel="prev" title="Bristol Cryptography Blog（三）—— 不同组件的计算和存储能力">
+                Bristol Cryptography Blog（三）—— 不同组件的计算和存储能力 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/blank-vax.github.io/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blank-vax.github.io/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blank-vax.github.io/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blank-vax.github.io/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/blank-vax.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://59lx.github.io" title="rt95" target="_blank">rt95</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-前言"><span class="nav-number">1.</span> <span class="nav-text">0x00 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-告诉你个秘密"><span class="nav-number">2.</span> <span class="nav-text">0x01 告诉你个秘密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题脚本"><span class="nav-number">2.2.</span> <span class="nav-text">解题脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些经验"><span class="nav-number">2.3.</span> <span class="nav-text">一些经验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Broadcast"><span class="nav-number">3.</span> <span class="nav-text">0x02 Broadcast</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-1"><span class="nav-number">3.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题代码"><span class="nav-number">3.2.</span> <span class="nav-text">解题代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-cr3-what-is-this-encryption"><span class="nav-number">4.</span> <span class="nav-text">0x03 cr3-what-is-this-encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-2"><span class="nav-number">4.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题脚本-1"><span class="nav-number">4.2.</span> <span class="nav-text">解题脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-flag-in-your-hand1-amp-flag-in-your-hand"><span class="nav-number">5.</span> <span class="nav-text">0x04 flag_in_your_hand1 &amp; flag_in_your_hand</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-3"><span class="nav-number">5.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题脚本-2"><span class="nav-number">5.2.</span> <span class="nav-text">解题脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-工业协议分析1"><span class="nav-number">6.</span> <span class="nav-text">0x05 工业协议分析1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-4"><span class="nav-number">6.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题脚本-3"><span class="nav-number">6.2.</span> <span class="nav-text">解题脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06-你猜猜"><span class="nav-number">7.</span> <span class="nav-text">0x06 你猜猜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-5"><span class="nav-number">7.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些经验-1"><span class="nav-number">7.2.</span> <span class="nav-text">一些经验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07-fanfie"><span class="nav-number">8.</span> <span class="nav-text">0x07 fanfie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-6"><span class="nav-number">8.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题脚本-4"><span class="nav-number">8.2.</span> <span class="nav-text">解题脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08-wtc-rsa-bbq"><span class="nav-number">9.</span> <span class="nav-text">0x08 wtc rsa bbq</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-7"><span class="nav-number">9.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题脚本-5"><span class="nav-number">9.2.</span> <span class="nav-text">解题脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些经验-2"><span class="nav-number">9.3.</span> <span class="nav-text">一些经验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#费马分解法"><span class="nav-number">9.3.1.</span> <span class="nav-text">费马分解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pollard-p-1分解法"><span class="nav-number">9.3.2.</span> <span class="nav-text">Pollard p-1分解法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x09-工业协议分析2"><span class="nav-number">10.</span> <span class="nav-text">0x09 工业协议分析2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-8"><span class="nav-number">10.1.</span> <span class="nav-text">解题思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x0A-工控安全取证"><span class="nav-number">11.</span> <span class="nav-text">0x0A 工控安全取证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-9"><span class="nav-number">11.1.</span> <span class="nav-text">解题思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x0B-小结"><span class="nav-number">12.</span> <span class="nav-text">0x0B 小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共123.2k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blank-vax.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '9OdpjYSHQirwAMeIVy8C5SBk-gzGzoHsz',
+        appKey: 'WoxonMaRanAKt1yVo9JgIS7n',
+        placeholder: 'Let's Chat',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/blank-vax.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
