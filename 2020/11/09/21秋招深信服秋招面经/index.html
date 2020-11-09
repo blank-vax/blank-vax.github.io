@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/blank-vax.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blank-vax.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blank-vax.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blank-vax.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blank-vax.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blank-vax.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blank-vax.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blank-vax.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Sangfor,">
+
+
+
+
+
+  <link rel="alternate" href="/blank-vax.github.io/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言近日考研期间，适逢深信服”翔鹰计划”线上实习结束，公司给了秋招提前批的面试机会，准备了大概两天就去面试了，岗位是技服工程师。由于前期通过笔试，故直接进入技术面、业务面和HR面。 时间线 7.19 2020年”翔鹰计划”结束，成绩考核通过，简历转入公司秋招简历池； 7.23 技服工程师线上技术（一面）面试 7.30 技服工程师线上业务（二面）面试 8.4 技服工程师线上HR面试 9.18 off">
+<meta name="keywords" content="Sangfor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="21深信服秋招面试">
+<meta property="og:url" content="https://blank-vax.github.io/2020/11/09/21秋招深信服秋招面经/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="前言近日考研期间，适逢深信服”翔鹰计划”线上实习结束，公司给了秋招提前批的面试机会，准备了大概两天就去面试了，岗位是技服工程师。由于前期通过笔试，故直接进入技术面、业务面和HR面。 时间线 7.19 2020年”翔鹰计划”结束，成绩考核通过，简历转入公司秋招简历池； 7.23 技服工程师线上技术（一面）面试 7.30 技服工程师线上业务（二面）面试 8.4 技服工程师线上HR面试 9.18 off">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-30T16:28:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="21深信服秋招面试">
+<meta name="twitter:description" content="前言近日考研期间，适逢深信服”翔鹰计划”线上实习结束，公司给了秋招提前批的面试机会，准备了大概两天就去面试了，岗位是技服工程师。由于前期通过笔试，故直接进入技术面、业务面和HR面。 时间线 7.19 2020年”翔鹰计划”结束，成绩考核通过，简历转入公司秋招简历池； 7.23 技服工程师线上技术（一面）面试 7.30 技服工程师线上业务（二面）面试 8.4 技服工程师线上HR面试 9.18 off">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blank-vax.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2020/11/09/21秋招深信服秋招面经/">
+
+
+
+
+
+  <title>21深信服秋招面试 | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blank-vax.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blank-vax.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blank-vax.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blank-vax.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blank-vax.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blank-vax.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blank-vax.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/blank-vax.github.io/2020/11/09/21秋招深信服秋招面经/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blank-vax.github.io/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">21深信服秋招面试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-09T10:39:34+08:00">
+                2020-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blank-vax.github.io/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blank-vax.github.io/2020/11/09/21秋招深信服秋招面经/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blank-vax.github.io/2020/11/09/21秋招深信服秋招面经/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/blank-vax.github.io/2020/11/09/21秋招深信服秋招面经/" class="leancloud_visitors" data-flag-title="21深信服秋招面试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,878
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近日考研期间，适逢深信服”翔鹰计划”线上实习结束，公司给了秋招提前批的面试机会，准备了大概两天就去面试了，岗位是<strong>技服工程师</strong>。由于前期通过笔试，故直接进入技术面、业务面和HR面。</p>
+<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><ul>
+<li>7.19 2020年”翔鹰计划”结束，成绩考核通过，简历转入公司秋招简历池；</li>
+<li>7.23 技服工程师线上技术（一面）面试</li>
+<li>7.30 技服工程师线上业务（二面）面试</li>
+<li>8.4 技服工程师线上HR面试</li>
+<li>9.18 offer沟通</li>
+<li>9.22 签订三方协定（虽然最后没签</li>
+</ul>
+<h2 id="技术面（一面）"><a href="#技术面（一面）" class="headerlink" title="技术面（一面）"></a>技术面（一面）</h2><p>邮件中面试官约定的事件是上午11：00，大概提前两分钟左右进入房间调试设备，不过不知道是牛客网平台原因还是公司网络原因，面试官声音一直断断续续，中间还出现突然静音的情况，于是后期换了腾讯会议。</p>
+<p>面试时间为45分钟，首先进行自我介绍，然后面试官进行提问。问题包括技术问题和非技术问题合计共十个左右，具体如下。</p>
+<h3 id="技术问题"><a href="#技术问题" class="headerlink" title="技术问题"></a>技术问题</h3><ul>
+<li><p>简要介绍VLAN</p>
+<p>回答了VLAN的定义，虚拟局域网。主要作用为将同一网段根据功能划分成不同的虚拟子网。以公司为例，为保证主管、业务、销售、技术等各个部门之间网络的专有通信，引入VLAN技术，实现各部门人员之间在对应虚拟子网内部的高效安全通信，不会产生业务互相影响的情况。</p>
+</li>
+<li><p>简要介绍交换机</p>
+<p>交换机是二层设备，位于数据链路层，主要作用为端口数据帧转发。提到了ARP协议，提出每个交换机维护一个ARP表，以保证不同主机之间的正常通信。顺便讲了一下ARP广播单播，以及相同网段之间主机如何进行通信。</p>
+</li>
+<li><p>针对ARP协议的攻击</p>
+<p>简单讲了ARP欺骗和ARP洪泛攻击，重点介绍了攻击手法及危害。</p>
+</li>
+<li><p>ARP欺骗的防御方法</p>
+<p>由于对ARP欺骗的防御掌握不深入，所以当时简单提到了修改帧结构及增加校验部分，以及进行相关检测。面试官追问哪个设备进行相关检测，然后就没有答上来。面试结束后，参考FreeBuf上的一篇文章：<a href="https://www.freebuf.com/articles/network/210852.html" target="_blank" rel="noopener">浅谈ARP欺骗的实现与防御</a>，归纳两个防御手段：</p>
+<ul>
+<li>主机欺骗：在本机添加一条静态的ARP映射，这样就无需询问网关MAC地址；</li>
+<li>网关欺骗：在网关中也添加一条到主机的静态ARP映射。</li>
+</ul>
+</li>
+<li><p>对路由选择协议的认识</p>
+<p>回答了路由优先级顺序：<strong>直连路由&gt;静态路由&gt;动态路由&gt;默认路由</strong>。静态路由部分只提到需要在路由器上手动配置。动态路由部分提到了内部网关协议与外部网关协议。外部网关协议包括BGP，内部网关协议又分为基于距离矢量的协议和基于链路状态的协议。详细介绍了RIP协议和OSPF协议的工作原理，重点介绍<strong>衡量路径优劣</strong>的标准。</p>
+</li>
+<li><p>网络排查问题：公司中一楼无法正常连网，二楼可正常连网但网速较慢，三楼可正常上网，针对此种情况如何排查解决。</p>
+<p>由于公司和个人网络的排查有所差别，同时我也没有了解过公司的网络排查标准，于是按照个人网络问题进行排查。首先讲了个人PC无法正常联网的排查步骤：</p>
+<ul>
+<li>ping 127.0.0.1，检查TCP/IP协议是否正常配置；</li>
+<li>ping 本机地址，检查网络适配器是否正常配置；</li>
+<li>ping 网关地址，检查网关是否正常配置；</li>
+<li>ping 外网地址，排查重点放在hosts文件中DNS解析是否正常。</li>
+</ul>
+<p>网速较慢这个问题没怎么关注过，简单提到了猜想——公司访问流量限速，当然这是在胡说八道，但是可以用来缓解尴尬，委婉地告诉面试官不怎么会。</p>
+</li>
+<li><p>攻击网站的常见手段</p>
+<p>回答了SQL注入、XSS、CSRF、一句话木马，然后追问一句话木马的工作原理，笼统地回答了一下。</p>
+</li>
+<li><p>了解磁盘冗余阵列RAID吗？</p>
+<p>由于昨天准备的时候刚看到RAID的相关知识，简要回答了RAID 0，RAID 1，RAID 3，RAID 5，RAID p+q等组合方式的特点及优缺点。RAID p+q以RAID 10为例进行详细介绍。</p>
+</li>
+<li><p>了解虚拟化技术吗？</p>
+<p>将虚拟化与云计算技术结合起来回答，大致提到了SaaS，PaaS，IaaS，公有云，私有云，混合云等名词并进行解释。面试官让说出自己对虚拟化的理解，结合aDesk云桌面产品进行了相关说明（感觉自己讲的语无伦次）。本来还想加上虚拟现实技术，后来面试官话锋转到下个问题，只好作罢。</p>
+</li>
+<li><p>常见的加密算法</p>
+<p>终于问到密码学了！（不是）分成对称加密和非对称加密两部分进行回答。对称加密主要介绍了DES，AES，RC4，RC5。非对称加密介绍了三大困难问题及对应的RSA，DH交换和ECC密码体制。顺带提到了消息摘要算法和数字签名算法。</p>
+</li>
+<li><p>以上提到的算法的实际应用</p>
+<p>刚开始想回答数字证书等知识，后来确定回答主题为<strong>非对称加密+对称加密</strong>：对称加密具有加密效率高的特点，相应地安全性较低；非对称加密无法处理大量数据，但安全性较高。故流行的通信方式为通信双方使用非对称加密算法对对称加密密钥进行加解密，从而实现密钥共享，随后使用该密钥结合对称加解密算法进行消息传输。围绕该主题并结合HTTPS加密过程客户端与服务器的相应操作进行作答。</p>
+</li>
+</ul>
+<h3 id="非技术问题"><a href="#非技术问题" class="headerlink" title="非技术问题"></a>非技术问题</h3><ul>
+<li><p>有没有考过网络认证证书+计算机网络知识学习途径</p>
+<p>没考过证书，计网知识除”翔鹰计划”培训外，还上过学校的对应课程，进行过系统学习。</p>
+</li>
+<li><p>经历的压力较大的事情</p>
+<p>聊了聊”美亚杯”比赛的事情（现在感觉当时的回答驴唇不对马嘴）</p>
+</li>
+<li><p>“基于数字水印与神经网络的图像攻击检测系统”项目相关</p>
+<ul>
+<li><p>这个项目中负责的部分</p>
+<p>水印的提取与嵌入算法的实现，水印置乱算法实现，信噪比检验。</p>
+</li>
+<li><p>项目中遇到哪些难题，如何解决？</p>
+<p>只提到当时嵌入提取算法matlab转python实现过程中出现的问题，即无论怎么调整参数，使用python语言实现的算法嵌入水印后的图像都具有明显的水印标记，无法通过信噪比测试。解决方法就是python调matlab脚本（说出来我自己都觉得low，但是当时这个bug调了大概一晚上，所以印象很深刻）。</p>
+</li>
+<li><p>项目中学到了什么？</p>
+<p>从技术和团队合作两方面进行回答。结合自己负责的技术部分简单讲了一下这些算法，同时提到了matlab和python编程。团队合作方面，首先提到了模块化即各司其职，相互配合，以写代码为例提出即使补充注释，方便后期代码整合；然后提到积极讨论，制定多个方案并进行测试。</p>
+</li>
+<li><p>合作过程中，如果发生冲突或受到质疑如何解决？</p>
+<p>这种问题就非常简单了，首先强调团队精神即荣辱与共，大家为共同目标奋斗；然后回答鼓励大家积极讨论，针对同一解决方案各抒己见；最后就是提出质疑需要有理有据。</p>
+</li>
+</ul>
+</li>
+<li><p>热爱读书吗？读过印象最深刻的书是什么？</p>
+<p>这个问题就俨然成为一股清流。先问了问是技术书还是其他书，得到回答是都可以。后来好像也没怎么介绍看的书，这个问题就奇奇怪怪地一扫而过了。</p>
+</li>
+</ul>
+<h2 id="业务面（二面）"><a href="#业务面（二面）" class="headerlink" title="业务面（二面）"></a>业务面（二面）</h2><p>邮件约定面试时间为上午11：00，大概提前五分钟进入面试房间，11：20左右结束，共面试25分钟左右。主要问题包含自我介绍及相关问题。</p>
+<h3 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h3><p>简单介绍了一下自己的学校、专业及学习情况，日常爱好，相关技术栈，参加的比赛及获奖情况，实习经历等。‘</p>
+<h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><ul>
+<li><p>简要介绍印象深刻的项目经历（扮演角色，工作内容，学习内容，结果）</p>
+<p>把参与20年作品赛的项目拿出来详细讲了讲，感觉面试官对合作而非技术细节感兴趣。</p>
+</li>
+<li><p>团队合作时有没有受到质疑？如何解决的？</p>
+<p>结合项目经历简单讲了一下解决办法（其实没什么质疑</p>
+</li>
+<li><p>参加过什么实习？聊一下实习经历</p>
+<p>啊这…显然没参加过什么实习，提到了”翔鹰计划”但是面试官没让继续说下去，这个问题就结束了（感觉不是很满意？</p>
+</li>
+<li><p>大学有没有和人发生过冲突？评价下自己的性格，最讨厌什么样的人？</p>
+<p>这三个问题感觉是对面试者人际交往能力和性格的把握吧，就正常回答了一下。</p>
+</li>
+<li><p>你本科学的是网络空间安全，和网络安全有什么区别？</p>
+<p>这个问题算是遇到的比较有趣的非常规问题了，简单讲了一下国家讲网络空间作为”第五空间”的发展战略，以及这个专业广阔的发展前景，还聊了聊网络空间安全和信息安全的区别与联系。</p>
+</li>
+<li><p>网络空间安全对口的公司有什么？</p>
+<p>举了BAT，360，奇安信，绿盟，安恒等经典公司，当然提到了深信服的网络安全、超融合、云计算等标杆。</p>
+</li>
+<li><p>在学校参加过何种比赛？</p>
+<p>由于校园经历偏作品赛比较多，CTF比赛没拿到什么好成绩，所以就简要介绍了几个本专业作品赛的情况。</p>
+</li>
+<li><p>课余时间如何安排生活？</p>
+<p>看技术书+保持几个爱好。</p>
+</li>
+<li><p>看过哪些技术书籍+日常逛哪些论坛？</p>
+<p>举了几个密码学技术书籍，外加计算机网络自顶向下、深入理解计算机系统、软件测试等。论坛聊了Freebuf、先知社区等。</p>
+</li>
+<li><p>简单聊了下技服工程师跨省调度的政策，就是不能回原籍省份工作也不能在学校所在省份工作。</p>
+</li>
+</ul>
+<h2 id="HR面"><a href="#HR面" class="headerlink" title="HR面"></a>HR面</h2><p>邮件约定时间为下午16：45，进入房间大概等到17：00开始面试，整个时长为25min。首先进行自我介绍，然后面试官了解情况，大概问了如下几个问题：</p>
+<ul>
+<li><p>概括本科三年生活。</p>
+<p>从技术和日常生活的角度进行概括，技术上提到了CTF比赛和参加的项目，生活角度没怎么提。</p>
+</li>
+<li><p>本科最有挑战和最有成就的事情。</p>
+<p>最有挑战的事情选择了其中一个做过的项目，最有成就的事情选择了”美亚杯”比赛经历。</p>
+</li>
+<li><p>为什么选择”翔鹰计划”实习？</p>
+<p>一是为了了却去年的遗憾，二是线上实习的形式比较安全高效，结合开学时间与暑假安排的考虑，最终选择了”翔鹰计划”。</p>
+</li>
+<li><p>技服工程师这个岗位是做什么的，为什么选择这个岗位？</p>
+<p>简单介绍了一下自己对技术服务的理解。选择原因确定为两点：个人代码水平不高+热爱与人打交道。</p>
+</li>
+<li><p>追问：为什么不选择售前经理？</p>
+<p>个人还是比较热爱技术。（感觉这个岗位和技术关系不大）</p>
+</li>
+<li><p>概括一下自己的优点和缺点（各两条）。</p>
+</li>
+<li><p>评价一下自己是个怎么样的人？</p>
+</li>
+<li><p>有没有长时间坚持的事情？</p>
+<p>运动。</p>
+</li>
+<li><p>确定不考研了吗，为什么？</p>
+<p>总感觉说正在备考拿不到offer，于是胡乱编造了一些理由。</p>
+</li>
+<li><p>期望岗位是什么？想去什么样的公司？</p>
+<p>这个问题回答的比较粗略，给面试官一种没有准备好进入工作+对未来没有明确规划的感觉。可能是因为真的没有准备好本科毕业直接工作吧。事后仔细想想，个人期望岗位还是管理岗，对专注安全的乙方公司没什么向往，对大厂还是比较向往的（阿里、百度、腾讯、字节）。除此之外当个测试工程师或者去公司实验室进行安全研究感觉也挺好。现阶段还是一门心思学习，重点还是提升下学历吧。</p>
+</li>
+<li><p>还有没有投递其他公司？收到过其他offer吗？</p>
+<p>实话实说，并没有，甚至连华为提前批都没打算投。。。</p>
+</li>
+<li><p>工作情况相关</p>
+<ul>
+<li><p>随机工作省份可以接受吗？偏远地区呢？</p>
+<p>个人不能接受过于偏远的地区，对其他工作地点没有太大的执念。不回原籍和学校所在地倒是无所谓。</p>
+</li>
+<li><p>家庭状况：独生子女？父母同意吗？女朋友呢？</p>
+<p>啊这…</p>
+</li>
+</ul>
+</li>
+<li><p>最后简单聊了一下拿到offer的后续安排以及薪资问题。</p>
+</li>
+</ul>
+<h2 id="目前状态"><a href="#目前状态" class="headerlink" title="目前状态"></a>目前状态</h2><ul>
+<li>7.23 等业务面通知中…</li>
+<li>7.30 等HR面通知中…</li>
+<li>8.4 HR面试结束，等offer中，大概率凉…</li>
+<li>9.18 offer沟通</li>
+<li>9.22 没有去签三方协定，选择继续考研</li>
+</ul>
+<h2 id="面试总结"><a href="#面试总结" class="headerlink" title="面试总结"></a>面试总结</h2><p>各种意义上来说这次面试都是人生中经历的第一次完整的企业面试，不仅体验了整套面试流程，还发现了一些重点问题，并且引发一些思考。</p>
+<ul>
+<li>仔细回顾大学本科真的没有做什么惊天动地的事情，技术水平也比较平庸，这种状态下直接工作感觉难度较大。倒不是说找不到工作，但是能进的公司个人不太喜欢。当然也不想当拿钱少的用爱发电的社畜。</li>
+<li>技术方面：大学阅读的技术书籍太少了，对于Web安全的掌握并不到位，这两点需要后续加强。不管从事哪一个与安全相关的岗位，应聘时技术短板都是致命的。</li>
+<li>应聘技巧：针对不同内容进行准备，多刷面经，提高算法及代码能力。面试时扬长避短，努力主导谈论的话题。该掩饰的时候千万不要实话实说。</li>
+<li>认识到自己的平凡，好好学习，未来可期。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blank-vax.github.io/tags/Sangfor/" rel="tag"><i class="fa fa-tag"></i> Sangfor</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/11/09/2019美亚杯资格赛复现/" rel="prev" title="2019美亚杯资格赛复现">
+                2019美亚杯资格赛复现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/blank-vax.github.io/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blank-vax.github.io/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blank-vax.github.io/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blank-vax.github.io/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/blank-vax.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间线"><span class="nav-number">2.</span> <span class="nav-text">时间线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术面（一面）"><span class="nav-number">3.</span> <span class="nav-text">技术面（一面）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#技术问题"><span class="nav-number">3.1.</span> <span class="nav-text">技术问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非技术问题"><span class="nav-number">3.2.</span> <span class="nav-text">非技术问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务面（二面）"><span class="nav-number">4.</span> <span class="nav-text">业务面（二面）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自我介绍"><span class="nav-number">4.1.</span> <span class="nav-text">自我介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">4.2.</span> <span class="nav-text">相关问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HR面"><span class="nav-number">5.</span> <span class="nav-text">HR面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目前状态"><span class="nav-number">6.</span> <span class="nav-text">目前状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试总结"><span class="nav-number">7.</span> <span class="nav-text">面试总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共123.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blank-vax.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '9OdpjYSHQirwAMeIVy8C5SBk-gzGzoHsz',
+        appKey: 'WoxonMaRanAKt1yVo9JgIS7n',
+        placeholder: 'Let's Chat',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/blank-vax.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

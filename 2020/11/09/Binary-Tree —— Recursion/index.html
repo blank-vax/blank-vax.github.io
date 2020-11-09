@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/blank-vax.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blank-vax.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blank-vax.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blank-vax.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blank-vax.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blank-vax.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blank-vax.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blank-vax.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LeetCode,Java,Binary Tree,Recursion,">
+
+
+
+
+
+  <link rel="alternate" href="/blank-vax.github.io/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="0x00 递归模板递归原理树可以以递归的方式定义为一个节点（根节点），它包括一个值和一个指向其他节点指针的列表。递归是树的特性之一，对于每个递归层级，我们只能关注单个节点内的问题，并通过递归调用函数来解决其子节点问题。通常，我们可以通过自顶向下或自底向上的递归来解决树的问题。 “自顶向下”解决方案“自顶向下”意味着在每个递归层级，我们首先访问节点来计算一些值，并在递归调用函数时将这些值传递到子节点">
+<meta name="keywords" content="LeetCode,Java,Binary Tree,Recursion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary-Tree —— Recursion">
+<meta property="og:url" content="https://blank-vax.github.io/2020/11/09/Binary-Tree —— Recursion/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="0x00 递归模板递归原理树可以以递归的方式定义为一个节点（根节点），它包括一个值和一个指向其他节点指针的列表。递归是树的特性之一，对于每个递归层级，我们只能关注单个节点内的问题，并通过递归调用函数来解决其子节点问题。通常，我们可以通过自顶向下或自底向上的递归来解决树的问题。 “自顶向下”解决方案“自顶向下”意味着在每个递归层级，我们首先访问节点来计算一些值，并在递归调用函数时将这些值传递到子节点">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/jqgtp3q6d00ymhkmu9i6dfx4/104.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/hgguz1at3jesaxwqpynr1fzh/101.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/pajk85zzgdt2v65dp7310ka6/112.PNG">
+<meta property="og:updated_time" content="2020-02-02T03:42:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Binary-Tree —— Recursion">
+<meta name="twitter:description" content="0x00 递归模板递归原理树可以以递归的方式定义为一个节点（根节点），它包括一个值和一个指向其他节点指针的列表。递归是树的特性之一，对于每个递归层级，我们只能关注单个节点内的问题，并通过递归调用函数来解决其子节点问题。通常，我们可以通过自顶向下或自底向上的递归来解决树的问题。 “自顶向下”解决方案“自顶向下”意味着在每个递归层级，我们首先访问节点来计算一些值，并在递归调用函数时将这些值传递到子节点">
+<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/jqgtp3q6d00ymhkmu9i6dfx4/104.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blank-vax.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2020/11/09/Binary-Tree —— Recursion/">
+
+
+
+
+
+  <title>Binary-Tree —— Recursion | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blank-vax.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blank-vax.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blank-vax.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blank-vax.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blank-vax.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blank-vax.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blank-vax.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/blank-vax.github.io/2020/11/09/Binary-Tree —— Recursion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blank-vax.github.io/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Binary-Tree —— Recursion</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-09T10:39:34+08:00">
+                2020-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blank-vax.github.io/categories/Data-Structure-and-Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure and Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blank-vax.github.io/2020/11/09/Binary-Tree —— Recursion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blank-vax.github.io/2020/11/09/Binary-Tree —— Recursion/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/blank-vax.github.io/2020/11/09/Binary-Tree —— Recursion/" class="leancloud_visitors" data-flag-title="Binary-Tree —— Recursion">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,969
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0x00-递归模板"><a href="#0x00-递归模板" class="headerlink" title="0x00 递归模板"></a>0x00 递归模板</h2><h3 id="递归原理"><a href="#递归原理" class="headerlink" title="递归原理"></a>递归原理</h3><p>树可以以递归的方式定义为一个节点（根节点），它包括一个值和一个指向其他节点指针的列表。递归是树的特性之一，对于每个递归层级，我们只能关注单个节点内的问题，并通过递归调用函数来解决其子节点问题。通常，我们可以通过<strong>自顶向下</strong>或<strong>自底向上</strong>的递归来解决树的问题。</p>
+<h3 id="“自顶向下”解决方案"><a href="#“自顶向下”解决方案" class="headerlink" title="“自顶向下”解决方案"></a>“自顶向下”解决方案</h3><p>“自顶向下”意味着在每个递归层级，我们首先访问节点来计算一些值，并在递归调用函数时将这些值传递到子节点。所以”自顶向下”的解决方案可以被认为是一种<strong>前序遍历</strong>。具体来说，递归函数<code>top_down(root, params)</code>的模板如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.return specific value for null node</span><br><span class="line">2.update the answer if needed                       // answer &lt;-- params</span><br><span class="line">3.left_answer = top_down(root.left, left_params)    // left_params &lt;-- root.val, params</span><br><span class="line">4.right_answer = top_down(root.right, right_params) // right_params &lt;-- root.val, params</span><br><span class="line">5.return the answer if needed                       // answer &lt;-- left_answer, right_answer</span><br></pre></td></tr></table></figure>
+<h3 id="“自底向上”解决方案"><a href="#“自底向上”解决方案" class="headerlink" title="“自底向上”解决方案"></a>“自底向上”解决方案</h3><p>“自底向上”是另一种递归方法。在每个递归层次上，我们首先对所有子节点递归地调用函数，然后根据返回值和根节点本身地值得到答案。这个过程可以看作是<strong>后序遍历</strong>的一种。通常，”自底向上”的递归函数<code>bottom_up(root)</code>的模板如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.return specific value for null node</span><br><span class="line">2.left_answer = bottom_up(root.left)      // call function recursively for left node</span><br><span class="line">3.right_answer = bottom_up(root.right)    // call function recursively for right node</span><br><span class="line">4.return answers                          // answer &lt;-- left_answer, right_answer, root.val</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用递归方法解决树的相关问题时，可以从以下几个角度考虑。</p>
+<blockquote>
+<p>能否确定一些参数，从该节点自身出发寻找答案？</p>
+<p>能否使用这些参数和节点本身的值决定传递给其子节点的参数？</p>
+</blockquote>
+<p>如果上述两个问题的答案都是肯定的，那么可以尝试使用<strong>自顶向下</strong>的递归来解决此问题。在无法给出确定答案的情况下，我们思考下面的问题：</p>
+<blockquote>
+<p>对于树中的任意一个节点，在已知其子节点答案的情况下，能否计算出该节点的答案？</p>
+</blockquote>
+<p>如果上述问题的答案是肯定的，那么<strong>自底向上</strong>的递归可能是一个不错的解决方法。</p>
+<h2 id="0x01-典型题目"><a href="#0x01-典型题目" class="headerlink" title="0x01 典型题目"></a>0x01 典型题目</h2><p>这里选取LeetCode上二叉树卡片第二部分<strong>“运用递归解决问题”</strong>中的三道题目作为典型题目来深入说明递归这一方法在解决二叉树问题上的使用。</p>
+<h3 id="LeetCode-104-Maximum-Depth-of-Binary-Tree"><a href="#LeetCode-104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="LeetCode-104.Maximum Depth of Binary Tree"></a>LeetCode-104.Maximum Depth of Binary Tree</h3><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104.Maximum Depth of Binary Tree</a></p>
+<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p><img src="http://static.zybuluo.com/B1ank/jqgtp3q6d00ymhkmu9i6dfx4/104.PNG" alt="104.PNG-15.9kB"></p>
+<h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><p>本题目可以使用两种递归方法解决——自顶向下和自底向上。</p>
+<p><strong>方法一： 自顶向下</strong></p>
+<p>自顶向下的递归方法需要提前定义一个私有变量result来记录最终的结果。递归函数中，若输入节点为null则直接返回；若输入节点为叶子节点，则返回result与当前深度的最大值；否则进行先左后右的子树递归，每次递归相当于进入下一层，故将传入的深度加一。该写法中深度的逐渐增加与<strong>自顶向下</strong>思想契合。</p>
+<p><strong>方法二： 自底向上</strong></p>
+<p>对于自底向上可以这样理解：对于当前输入的节点，我们需要递归返回以其为根节点的二叉树的最大深度，该深度的计算方法为其左右子树深度的最大值加一。所以对于每层的输入节点，我们首先判断其是否为空，若为空则返回0；否则递归地进行其左右子树深度计算，最终返回其左右子树深度的最大值加一。</p>
+<h4 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一： 自顶向下</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getMaxDepth</span><span class="params">(TreeNode root, <span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 找到叶子节点</span></span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 更新最大深度</span></span><br><span class="line">            result = Math.max(result, depth);</span><br><span class="line">        &#125;</span><br><span class="line">        getMaxDepth(root.left, depth+<span class="number">1</span>);</span><br><span class="line">        getMaxDepth(root.right, depth+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        getMaxDepth(root, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 方法二： 自底向上</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left_answer = maxDepth(root.left);</span><br><span class="line">        <span class="keyword">int</span> right_answer = maxDepth(root.right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Math.max(left_answer, right_answer) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode-101-Symmetric-Tree"><a href="#LeetCode-101-Symmetric-Tree" class="headerlink" title="LeetCode-101.Symmetric Tree"></a>LeetCode-101.Symmetric Tree</h3><h4 id="题目链接-1"><a href="#题目链接-1" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://leetcode-cn.com/problems/symmetric-tree/" target="_blank" rel="noopener">101.Symmetric Tree</a></p>
+<h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p><img src="http://static.zybuluo.com/B1ank/hgguz1at3jesaxwqpynr1fzh/101.PNG" alt="101.PNG-14.3kB"></p>
+<h4 id="思路分析-1"><a href="#思路分析-1" class="headerlink" title="思路分析"></a>思路分析</h4><p>刚开始拿到这个题目的时候卡在了将<strong>镜像</strong>转换成等价表达式的过程。后来对照题目所给的对称二叉树示例，观察第二行，发现对于第二行的两个节点<code>TreeNode t1 = new TreeNode(2), TreeNode t2 = new TreeNode(2)</code>，其满足以下条件等式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t1.val == t2.val</span><br><span class="line">t1.right.val == t2.left.val</span><br><span class="line">t1.left.val == t2.right.val</span><br></pre></td></tr></table></figure>
+<p>于是可以得出，对于同一层的两个节点，以其为根节点的子树是对称子树的条件是：</p>
+<ul>
+<li>两节点的值相等；</li>
+<li>左节点的右子树和右节点的左子树相同；</li>
+<li>左节点的左子树和右节点的右子树相同。</li>
+</ul>
+<p>所以我们构造递归函数需要传入两个TreeNode类型的变量。下面我们考虑输入的两个节点变量的可能值。</p>
+<p>如果两个节点均为空，说明两节点相等，此时返回<code>true</code>；</p>
+<p>如果两个节点有一个为空，说明整棵二叉树不可能为对称子树（题目中所给的第二个二叉树），此时返回<code>false</code>；</p>
+<p>如果两个节点均不为空，则比较其值是否相等，并同时递归比较<strong>左节点t1的右子节点和右节点t2的左子节点</strong>是否相同以及<strong>左节点t1的左子节点和右节点t2的右子节点</strong>是否相同。</p>
+<p>对于输入二叉树的原始root节点，我们将<code>(root, root)</code>节点对传入递归函数即可。</p>
+<h4 id="解题代码-1"><a href="#解题代码-1" class="headerlink" title="解题代码"></a>解题代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isMirror(root, root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMirror</span><span class="params">(TreeNode root1, TreeNode root2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root1 == <span class="keyword">null</span> &amp;&amp; root2 == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (root1.val == root2.val) &amp;&amp; isMirror(root1.left, root2.right) &amp;&amp; isMirror(root1.right, root2.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode-112-Path-Sum"><a href="#LeetCode-112-Path-Sum" class="headerlink" title="LeetCode-112.Path Sum"></a>LeetCode-112.Path Sum</h3><h4 id="题目链接-2"><a href="#题目链接-2" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://leetcode-cn.com/problems/path-sum/" target="_blank" rel="noopener">112.Path Sum</a></p>
+<h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p><img src="http://static.zybuluo.com/B1ank/pajk85zzgdt2v65dp7310ka6/112.PNG" alt="112.PNG-19.1kB"></p>
+<h4 id="思路分析-2"><a href="#思路分析-2" class="headerlink" title="思路分析"></a>思路分析</h4><p>本题目要求找加和为sum的二叉搜索路径，我们可以分析输入递归函数节点可能的情况：</p>
+<p>若输入节点为空节点，直接返回<code>false</code>；</p>
+<p>若输入节点为叶子节点，则比较该节点的值与传入的sum值是否相等；</p>
+<p>递归函数的返回值处需要对输入节点的左右子节点分别进行递归，并改变sum值为<code>sum - root.val</code>，题目要求找到一条合理路径即可，故两递归函数使用或连接。</p>
+<h4 id="解题代码-2"><a href="#解题代码-2" class="headerlink" title="解题代码"></a>解题代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> (sum == root.val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-递归函数构造"><a href="#0x02-递归函数构造" class="headerlink" title="0x02 递归函数构造"></a>0x02 递归函数构造</h2><p>使用递归法解决二叉树相关搜索问题的重点就是递归函数的构造。现总结递归函数构造过程如下：</p>
+<blockquote>
+<p>Step1：确定递归函数的返回类型，一般与题目要求的返回类型一致；</p>
+<p>Step2：确定递归函数传入的参数；</p>
+<p>Step3：考虑传入参数可能出现的全部情况，每种情况分别进行处理，处理过程需要体现递归进行的条件和递归终止的条件；</p>
+<p><strong>Notice</strong>：一般将根节点的左子树和右子树作为参数先后传入递归函数进行递归过程。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blank-vax.github.io/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+          
+            <a href="/blank-vax.github.io/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/blank-vax.github.io/tags/Binary-Tree/" rel="tag"><i class="fa fa-tag"></i> Binary Tree</a>
+          
+            <a href="/blank-vax.github.io/tags/Recursion/" rel="tag"><i class="fa fa-tag"></i> Recursion</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/11/09/Bristol Cryptography Blog（一）—— 不同种类的处理器/" rel="next" title="Bristol Cryptography Blog（一）—— 不同种类的处理器">
+                <i class="fa fa-chevron-left"></i> Bristol Cryptography Blog（一）—— 不同种类的处理器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blank-vax.github.io/2020/11/09/Binary Search/" rel="prev" title="Binary Search">
+                Binary Search <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/blank-vax.github.io/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blank-vax.github.io/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blank-vax.github.io/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blank-vax.github.io/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/blank-vax.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-递归模板"><span class="nav-number">1.</span> <span class="nav-text">0x00 递归模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归原理"><span class="nav-number">1.1.</span> <span class="nav-text">递归原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“自顶向下”解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">“自顶向下”解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“自底向上”解决方案"><span class="nav-number">1.3.</span> <span class="nav-text">“自底向上”解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-典型题目"><span class="nav-number">2.</span> <span class="nav-text">0x01 典型题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-104-Maximum-Depth-of-Binary-Tree"><span class="nav-number">2.1.</span> <span class="nav-text">LeetCode-104.Maximum Depth of Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目链接"><span class="nav-number">2.1.1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">2.1.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路分析"><span class="nav-number">2.1.3.</span> <span class="nav-text">思路分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题代码"><span class="nav-number">2.1.4.</span> <span class="nav-text">解题代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-101-Symmetric-Tree"><span class="nav-number">2.2.</span> <span class="nav-text">LeetCode-101.Symmetric Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目链接-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路分析-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">思路分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题代码-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">解题代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode-112-Path-Sum"><span class="nav-number">2.3.</span> <span class="nav-text">LeetCode-112.Path Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目链接-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">题目链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路分析-2"><span class="nav-number">2.3.3.</span> <span class="nav-text">思路分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题代码-2"><span class="nav-number">2.3.4.</span> <span class="nav-text">解题代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-递归函数构造"><span class="nav-number">3.</span> <span class="nav-text">0x02 递归函数构造</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共123.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blank-vax.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blank-vax.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blank-vax.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '9OdpjYSHQirwAMeIVy8C5SBk-gzGzoHsz',
+        appKey: 'WoxonMaRanAKt1yVo9JgIS7n',
+        placeholder: 'Let's Chat',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/blank-vax.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
