@@ -143,7 +143,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG">
 <meta property="og:image" content="http://static.zybuluo.com/B1ank/qssjfec8mu0qtckmf3begi74/%E5%89%91%E6%8C%87offer-%E5%AD%90%E6%A0%91%E9%87%8D%E6%9E%84.png">
 <meta property="og:image" content="http://static.zybuluo.com/B1ank/iux1rgs8ugmlxea6pshwzsln/%E5%89%91%E6%8C%87offer-12.png">
-<meta property="og:updated_time" content="2021-02-04T03:18:55.636Z">
+<meta property="og:updated_time" content="2021-02-04T03:54:02.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer刷题记录（一）">
 <meta name="twitter:description" content="0x00 前言寒假赋闲在家，搞科研的同时希望提升一下自己的代码水平，于是回到阔别已久的LeetCode平台开始刷题。这次选择了剑指offer系列题目，编程语言采用Java。话不多说，直接开刷。 0x01 数组中重复的数字题目描述找出数组中重复的数字。 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了">
@@ -437,7 +437,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9,188
+                  9,250
                 </span>
               
 
@@ -771,7 +771,7 @@
 <h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><ul>
 <li>状态定义：dp[i]表示长度为i的绳子剪短后的最大乘积；</li>
 <li>初始状态：<code>dp[0]=1</code>，<code>dp[1]=1</code>；</li>
-<li>状态转移方程：<code>dp[i] = Math.max(dp[i], Math.max(j*dp[i-j], j*(i-j)))</code>，其中1\<j\<i。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较`j*(i-j)`与`j*(dp[i-j])`的大小，根据比较结果决定是否继续剪下去：若`j*(i-j)> j*(dp[i-j])<code>，说明将长度为i的绳子剪成两段得到最大结果；否则说明需要继续分段，此时将切割长度从i转化为</code>i-j`。</j\<i。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较`j*(i-j)`与`j*(dp[i-j])`的大小，根据比较结果决定是否继续剪下去：若`j*(i-j)></li>
+<li>状态转移方程：<code>dp[i] = Math.max(dp[i], Math.max(j*dp[i-j], j*(i-j)))</code>。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较<code>j*(i-j)</code>与<code>j*(dp[i-j])</code>的大小，根据比较结果决定是否继续剪下去：若<code>j*(i-j) &gt; j*(dp[i-j])</code>，说明将长度为i的绳子剪成两段得到最大结果；否则说明需要继续分段，此时将切割长度从i转化为<code>i-j</code>。</li>
 <li>返回值：<code>dp[n]</code>。</li>
 </ul>
 <h3 id="解题代码-11"><a href="#解题代码-11" class="headerlink" title="解题代码"></a>解题代码</h3><h4 id="Method1-Mathematical-Solution"><a href="#Method1-Mathematical-Solution" class="headerlink" title="Method1 Mathematical Solution"></a>Method1 Mathematical Solution</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">3</span>) <span class="keyword">return</span> n-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> a = n / <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> b = n % <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, a);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, a-<span class="number">1</span>)*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, a)*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
