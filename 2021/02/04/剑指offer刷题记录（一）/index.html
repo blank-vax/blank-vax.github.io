@@ -140,13 +140,14 @@
 <meta property="og:site_name" content="B1ank">
 <meta property="og:description" content="0x00 前言寒假赋闲在家，搞科研的同时希望提升一下自己的代码水平，于是回到阔别已久的LeetCode平台开始刷题。这次选择了剑指offer系列题目，编程语言采用Java。话不多说，直接开刷。 0x01 数组中重复的数字题目描述找出数组中重复的数字。 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/34hwq3ygn4k6k8rbci8fr9jt/%E5%89%91%E6%8C%87offer-04.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/vypi1lrhribs5o7r2tjszlxu/%E5%89%91%E6%8C%87offer-12.png">
-<meta property="og:updated_time" content="2021-02-03T16:40:41.976Z">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/qssjfec8mu0qtckmf3begi74/%E5%89%91%E6%8C%87offer-%E5%AD%90%E6%A0%91%E9%87%8D%E6%9E%84.png">
+<meta property="og:image" content="http://static.zybuluo.com/B1ank/iux1rgs8ugmlxea6pshwzsln/%E5%89%91%E6%8C%87offer-12.png">
+<meta property="og:updated_time" content="2021-02-04T03:18:55.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer刷题记录（一）">
 <meta name="twitter:description" content="0x00 前言寒假赋闲在家，搞科研的同时希望提升一下自己的代码水平，于是回到阔别已久的LeetCode平台开始刷题。这次选择了剑指offer系列题目，编程语言采用Java。话不多说，直接开刷。 0x01 数组中重复的数字题目描述找出数组中重复的数字。 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了">
-<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/34hwq3ygn4k6k8rbci8fr9jt/%E5%89%91%E6%8C%87offer-04.PNG">
+<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG">
 
 
 
@@ -436,7 +437,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9,224
+                  9,188
                 </span>
               
 
@@ -503,9 +504,9 @@
 <p>限制：</p>
 <p><code>0 &lt;= n &lt;= 1000</code></p>
 <p><code>0 &lt;= m &lt;= 1000</code></p>
-<h3 id="算法详解-1"><a href="#算法详解-1" class="headerlink" title="算法详解"></a>算法详解</h3><p>该题目将普通元素查找扩展至二维数组，最简单的方法为两次循环遍历，时间复杂度为O(N<em>M)，其中N，M分别为二维数组的行数与列数。显然该解法没有用到矩阵<em>*从上至下递增，从左至右递增</em></em>的特点，故不是最优解。</p>
+<h3 id="算法详解-1"><a href="#算法详解-1" class="headerlink" title="算法详解"></a>算法详解</h3><p>该题目将普通元素查找扩展至二维数组，最简单的方法为两次循环遍历，时间复杂度为O(N*M)，其中N，M分别为二维数组的行数与列数。显然该解法没有用到矩阵<strong>从上至下递增，从左至右递增</strong>的特点，故不是最优解。</p>
 <p>我们将矩阵逆时针旋转45°，可以发现其结构类似二叉搜索树，对每个元素来说，左分支元素更小而右分支元素更大。因此我们从根节点开始搜索，遇到大于目标元素的元素则向左继续搜索，反之则向右继续搜索，最终获得目标元素。</p>
-<p><img src="http://static.zybuluo.com/B1ank/34hwq3ygn4k6k8rbci8fr9jt/%E5%89%91%E6%8C%87offer-04.PNG" alt="剑指offer-04.PNG-107.2kB"></p>
+<p><img src="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG" alt="剑指offer-04.PNG-107.2kB"></p>
 <p>结合以上思想，我们进行合理转化：<strong>根节点</strong>对应矩阵<strong>右上角的元素</strong>。具体算法如下：</p>
 <ul>
 <li>从矩阵右上角元素开始遍历，同时与目标值target进行对比；</li>
@@ -579,8 +580,7 @@
 </li>
 <li><p>划分左右子树：查找根节点在中序遍历结果数组<code>inorder[]</code>中的索引<code>target_index_in_inorder</code>；</p>
 </li>
-<li><p>开启左右子树递归，关键参数如下表所示：</p>
-<p>|        |                       根节点索引                        |        中序遍历左边界         |        中序遍历右边界         |<br>| ——— | :——————————————————————————-: | :—————————————-: | :—————————————-: |<br>| 左子树 |                     <code>root_index+1</code>                      |         <code>left_bound</code>          | <code>target_index_in_inorder - 1</code> |<br>| 右子树 | <code>target_index_in_inorder - left_bound + root_index + 1</code> | <code>target_index_in_inorder + 1</code> |         <code>right_bound</code>         |</p>
+<li><p>开启左右子树递归，关键参数如下表所示：<br><img src="http://static.zybuluo.com/B1ank/qssjfec8mu0qtckmf3begi74/%E5%89%91%E6%8C%87offer-%E5%AD%90%E6%A0%91%E9%87%8D%E6%9E%84.png" alt="剑指offer-子树重构.png-45.2kB"></p>
 </li>
 </ul>
 </li>
@@ -708,7 +708,7 @@
 <li>深度优先搜索（DFS）：该算法通过递归，先朝一个方向搜索至底部，再回溯到上个节点，沿另一个方向搜索，以此类推；</li>
 <li>剪枝：在搜索过程中，遇到<code>此路无法和目标字符串匹配成功</code>的情况（例如，此矩阵元素和目标字符不同，此元素已被访问等），则应立即返回，此种方法成为<code>可行性剪枝</code>。</li>
 </ul>
-<p><img src="http://static.zybuluo.com/B1ank/vypi1lrhribs5o7r2tjszlxu/%E5%89%91%E6%8C%87offer-12.png" alt="剑指offer-12.png-31.1kB"></p>
+<p><img src="http://static.zybuluo.com/B1ank/iux1rgs8ugmlxea6pshwzsln/%E5%89%91%E6%8C%87offer-12.png" alt="剑指offer-12.png-31.1kB"></p>
 <p>DFS过程如下：</p>
 <ul>
 <li>递归参数：当前元素在矩阵<code>board</code>中的行列索引<code>i</code>和<code>j</code>，当前目标字符在字符串<code>word</code>中的索引<code>k</code>。</li>
@@ -752,9 +752,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: 36</span><br><span class="line">解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36</span><br></pre></td></tr></table></figure>
 <p>提示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 &lt;= n &lt;= 58</span><br></pre></td></tr></table></figure>
-<h3 id="算法详解-11"><a href="#算法详解-11" class="headerlink" title="算法详解"></a>算法详解</h3><h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>设将长度为n的绳子切为a段，满足：$n = n<em>{1} + n</em>{2} +… + n<em>{a}$，则本题等价于求解$max(n</em>{1}<em>n_{2}</em>…*n_{a})$。提出两个假设：1）当所有绳段长度相等时，乘积最大；2）最优的绳段长度为3。进行推导如下：</p>
+<h3 id="算法详解-11"><a href="#算法详解-11" class="headerlink" title="算法详解"></a>算法详解</h3><h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>设将长度为n的绳子切为a段，满足：$n = n_{1} + n_{2} +… + n_{a}$，则本题等价于求解$max(n_{1}*n_{2}*…*n_{a})$。提出两个假设：1）当所有绳段长度相等时，乘积最大；2）最优的绳段长度为3。进行推导如下：</p>
 <p>根据算术几何均值不等式：</p>
-<script type="math/tex; mode=display">\frac{(n_{1}+n_{2}+...+n_{a})}{a} \ge \sqrt[a]{n_{1}*n_{2}*...*n_{a}}</script><p>当且仅当$n<em>{1} = n</em>{2} = … = n_{a}$时成立。故<strong>将绳子以相等的长度等分为多段，得到的乘积最大</strong>。</p>
+<script type="math/tex; mode=display">\frac{(n_{1}+n_{2}+...+n_{a})}{a} \ge \sqrt[a]{n_{1}*n_{2}*...*n_{a}}</script><p>当且仅当$n_{1} = n_{2} = … = n_{a}$时成立。故<strong>将绳子以相等的长度等分为多段，得到的乘积最大</strong>。</p>
 <p>设将绳子按照x长度等分为a段，即n=a*x，则乘积为$x^{a}$。由于n为常数，满足$x^{a} = x^{\frac{n}{x}} = (x^{\frac{1}{x}})^{n}$。</p>
 <p>构造函数$y = x^{\frac{1}{x}}$，对x求导得：</p>
 <script type="math/tex; mode=display">y' = \frac{1-lnx}{x^{2}}*x^{\frac{1}{x}}</script><p>令y’=0，则1-lnx=0，得驻点$x_{0} = 2.7$且该点为极大值点。由于切分长度x必须为整数，分别带入最接近e的整数2或3，比较可知x=3时乘积达到最大。故<strong>尽可能将绳子以长度3等分为多段时，乘积最大</strong>。</p>
@@ -771,7 +771,7 @@
 <h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><ul>
 <li>状态定义：dp[i]表示长度为i的绳子剪短后的最大乘积；</li>
 <li>初始状态：<code>dp[0]=1</code>，<code>dp[1]=1</code>；</li>
-<li>状态转移方程：<code>dp[i] = Math.max(dp[i], Math.max(j*dp[i-j], j*(i-j)))</code>，其中1<j<i。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较`j*(i-j)`与`j*(dp[i-j])`的大小，根据比较结果决定是否继续剪下去：若`j*(i-j)> j*(dp[i-j])<code>，说明将长度为i的绳子剪成两段得到最大结果；否则说明需要继续分段，此时将切割长度从i转化为</code>i-j`。</j<i。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较`j*(i-j)`与`j*(dp[i-j])`的大小，根据比较结果决定是否继续剪下去：若`j*(i-j)></li>
+<li>状态转移方程：<code>dp[i] = Math.max(dp[i], Math.max(j*dp[i-j], j*(i-j)))</code>，其中1\<j\<i。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较`j*(i-j)`与`j*(dp[i-j])`的大小，根据比较结果决定是否继续剪下去：若`j*(i-j)> j*(dp[i-j])<code>，说明将长度为i的绳子剪成两段得到最大结果；否则说明需要继续分段，此时将切割长度从i转化为</code>i-j`。</j\<i。对于循环到的长度i，假设将其剪成两段，一段长度为j，另一段为i-j。此时需要比较`j*(i-j)`与`j*(dp[i-j])`的大小，根据比较结果决定是否继续剪下去：若`j*(i-j)></li>
 <li>返回值：<code>dp[n]</code>。</li>
 </ul>
 <h3 id="解题代码-11"><a href="#解题代码-11" class="headerlink" title="解题代码"></a>解题代码</h3><h4 id="Method1-Mathematical-Solution"><a href="#Method1-Mathematical-Solution" class="headerlink" title="Method1 Mathematical Solution"></a>Method1 Mathematical Solution</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">3</span>) <span class="keyword">return</span> n-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> a = n / <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> b = n % <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, a);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, a-<span class="number">1</span>)*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">3</span>, a)*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -831,7 +831,7 @@
 <h4 id="Method2-‘1’-Elimination"><a href="#Method2-‘1’-Elimination" class="headerlink" title="Method2 ‘1’ Elimination"></a>Method2 ‘1’ Elimination</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// you need to treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count_result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n != <span class="number">0</span>)&#123;</span><br><span class="line">            count_result += <span class="number">1</span>;</span><br><span class="line">            n &amp;= (n-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count_result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="复杂度分析-13"><a href="#复杂度分析-13" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
 <li>Method1<ul>
-<li>时间复杂度$O(log<em>{2}N)$：此算法循环内部仅有移位、与、加等基本运算，占用$O(1)$；逐位判断需循环$log</em>{2}n$次，其中$log_{2}n$代表数字n最高位1所在的位数。</li>
+<li>时间复杂度$O(log_{2}N)$：此算法循环内部仅有移位、与、加等基本运算，占用$O(1)$；逐位判断需循环$log_{2}n$次，其中$log_{2}n$代表数字n最高位1所在的位数。</li>
 <li>空间复杂度$O(1)$。</li>
 </ul>
 </li>
@@ -860,7 +860,7 @@
 <p>结合以上推导，通过下述方法获取幂结果：</p>
 <ul>
 <li>通过循环$x = x^{2}$操作，每次把幂从n降至n//2，直至将幂降为0；</li>
-<li>设count=1，则初始状态为$x^{n} = x^{n}<em>count$。循环二分过程中，每当n为奇数，将多出的一项x乘入count，最终可化至$x^{n} = x^{0}</em>count = count$，返回count即可。</li>
+<li>设count=1，则初始状态为$x^{n} = x^{n}*count$。循环二分过程中，每当n为奇数，将多出的一项x乘入count，最终可化至$x^{n} = x^{0}*count = count$，返回count即可。</li>
 </ul>
 <p>为加快运算速率，将不同运算转化为位运算：</p>
 <ul>
