@@ -146,7 +146,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/B1ank/pupu319ljy8rhbi3b3av03n3/4.PNG">
 <meta property="og:image" content="http://static.zybuluo.com/B1ank/urhfsmjyg36g73x15ue7wa6m/3.PNG">
 <meta property="og:image" content="http://static.zybuluo.com/B1ank/3o3wk74wb2654umhzgi91olh/6.PNG">
-<meta property="og:updated_time" content="2021-07-05T15:15:13.420Z">
+<meta property="og:updated_time" content="2021-07-05T16:19:25.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于配对的密码学——基础知识及JPBC库">
 <meta name="twitter:description" content="0x00 前言本科毕业设计过程中需要使用JPBC库实现Java语言下双线性配对运算的仿真，摸索过程中遇到一些问题及特性，记录如下。本文参考李发根等编著的《基于配对的密码学》一书，首先简要介绍基于配对密码学的相关性质，随后结合JPBC文档介绍该库中部分函数的特殊性质及用法。 参考链接：  《基于配对的密码学》 链接：https://pan.baidu.com/s/1bocycprbAUtNzCopk">
@@ -558,7 +558,7 @@
 <script type="math/tex; mode=display">z = e(P, P)^{abc}</script><p>上述问题通常被视为困难问题，但其困难程度不尽相同。显然，判定问题不比计算问题更难，即如果能够求解CDH问题，那么DDH问题就容易解决；同样如果能够求解BDH问题，那么DBDH问题就容易解决。</p>
 <h2 id="0x04-JPBC库"><a href="#0x04-JPBC库" class="headerlink" title="0x04 JPBC库"></a>0x04 JPBC库</h2><p>PBC库（pairing-based cryptography library）是斯坦福大学研究人员开发的一个免费可移植C语言库。它通过提供一个抽象的接口，使程序设计人员可以不必考虑具体的数学细节，甚至不必考虑椭圆曲线和数论的相关知识就可以实现基于配对的密码体制。JPBC库（Java Pairing-Based Cryptography Library）是对PBC库的Java封装，常用于基于配对的密码学算法仿真程序编写中。</p>
 <p>该库提供的各类API结构如下。</p>
-<p><img src="http://static.zybuluo.com/B1ank/2wrs4gilwzuvrgyw6382ctvi/5.PNG" alt="5.PNG-484kB"></p>
+<p><img src="http://static.zybuluo.com/B1ank/2wrs4gilwzuvrgyw6382ctvi/5.PNG" alt="API Structure"></p>
 <h3 id="入门教程"><a href="#入门教程" class="headerlink" title="入门教程"></a>入门教程</h3><p>除JPBC文档外，整理一些优秀视频及技术博客，链接如下：</p>
 <p><a href="https://www.bilibili.com/video/av456320837/" target="_blank" rel="noopener">JPBC库（基于配对的密码学）入门和避坑指南</a></p>
 <p><a href="https://www.bilibili.com/video/BV1jA41147vt" target="_blank" rel="noopener">JPBC库应用之BLS签名</a></p>
@@ -566,7 +566,7 @@
 <p><a href="https://blog.csdn.net/liuweiran900217" target="_blank" rel="noopener">刘巍然大佬的博客</a></p>
 <h3 id="群上点的特性"><a href="#群上点的特性" class="headerlink" title="群上点的特性"></a>群上点的特性</h3><p>JPBC库共提供四个循环群，其中$G_1,G_2,G_T$均为阶为p的乘法循环群，而$Z_p$为整数域上的加法循环群。乘法循环群上的点是z值为0的椭圆曲线上的点，而整数循环群上的点是数，二者均可抽象为<code>Element</code>数据类型并用于仿真中。生成测试元素并打印，结果如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成测试元素</span></span><br><span class="line">Element g1 = G1.newRandomElement();</span><br><span class="line">System.out.println(g1);</span><br><span class="line">Element g2 = G2.newRandomElement();</span><br><span class="line">System.out.println(g2);</span><br><span class="line">Element gt = Gt.newRandomElement();</span><br><span class="line">System.out.println(gt);</span><br><span class="line">Element zp = Zr.newRandomElement();</span><br><span class="line">System.out.println(zp);</span><br></pre></td></tr></table></figure>
-<p><img src="http://static.zybuluo.com/B1ank/j29mx6dgrdjivbfaefgpjg58/1.PNG" alt="1.PNG-31.9kB"></p>
+<p><img src="http://static.zybuluo.com/B1ank/j29mx6dgrdjivbfaefgpjg58/1.PNG" alt="Characteristic of point in group"></p>
 <h3 id="群运算"><a href="#群运算" class="headerlink" title="群运算"></a>群运算</h3><p>JPBC库支持的运算如下：</p>
 <ul>
 <li>$G_1,G_2,G_T$中元素的模幂运算、倍乘运算以及互相之间的加法运算，运算结果均为对应群上的元素。</li>
