@@ -410,21 +410,21 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/Binary-Search/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blank-vax.github.io/tags/Notes/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blank-vax.github.io/tags/Binary-Tree/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blank-vax.github.io/tags/Traversal/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blank-vax.github.io/tags/Binary-Search/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -438,7 +438,7 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/Traversal/</loc>
+    <loc>https://blank-vax.github.io/tags/Notes/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -466,7 +466,7 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/LDAP/</loc>
+    <loc>https://blank-vax.github.io/tags/Linux-Foundation/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -494,7 +494,7 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/Linux-Foundation/</loc>
+    <loc>https://blank-vax.github.io/tags/LDAP/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -550,6 +550,13 @@
   </url>
   
   <url>
+    <loc>https://blank-vax.github.io/tags/Windows-Foundation/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blank-vax.github.io/tags/LSB-Oracle/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
@@ -578,7 +585,7 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/Windows-Foundation/</loc>
+    <loc>https://blank-vax.github.io/tags/Jacobi-symbol/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -592,7 +599,7 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/Jacobi-symbol/</loc>
+    <loc>https://blank-vax.github.io/tags/Information-Security/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -607,13 +614,6 @@
   
   <url>
     <loc>https://blank-vax.github.io/tags/Pairing-Based-Cryptography/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blank-vax.github.io/tags/Information-Security/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -641,13 +641,6 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/xor/</loc>
-    <lastmod>2021-07-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blank-vax.github.io/tags/Server-Security/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
@@ -655,7 +648,7 @@
   </url>
   
   <url>
-    <loc>https://blank-vax.github.io/tags/Gitee/</loc>
+    <loc>https://blank-vax.github.io/tags/xor/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -670,6 +663,13 @@
   
   <url>
     <loc>https://blank-vax.github.io/tags/Keyboard-Attack/</loc>
+    <lastmod>2021-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blank-vax.github.io/tags/Gitee/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
