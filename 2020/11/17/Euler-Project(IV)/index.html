@@ -140,15 +140,15 @@
 <meta property="og:site_name" content="B1ank">
 <meta property="og:description" content="31. Coin sumsProblem DescriptionIn the United Kingdom the currency is made up of pound (£) and pence (p). There are eight coins in general circulation:  1p, 2p, 5p, 10p, 20p, 50p, £1 (100p), and £2 (2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/o08d2mk6j3miaccmrhmz6a91/31_problem1.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/ne7b2aqnoo1bes7oqb9ew74h/31_solution1.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/ojji9qwuox0evoe8zoqjwlvy/31_formula.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/924ba04azv6jzg2aty4b4pgd/31_solution2.PNG">
-<meta property="og:updated_time" content="2020-11-17T06:41:36.542Z">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/17/Euler-Project(IV)/Euler-Project(IV">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/17/Euler-Project(IV)/Euler-Project(IV">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/17/Euler-Project(IV)/Euler-Project(IV">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/17/Euler-Project(IV)/Euler-Project(IV">
+<meta property="og:updated_time" content="2021-07-07T04:11:36.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Euler-Project(IV)">
 <meta name="twitter:description" content="31. Coin sumsProblem DescriptionIn the United Kingdom the currency is made up of pound (£) and pence (p). There are eight coins in general circulation:  1p, 2p, 5p, 10p, 20p, 50p, £1 (100p), and £2 (2">
-<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/o08d2mk6j3miaccmrhmz6a91/31_problem1.PNG">
+<meta name="twitter:image" content="https://blank-vax.github.io/2020/11/17/Euler-Project(IV)/Euler-Project(IV">
 
 
 
@@ -438,7 +438,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,485
+                  3,493
                 </span>
               
 
@@ -492,7 +492,7 @@
 <li>引入两个100便士完成组合</li>
 </ul>
 <p>故可得以下递推公式：</p>
-<p><img src="http://static.zybuluo.com/B1ank/o08d2mk6j3miaccmrhmz6a91/31_problem1.PNG" alt="31_problem1.PNG-20.5kB"></p>
+<p><img src="/2020/11/17/Euler-Project(IV)/Euler-Project(IV" alt="31_problem1.PNG-20.5kB">\1.PNG)</p>
 <p>各字符含义如下：</p>
 <ul>
 <li>t表示目标量；</li>
@@ -503,11 +503,11 @@
 <p>根据以上递推公式采用动态规划的方法，将大问题分割成多个小问题并进行分类讨论处理，该方法为第一类动态规划，遵循自顶向下的问题划分原则。同时引入二维数组记录不同(t, c)组对应的方法数，以提高程序运行效率。代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># How many different ways can 2 pound be made using any number of coins?</span></span><br><span class="line"><span class="comment"># 2 pound equals to 200p</span></span><br><span class="line"><span class="comment"># There are eight coins in general circulation: 1p, 2p, 5p, 10p, 20p, 50p, 100p, 200p</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countWays</span><span class="params">(target, avc)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> avc &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    t = target</span><br><span class="line">    <span class="keyword">if</span> memoset[t<span class="number">-1</span>][avc<span class="number">-1</span>] &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> memoset[t<span class="number">-1</span>][avc<span class="number">-1</span>]</span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> target &gt;= <span class="number">0</span>:</span><br><span class="line">        result += countWays(target, avc<span class="number">-1</span>)</span><br><span class="line">        target = target - coins[avc<span class="number">-1</span>]</span><br><span class="line">    memoset[t<span class="number">-1</span>][avc<span class="number">-1</span>] = result</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    coins = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>]</span><br><span class="line">    amount_result = <span class="number">200</span></span><br><span class="line">    memoset = [[<span class="number">0</span> <span class="keyword">for</span> col <span class="keyword">in</span> range(<span class="number">9</span>)] <span class="keyword">for</span> row <span class="keyword">in</span> range(amount_result+<span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">print</span> countWays(amount_result, <span class="number">8</span>)</span><br></pre></td></tr></table></figure>
 <p>以上算法还可以进一步优化。首先我们观察(t, c)取值不同时w(t, c)的运算结果，对应如下表：</p>
-<p><img src="http://static.zybuluo.com/B1ank/ne7b2aqnoo1bes7oqb9ew74h/31_solution1.PNG" alt="31_solution1.PNG-44.5kB"></p>
+<p><img src="/2020/11/17/Euler-Project(IV)/Euler-Project(IV" alt="31_solution1.PNG-44.5kB">\2.PNG)</p>
 <p>根据以上对应关系归纳递推公式如下：</p>
-<p><img src="http://static.zybuluo.com/B1ank/ojji9qwuox0evoe8zoqjwlvy/31_formula.PNG" alt="31_formula.PNG-25.2kB"></p>
+<p><img src="/2020/11/17/Euler-Project(IV)/Euler-Project(IV" alt="31_formula.PNG-25.2kB">\3.PNG)</p>
 <p>经过深入分析，我们可以得出w’(t, c)函数不同参数对应结果之间的关系图如下所示：</p>
-<p><img src="http://static.zybuluo.com/B1ank/924ba04azv6jzg2aty4b4pgd/31_solution2.PNG" alt="31_solution2.PNG-44kB"></p>
+<p><img src="/2020/11/17/Euler-Project(IV)/Euler-Project(IV" alt="31_solution2.PNG-44kB">\4.PNG)</p>
 <p>可以看出第一行和第一列的数值1达到最终目的地需要较长的加和路径。除此之外其他所有元素都可由最多另外两个元素相加得到。从而每个w’(t, c)的值最多决定于另外两个数值，即：</p>
 <ul>
 <li>同列c的前一个元素；</li>
@@ -883,7 +883,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共147.0k字</span>
+  <span class="post-count">博客全站共146.7k字</span>
 </div>
 
         

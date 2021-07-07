@@ -140,14 +140,14 @@
 <meta property="og:site_name" content="B1ank">
 <meta property="og:description" content="0x00 前言寒假赋闲在家，搞科研的同时希望提升一下自己的代码水平，于是回到阔别已久的LeetCode平台开始刷题。这次选择了剑指offer系列题目，编程语言采用Java。话不多说，直接开刷。 0x01 数组中重复的数字题目描述找出数组中重复的数字。 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/qssjfec8mu0qtckmf3begi74/%E5%89%91%E6%8C%87offer-%E5%AD%90%E6%A0%91%E9%87%8D%E6%9E%84.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/iux1rgs8ugmlxea6pshwzsln/%E5%89%91%E6%8C%87offer-12.png">
-<meta property="og:updated_time" content="2021-02-04T03:54:02.492Z">
+<meta property="og:image" content="https://blank-vax.github.io/2021/02/04/剑指offer刷题记录（一）/1.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/02/04/剑指offer刷题记录（一）/2.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/02/04/剑指offer刷题记录（一）/3.PNG">
+<meta property="og:updated_time" content="2021-07-07T12:45:55.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer刷题记录（一）">
 <meta name="twitter:description" content="0x00 前言寒假赋闲在家，搞科研的同时希望提升一下自己的代码水平，于是回到阔别已久的LeetCode平台开始刷题。这次选择了剑指offer系列题目，编程语言采用Java。话不多说，直接开刷。 0x01 数组中重复的数字题目描述找出数组中重复的数字。 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了">
-<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG">
+<meta name="twitter:image" content="https://blank-vax.github.io/2021/02/04/剑指offer刷题记录（一）/1.PNG">
 
 
 
@@ -506,7 +506,7 @@
 <p><code>0 &lt;= m &lt;= 1000</code></p>
 <h3 id="算法详解-1"><a href="#算法详解-1" class="headerlink" title="算法详解"></a>算法详解</h3><p>该题目将普通元素查找扩展至二维数组，最简单的方法为两次循环遍历，时间复杂度为O(N*M)，其中N，M分别为二维数组的行数与列数。显然该解法没有用到矩阵<strong>从上至下递增，从左至右递增</strong>的特点，故不是最优解。</p>
 <p>我们将矩阵逆时针旋转45°，可以发现其结构类似二叉搜索树，对每个元素来说，左分支元素更小而右分支元素更大。因此我们从根节点开始搜索，遇到大于目标元素的元素则向左继续搜索，反之则向右继续搜索，最终获得目标元素。</p>
-<p><img src="http://static.zybuluo.com/B1ank/cmujyovavi1icizat8jwcv14/%E5%89%91%E6%8C%87offer-04.PNG" alt="剑指offer-04.PNG-107.2kB"></p>
+<p><img src="/2021/02/04/剑指offer刷题记录（一）/1.PNG" alt="剑指offer-04.PNG-107.2kB"></p>
 <p>结合以上思想，我们进行合理转化：<strong>根节点</strong>对应矩阵<strong>右上角的元素</strong>。具体算法如下：</p>
 <ul>
 <li>从矩阵右上角元素开始遍历，同时与目标值target进行对比；</li>
@@ -580,7 +580,7 @@
 </li>
 <li><p>划分左右子树：查找根节点在中序遍历结果数组<code>inorder[]</code>中的索引<code>target_index_in_inorder</code>；</p>
 </li>
-<li><p>开启左右子树递归，关键参数如下表所示：<br><img src="http://static.zybuluo.com/B1ank/qssjfec8mu0qtckmf3begi74/%E5%89%91%E6%8C%87offer-%E5%AD%90%E6%A0%91%E9%87%8D%E6%9E%84.png" alt="剑指offer-子树重构.png-45.2kB"></p>
+<li><p>开启左右子树递归，关键参数如下表所示：<br><img src="/2021/02/04/剑指offer刷题记录（一）/2.PNG" alt="剑指offer-子树重构.png-45.2kB"></p>
 </li>
 </ul>
 </li>
@@ -708,7 +708,7 @@
 <li>深度优先搜索（DFS）：该算法通过递归，先朝一个方向搜索至底部，再回溯到上个节点，沿另一个方向搜索，以此类推；</li>
 <li>剪枝：在搜索过程中，遇到<code>此路无法和目标字符串匹配成功</code>的情况（例如，此矩阵元素和目标字符不同，此元素已被访问等），则应立即返回，此种方法成为<code>可行性剪枝</code>。</li>
 </ul>
-<p><img src="http://static.zybuluo.com/B1ank/iux1rgs8ugmlxea6pshwzsln/%E5%89%91%E6%8C%87offer-12.png" alt="剑指offer-12.png-31.1kB"></p>
+<p><img src="/2021/02/04/剑指offer刷题记录（一）/3.PNG" alt="剑指offer-12.png-31.1kB"></p>
 <p>DFS过程如下：</p>
 <ul>
 <li>递归参数：当前元素在矩阵<code>board</code>中的行列索引<code>i</code>和<code>j</code>，当前目标字符在字符串<code>word</code>中的索引<code>k</code>。</li>
@@ -1180,7 +1180,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共147.0k字</span>
+  <span class="post-count">博客全站共146.7k字</span>
 </div>
 
         

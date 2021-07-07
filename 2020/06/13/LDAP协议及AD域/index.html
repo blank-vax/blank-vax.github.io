@@ -140,21 +140,21 @@
 <meta property="og:site_name" content="B1ank">
 <meta property="og:description" content="LDAP协议需求分析 集中管理，更易维护和优化，降低运维成本的需求。 实现使用PUSH和PULL的方法复制部分或全部数据的需求。 使用者根据需要使用ACL控制数据的读写权限的需求。  数据从不同地点读取但无需经常更新的需求。   LDAP概述Light Access Protocol，即轻量级目录访问协议。与目录访问协议X.500相比，LDAP略去X.500中许多不常使用的功能，以TCP/IP协议">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/cv8iw9bvtdq7b5zm4tcyiway/20181110215227340.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/wrmydqg0ojdjuw31ktgiup9u/%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/ces9r09lfl8zrhab3flyxjbh/%E5%91%BD%E5%90%8D%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/uiw5axd29q8w9tlrix3zlmod/%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/3x3z7ynvndiv4ww2b2bza7hr/%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/no82tk78r9t4vlw3r4vkh1sj/client_bind.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/yjlrfrxvayr1cmawrw9xplwc/server_bind_result.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/yymu13a2u107vzm6aruynptr/client_response.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/nndbpo4akoatyns11o0qzl68/bind_success.png">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/ib9si19xxf9shyubj3dvjhuo/bind_fail.png">
-<meta property="og:updated_time" content="2020-11-09T03:38:24.870Z">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/1.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/2.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/3.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/4.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/5.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/6.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/7.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/8.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/9.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/10.PNG">
+<meta property="og:updated_time" content="2021-07-07T07:17:08.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LDAP协议及AD域">
 <meta name="twitter:description" content="LDAP协议需求分析 集中管理，更易维护和优化，降低运维成本的需求。 实现使用PUSH和PULL的方法复制部分或全部数据的需求。 使用者根据需要使用ACL控制数据的读写权限的需求。  数据从不同地点读取但无需经常更新的需求。   LDAP概述Light Access Protocol，即轻量级目录访问协议。与目录访问协议X.500相比，LDAP略去X.500中许多不常使用的功能，以TCP/IP协议">
-<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/cv8iw9bvtdq7b5zm4tcyiway/20181110215227340.png">
+<meta name="twitter:image" content="https://blank-vax.github.io/2020/06/13/LDAP协议及AD域/1.PNG">
 
 
 
@@ -491,7 +491,7 @@
 </ul>
 <h3 id="LDAP概述"><a href="#LDAP概述" class="headerlink" title="LDAP概述"></a>LDAP概述</h3><p><strong>Light Access Protocol</strong>，即轻量级目录访问协议。与目录访问协议X.500相比，LDAP略去X.500中许多不常使用的功能，以TCP/IP协议为基础，使用389端口进行数据传输。LDAP只是一个协议。</p>
 <p>与数据库类似，目录服务引入键—值类型格式存储、整理及表达数据。与数据库不同的是，目录服务专门进行了读优化设计，采用树状结构组织数据，面向<strong>查找、搜索及读取操作</strong>做出优化。目录服务具有优异的读性能，而写性能较差，并且没有事务处理、回滚等复杂功能，不适用于存储修改频繁的数据。</p>
-<h3 id="基本模型"><a href="#基本模型" class="headerlink" title="基本模型"></a>基本模型</h3><p><img src="http://static.zybuluo.com/B1ank/cv8iw9bvtdq7b5zm4tcyiway/20181110215227340.png" alt="20181110215227340.png-27.2kB"></p>
+<h3 id="基本模型"><a href="#基本模型" class="headerlink" title="基本模型"></a>基本模型</h3><p><img src="/2020/06/13/LDAP协议及AD域/1.PNG" alt="20181110215227340.png-27.2kB"></p>
 <h4 id="常见描述——以果园中的苹果为例"><a href="#常见描述——以果园中的苹果为例" class="headerlink" title="常见描述——以果园中的苹果为例"></a>常见描述——以果园中的苹果为例</h4><blockquote>
 <p>假设你需要树上的一个苹果（一条记录），如何向园丁准确描述它的位置呢？首先需要说明它存在于哪棵树上（dc，相当于MYSQL的DB），然后说明从树根到那个苹果所在位置经过的所有树杈（ou），最后就是这个苹果的名字（uid，相当于MYSQL表主键id）。例如，LDAP的具体位置记录如下：</p>
 <ul>
@@ -526,29 +526,29 @@
 <h4 id="四大基本模型"><a href="#四大基本模型" class="headerlink" title="四大基本模型"></a>四大基本模型</h4><ul>
 <li>信息模型</li>
 </ul>
-<p><img src="http://static.zybuluo.com/B1ank/wrmydqg0ojdjuw31ktgiup9u/%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B.png" alt="信息模型.png-65.7kB"></p>
+<p><img src="/2020/06/13/LDAP协议及AD域/2.PNG" alt="信息模型.png-65.7kB"></p>
 <ul>
 <li>命名模型</li>
 </ul>
-<p><img src="http://static.zybuluo.com/B1ank/ces9r09lfl8zrhab3flyxjbh/%E5%91%BD%E5%90%8D%E6%A8%A1%E5%9E%8B.png" alt="命名模型.png-45.2kB"></p>
+<p><img src="/2020/06/13/LDAP协议及AD域/3.PNG" alt="命名模型.png-45.2kB"></p>
 <ul>
 <li>功能模型</li>
 </ul>
-<p><img src="http://static.zybuluo.com/B1ank/uiw5axd29q8w9tlrix3zlmod/%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9E%8B.png" alt="功能模型.png-65.4kB"></p>
+<p><img src="/2020/06/13/LDAP协议及AD域/4.PNG" alt="功能模型.png-65.4kB"></p>
 <ul>
 <li>安全模型</li>
 </ul>
-<p><img src="http://static.zybuluo.com/B1ank/3x3z7ynvndiv4ww2b2bza7hr/%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B.png" alt="安全模型.png-31.8kB"></p>
+<p><img src="/2020/06/13/LDAP协议及AD域/5.PNG" alt="安全模型.png-31.8kB"></p>
 <h3 id="LDAP使用"><a href="#LDAP使用" class="headerlink" title="LDAP使用"></a>LDAP使用</h3><p>统一身份认证改变原有认证策略，使用LDAP对所有需要认证的软件进行认证。完成统一身份认证之后，用户的所有信息都存储在AD Server中。终端用户在需要使用公司内部服务的时候，都需要通过AD服务器的认证。</p>
 <h3 id="LDAP认证过程"><a href="#LDAP认证过程" class="headerlink" title="LDAP认证过程"></a>LDAP认证过程</h3><p>LDAP采用C/S架构进行认证，常采用MD5认证方式，具体步骤如下：</p>
-<h4 id="客户端发送绑定请求"><a href="#客户端发送绑定请求" class="headerlink" title="客户端发送绑定请求"></a>客户端发送绑定请求</h4><p><img src="http://static.zybuluo.com/B1ank/no82tk78r9t4vlw3r4vkh1sj/client_bind.png" alt="client_bind.png-11.4kB"></p>
+<h4 id="客户端发送绑定请求"><a href="#客户端发送绑定请求" class="headerlink" title="客户端发送绑定请求"></a>客户端发送绑定请求</h4><p><img src="/2020/06/13/LDAP协议及AD域/6.PNG" alt="client_bind.png-11.4kB"></p>
 <p>初始化认证阶段，客户端发送绑定请求（bindRequest），具体内容如下：</p>
 <ul>
 <li>协议版本：3</li>
 <li>认证机制：sasl</li>
 <li>认证方式：DIGEST-MD5</li>
 </ul>
-<h4 id="服务器响应绑定结果"><a href="#服务器响应绑定结果" class="headerlink" title="服务器响应绑定结果"></a>服务器响应绑定结果</h4><p><img src="http://static.zybuluo.com/B1ank/yjlrfrxvayr1cmawrw9xplwc/server_bind_result.png" alt="server_bind_result.png-52.5kB"></p>
+<h4 id="服务器响应绑定结果"><a href="#服务器响应绑定结果" class="headerlink" title="服务器响应绑定结果"></a>服务器响应绑定结果</h4><p><img src="/2020/06/13/LDAP协议及AD域/7.PNG" alt="server_bind_result.png-52.5kB"></p>
 <p>与HTTPS通信过程类似，服务器返回一段十六进制加密内容serverSaslCreds，该内容主要包括服务器支持的加密方式、认证方式、算法标准以及验证时间戳等信息，要求客户端选择对应的加密标准并使用相同的sasl机制发送新的绑定请求以继续认证过程。对十六进制数据解码后结果如下：</p>
 <ul>
 <li>服务器支持的摘要认证qop：auth，auth-int，auth-conf</li>
@@ -559,7 +559,7 @@
 <li>Realm：xxx.com</li>
 </ul>
 <p>可以看到，LDAP多采用对称密码与消息摘要算法结合的方式实现身份认证与敏感数据传输。</p>
-<h4 id="客户端发送Response"><a href="#客户端发送Response" class="headerlink" title="客户端发送Response"></a>客户端发送Response</h4><p><img src="http://static.zybuluo.com/B1ank/yymu13a2u107vzm6aruynptr/client_response.png" alt="client_response.png-338.9kB"></p>
+<h4 id="客户端发送Response"><a href="#客户端发送Response" class="headerlink" title="客户端发送Response"></a>客户端发送Response</h4><p><img src="/2020/06/13/LDAP协议及AD域/8.PNG" alt="client_response.png-338.9kB"></p>
 <p>客户端收到服务器的响应之后，从服务器提供的各类标准中选择本次认证使用的标准，返回一段十六进制加密数据credentials，用以请求查询绑定的用户是否存在，发送内容经解码后如下：</p>
 <ul>
 <li>请求查询的用户登录名：test6</li>
@@ -574,9 +574,9 @@
 <li>最终摘要response：根据以上信息和所用密码，通过预设规律计算出的md5码</li>
 </ul>
 <h4 id="服务器返回查询结果"><a href="#服务器返回查询结果" class="headerlink" title="服务器返回查询结果"></a>服务器返回查询结果</h4><p>服务器会返回查询结果，若绑定成功，则报文解码如下：</p>
-<p><img src="http://static.zybuluo.com/B1ank/nndbpo4akoatyns11o0qzl68/bind_success.png" alt="bind_success.png-32.1kB"></p>
+<p><img src="/2020/06/13/LDAP协议及AD域/9.PNG" alt="bind_success.png-32.1kB"></p>
 <p>绑定失败则发送错误消息：</p>
-<p><img src="http://static.zybuluo.com/B1ank/ib9si19xxf9shyubj3dvjhuo/bind_fail.png" alt="bind_fail.png-50.2kB"></p>
+<p><img src="/2020/06/13/LDAP协议及AD域/10.PNG" alt="bind_fail.png-50.2kB"></p>
 <h2 id="AD域"><a href="#AD域" class="headerlink" title="AD域"></a>AD域</h2><h3 id="AD域概述"><a href="#AD域概述" class="headerlink" title="AD域概述"></a>AD域概述</h3><p>活动目录<strong>Active Directory</strong>的缩写，面向微软服务器的目录服务，LDAP协议下的一种产品。它为用户管理网络环境各个组成要素的标识和关系提供了一种有力的手段。</p>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
 <li>实现集中式管理。</li>
@@ -946,7 +946,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共147.0k字</span>
+  <span class="post-count">博客全站共146.7k字</span>
 </div>
 
         

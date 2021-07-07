@@ -140,14 +140,14 @@
 <meta property="og:site_name" content="B1ank">
 <meta property="og:description" content="21. Amicable numbersProblem DescriptionLet d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).If d(a) = b and d(b) = a, where a ≠ b, then a and b are a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/jl4413p7e5aimhgxns9y4oeb/26_recurring_cycle.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/absa60kgl3ibzasy8l2ff8eg/26_recurring_cycle2.PNG">
-<meta property="og:image" content="http://static.zybuluo.com/B1ank/vlazx7k4veo9vettw7mrf92s/28_problem.PNG">
-<meta property="og:updated_time" content="2020-11-09T16:21:33.188Z">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/10/Euler-Project(III)/Euler-Project(III">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/10/Euler-Project(III)/Euler-Project(III">
+<meta property="og:image" content="https://blank-vax.github.io/2020/11/10/Euler-Project(III)/Euler-Project(III">
+<meta property="og:updated_time" content="2021-07-07T04:08:23.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Euler-Project(III)">
 <meta name="twitter:description" content="21. Amicable numbersProblem DescriptionLet d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).If d(a) = b and d(b) = a, where a ≠ b, then a and b are a">
-<meta name="twitter:image" content="http://static.zybuluo.com/B1ank/jl4413p7e5aimhgxns9y4oeb/26_recurring_cycle.PNG">
+<meta name="twitter:image" content="https://blank-vax.github.io/2020/11/10/Euler-Project(III)/Euler-Project(III">
 
 
 
@@ -437,7 +437,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,719
+                  3,725
                 </span>
               
 
@@ -577,9 +577,9 @@
 <h3 id="Mathematical-Analysis"><a href="#Mathematical-Analysis" class="headerlink" title="Mathematical Analysis"></a>Mathematical Analysis</h3><p>考虑上面提到的一般化问题：求最小的k使得$a^{k} \equiv 1(mod n)$，若n与a互素，求出分母n的欧拉函数值$\Phi(n)$，则循环节长度k必为其约数；若n与a存在公因子则无解。由此可见通过暴力遍历的方法可以求出约数k，从而得出循环节。</p>
 <p>在RSA加密中，给定n=p<em>q，则p，q均为大质数，此时1/n循环节的长度length为gcd(p-1, q-1)的约数。假定已知length的因数分解$length = l<em>{1}^{c</em>{1}}</em>l<em>{2}^{c</em>{2}}<em>l<em>{3}^{c</em>{3}}</em>……*l<em>{k}^{c</em>{k}}$，则length共有$\prod[c_{i}+1]$个约数。将这些约数分别加上1，若某个约数y(j)加1后是质数，则y(j)+1可能是大整数n的约数。对所有小于$\sqrt{n}-1$的y(j)进行检验，必能找到一个恰好满足y(j)+1 = min(p, q)的数字。通过此种方法可以将大整数分解问题转换为求循环节的问题。在最坏的情况下，一个300位的大整数只需通过小于500次转换完成分解。</p>
 <p>关于循环节长度计算公式存在如下改进：</p>
-<p><img src="http://static.zybuluo.com/B1ank/jl4413p7e5aimhgxns9y4oeb/26_recurring_cycle.PNG" alt="26_recurring_cycle.PNG-34.7kB"></p>
+<p><img src="/2020/11/10/Euler-Project(III)/Euler-Project(III" alt="26_recurring_cycle.PNG-34.7kB">\1.PNG)</p>
 <p>该公式的应用如下：</p>
-<p><img src="http://static.zybuluo.com/B1ank/absa60kgl3ibzasy8l2ff8eg/26_recurring_cycle2.PNG" alt="26_recurring_cycle2.PNG-47.8kB"></p>
+<p><img src="/2020/11/10/Euler-Project(III)/Euler-Project(III" alt="26_recurring_cycle2.PNG-47.8kB">\2.PNG)</p>
 <p>参考论文：关于循环节长度计算公式的改进：<a href="https://www.ixueshu.com/document/6d924626ac37b4ee318947a18e7f9386.html" target="_blank" rel="noopener">https://www.ixueshu.com/document/6d924626ac37b4ee318947a18e7f9386.html</a></p>
 <h2 id="27-Quadratic-primes"><a href="#27-Quadratic-primes" class="headerlink" title="27. Quadratic primes"></a>27. Quadratic primes</h2><h3 id="Problem-Description-6"><a href="#Problem-Description-6" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Euler discovered the remarkable quadratic formula:</p>
 <script type="math/tex; mode=display">n^{2} + n + 41</script><p>It turns out that the formula will produce 40 primes for the consecutive integer values 0≤n≤39. However, when$ n=40, 40^{2}+40+41=40*(40+1)+41$ is divisible by 41, and certainly when $ n=41,41^{2}+41+41 $is clearly divisible by 41.</p>
@@ -601,7 +601,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line"><span class="comment"># This function is used to collect all the primes between 1 and 1000</span></span><br><span class="line">Prime = list(sympy.sieve.primerange(<span class="number">1</span>, <span class="number">1000</span>))</span><br><span class="line">dic = &#123;&#125;</span><br><span class="line">dic[<span class="string">'n'</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> range(<span class="number">-995</span>, <span class="number">999</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">for</span> b <span class="keyword">in</span> Prime:</span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        c = n*n + a*n + b</span><br><span class="line">        <span class="keyword">while</span> sympy.isprime(c):</span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">            c = n*n + a*n + b</span><br><span class="line">        n -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> n &gt; dic[<span class="string">'n'</span>]:</span><br><span class="line">            dic[<span class="string">'n'</span>] = n</span><br><span class="line">            dic[<span class="string">'a*b'</span>] = a*b</span><br><span class="line"><span class="keyword">print</span> dic[<span class="string">'a*b'</span>]</span><br></pre></td></tr></table></figure>
 <p>sympy库函数文档：<a href="http://docs.sympy.org/latest/modules/ntheory.html?highlight=prime#ntheory-functions-reference" target="_blank" rel="noopener">http://docs.sympy.org/latest/modules/ntheory.html?highlight=prime#ntheory-functions-reference</a></p>
 <h2 id="28-Number-spiral-diagonals"><a href="#28-Number-spiral-diagonals" class="headerlink" title="28. Number spiral diagonals"></a>28. Number spiral diagonals</h2><h3 id="Problem-Description-7"><a href="#Problem-Description-7" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:</p>
-<p><img src="http://static.zybuluo.com/B1ank/vlazx7k4veo9vettw7mrf92s/28_problem.PNG" alt="28_problem.PNG-10.2kB"></p>
+<p><img src="/2020/11/10/Euler-Project(III)/Euler-Project(III" alt="28_problem.PNG-10.2kB">\3.PNG)</p>
 <p>It can be verified that the sum of the numbers on the diagonals is 101.</p>
 <p>What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?</p>
 <h3 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gridA: 5*5 there are 3 circles</span></span><br><span class="line"><span class="comment"># gridB: 7*7 there are 4 circles</span></span><br><span class="line"><span class="comment"># gridN: N*N there must be (N+1)/2 circles</span></span><br><span class="line"><span class="comment"># Arithmetic progression</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCircles</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (n+<span class="number">1</span>) / <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countSum</span><span class="params">(circle_number)</span>:</span></span><br><span class="line">    final_sum = <span class="number">0</span></span><br><span class="line">    step = <span class="number">2</span></span><br><span class="line">    origin_number = <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(circle_number<span class="number">-1</span>):</span><br><span class="line">        final_sum += <span class="number">4</span>*origin_number + <span class="number">6</span>*step</span><br><span class="line">        origin_number += <span class="number">4</span>*step + <span class="number">2</span></span><br><span class="line">        step += <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> final_sum</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    final_result = countSum(getCircles(<span class="number">1001</span>))</span><br><span class="line">    <span class="keyword">print</span> final_result+<span class="number">1</span></span><br></pre></td></tr></table></figure>
@@ -922,7 +922,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共147.0k字</span>
+  <span class="post-count">博客全站共146.7k字</span>
 </div>
 
         
