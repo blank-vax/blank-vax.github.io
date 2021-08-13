@@ -119,7 +119,7 @@
 
 
 
-  <meta name="keywords" content="Windows Foundation,">
+  <meta name="keywords" content="IoT Foundation,Assembly,">
 
 
 
@@ -132,18 +132,18 @@
 
 
 
-<meta name="description" content="Windows常见目录 Documents and Settings/用户 存储用户设置，包括用户文档、上网浏览信息、配置文件等数据  Windows目录 Windows安装目录，用来放置Windows程序的使用数据、设置等文件。不建议修改此目录下数据，易造成Windows系统使用异常  Program File 应用程序文件夹，一般软件默认安装位置。当然此处也包含系统自带的应用程序。Window">
-<meta name="keywords" content="Windows Foundation">
+<meta name="description" content="0x00 指令系统总结8086CPU提供以下几大类指令。 数据传送指令这些指令实现寄存器和内存、寄存器之间的单个数据传送。典型指令如mov、push、pop、pushf、popf、xchg等。 算数运算指令这些指令实现寄存器和内存中数据的算术运算，它们的执行结果影响标志寄存器的sf、zf、of、cf、pf、af等位。典型指令如add、sub、adc、sbb、inc、dec、cmp、imul、idi">
+<meta name="keywords" content="IoT Foundation,Assembly">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows基础及常用命令">
-<meta property="og:url" content="https://blank-vax.github.io/2020/07/23/Windows基础及常用命令/index.html">
+<meta property="og:title" content="汇编语言学习笔记（六）">
+<meta property="og:url" content="https://blank-vax.github.io/2021/08/13/汇编语言学习笔记（六）/index.html">
 <meta property="og:site_name" content="B1ank">
-<meta property="og:description" content="Windows常见目录 Documents and Settings/用户 存储用户设置，包括用户文档、上网浏览信息、配置文件等数据  Windows目录 Windows安装目录，用来放置Windows程序的使用数据、设置等文件。不建议修改此目录下数据，易造成Windows系统使用异常  Program File 应用程序文件夹，一般软件默认安装位置。当然此处也包含系统自带的应用程序。Window">
+<meta property="og:description" content="0x00 指令系统总结8086CPU提供以下几大类指令。 数据传送指令这些指令实现寄存器和内存、寄存器之间的单个数据传送。典型指令如mov、push、pop、pushf、popf、xchg等。 算数运算指令这些指令实现寄存器和内存中数据的算术运算，它们的执行结果影响标志寄存器的sf、zf、of、cf、pf、af等位。典型指令如add、sub、adc、sbb、inc、dec、cmp、imul、idi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-07-07T12:43:49.371Z">
+<meta property="og:updated_time" content="2021-08-13T03:34:00.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows基础及常用命令">
-<meta name="twitter:description" content="Windows常见目录 Documents and Settings/用户 存储用户设置，包括用户文档、上网浏览信息、配置文件等数据  Windows目录 Windows安装目录，用来放置Windows程序的使用数据、设置等文件。不建议修改此目录下数据，易造成Windows系统使用异常  Program File 应用程序文件夹，一般软件默认安装位置。当然此处也包含系统自带的应用程序。Window">
+<meta name="twitter:title" content="汇编语言学习笔记（六）">
+<meta name="twitter:description" content="0x00 指令系统总结8086CPU提供以下几大类指令。 数据传送指令这些指令实现寄存器和内存、寄存器之间的单个数据传送。典型指令如mov、push、pop、pushf、popf、xchg等。 算数运算指令这些指令实现寄存器和内存中数据的算术运算，它们的执行结果影响标志寄存器的sf、zf、of、cf、pf、af等位。典型指令如add、sub、adc、sbb、inc、dec、cmp、imul、idi">
 
 
 
@@ -173,13 +173,13 @@
 
 
 
-  <link rel="canonical" href="https://blank-vax.github.io/2020/07/23/Windows基础及常用命令/">
+  <link rel="canonical" href="https://blank-vax.github.io/2021/08/13/汇编语言学习笔记（六）/">
 
 
 
 
 
-  <title>Windows基础及常用命令 | B1ank</title>
+  <title>汇编语言学习笔记（六） | B1ank</title>
   
 
 
@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/2020/07/23/Windows基础及常用命令/">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/2021/08/13/汇编语言学习笔记（六）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="B1ank">
@@ -345,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Windows基础及常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">汇编语言学习笔记（六）</h1>
         
 
         <div class="post-meta">
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T00:20:00+08:00">
-                2020-07-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-13T11:33:00+08:00">
+                2021-08-13
               </time>
             
 
@@ -380,8 +380,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computer-Foundation/" itemprop="url" rel="index">
-                    <span itemprop="name">Computer Foundation</span>
+                  <a href="/categories/Binary/" itemprop="url" rel="index">
+                    <span itemprop="name">Binary</span>
                   </a>
                 </span>
 
@@ -398,8 +398,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/23/Windows基础及常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/23/Windows基础及常用命令/" itemprop="commentCount"></span>
+                <a href="/2021/08/13/汇编语言学习笔记（六）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/08/13/汇编语言学习笔记（六）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +407,7 @@
 
           
           
-             <span id="/2020/07/23/Windows基础及常用命令/" class="leancloud_visitors" data-flag-title="Windows基础及常用命令">
+             <span id="/2021/08/13/汇编语言学习笔记（六）/" class="leancloud_visitors" data-flag-title="汇编语言学习笔记（六）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -433,7 +433,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,482
+                  2,029
                 </span>
               
 
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  8
                 </span>
               
             </div>
@@ -470,118 +470,49 @@
       
 
       
-        <h2 id="Windows常见目录"><a href="#Windows常见目录" class="headerlink" title="Windows常见目录"></a>Windows常见目录</h2><ul>
-<li><p>Documents and Settings/用户</p>
-<p>存储用户设置，包括用户文档、上网浏览信息、配置文件等数据</p>
-</li>
-<li><p>Windows目录</p>
-<p>Windows安装目录，用来放置Windows程序的使用数据、设置等文件。不建议修改此目录下数据，易造成Windows系统使用异常</p>
-</li>
-<li><p>Program File</p>
-<p>应用程序文件夹，一般软件默认安装位置。当然此处也包含系统自带的应用程序。Windows10系统中，64位用户多出一个Program Files(x86)文件夹，用作系统中32位软件的安装目录</p>
-</li>
-<li><p>Temp目录 临时文件目录</p>
-<p>文件路径：C:\Users\user\AppData\Local\Temp</p>
-<p>上面存在许多垃圾文件，包括使用压缩软件等解压的临时文件。此目录也是病毒检测过程中快速扫描的位置。</p>
-</li>
-</ul>
-<h2 id="Windows注册表"><a href="#Windows注册表" class="headerlink" title="Windows注册表"></a>Windows注册表</h2><p>注册表是Windows操作系统中的一个核心数据库，其中存放各种参数，直接控制Windows的启动、硬件驱动程序的装装载以及一些Windows应用程序的运行。</p>
-<p>恶意病毒通常通过修改注册表的键<strong>HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main Start Page</strong>项对应的URL值来修改IE起始页面。</p>
-<h2 id="系统启动项"><a href="#系统启动项" class="headerlink" title="系统启动项"></a>系统启动项</h2><p>开机时系统会在前台或后台自动运行的程序。查看方式为msconfig命令。</p>
-<p>将文件、程序等放入位于<strong>C:\Users\user\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</strong>的启动文件夹中即可实现开机自启动。</p>
-<h2 id="设备管理器"><a href="#设备管理器" class="headerlink" title="设备管理器"></a>设备管理器</h2><p>设备管理器常被用来查看和更改设备属性、更新设备驱动程序、配置设备设置和卸载设备。所有设备通过<strong>设备驱动程序</strong>与Windows进行通信。</p>
+        <h2 id="0x00-指令系统总结"><a href="#0x00-指令系统总结" class="headerlink" title="0x00 指令系统总结"></a>0x00 指令系统总结</h2><p>8086CPU提供以下几大类指令。</p>
+<h3 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h3><p>这些指令实现寄存器和内存、寄存器之间的<strong>单个数据传送</strong>。典型指令如mov、push、pop、pushf、popf、xchg等。</p>
+<h3 id="算数运算指令"><a href="#算数运算指令" class="headerlink" title="算数运算指令"></a>算数运算指令</h3><p>这些指令实现寄存器和内存中数据的算术运算，它们的执行结果影响标志寄存器的sf、zf、of、cf、pf、af等位。典型指令如add、sub、adc、sbb、inc、dec、cmp、imul、idiv、aaa等。</p>
+<h3 id="逻辑指令"><a href="#逻辑指令" class="headerlink" title="逻辑指令"></a>逻辑指令</h3><p>除not指令外，其他逻辑指令的执行结果均影响标志寄存器的相关标志位。典型指令如and、or、not、xor、test、shl、shr、sal、sar、rol、ror、rcl、rcr等。</p>
+<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>可以修改IP或同时修改IP和CS的指令统称为转移指令。转移指令可分为以下几类。</p>
 <ul>
-<li>超融合迁移（虚拟机网卡网络适配器）</li>
-<li>云桌面外设（USB白名单）</li>
+<li>无条件转移指令，如jmp；</li>
+<li>条件转移指令，如jcxz、je、jb、ja、jnb、jna等；</li>
+<li>循环指令，如loop；</li>
+<li>过程，如call、ret、retf；</li>
+<li>中断，如int、iret。</li>
 </ul>
-<p>使用设备管理器可以安装和更新硬件设备的驱动程序、修改这些设备的硬件设置以及通过查看硬件设备状态信息来排查问题。</p>
-<h2 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h2><p>Windows任务管理器提供了有关计算机性能的信息，并显示了计算机上所运行的程序和进程的详细信息（哪个用户创建了哪个进程或程序，该进程或程序占用了多少CPU及其他系统资源）。</p>
+<h3 id="处理机控制指令"><a href="#处理机控制指令" class="headerlink" title="处理机控制指令"></a>处理机控制指令</h3><p>这些指令对标志寄存器或其他处理机状态进行设置。典型指令如cld、std、cli、sti、nop、clc、cmc、stc、hlt、wait、esc、lock等。</p>
+<h3 id="串处理指令"><a href="#串处理指令" class="headerlink" title="串处理指令"></a>串处理指令</h3><p>这些指令对内存中的批量数据进行处理，典型指令如movsb、movsw、cmps、scas、lods、stos等。此类指令可以和rep、repe、repne等前缀指令配合使用，以实现批量数据处理。</p>
+<h2 id="0x01-直接定址表"><a href="#0x01-直接定址表" class="headerlink" title="0x01 直接定址表"></a>0x01 直接定址表</h2><h3 id="特殊标号"><a href="#特殊标号" class="headerlink" title="特殊标号"></a>特殊标号</h3><p>可以在代码段中使用标号来标记指令、数据和段地起始地址。同时，引入一种新的特殊标号，不但表示内存单元地地址，还表示内存单元的长度（字节单元/字单元/双字单元）。以如下程序为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line">code segment </span><br><span class="line">		a db 1,2,3,4,5,6,7,8</span><br><span class="line">		b dw 0</span><br><span class="line">start:	mov si,0</span><br><span class="line">		mov cx,8</span><br><span class="line">s:		mov al,a[si]</span><br><span class="line">		mov ah,0</span><br><span class="line">		add b,ax</span><br><span class="line">		inc si</span><br><span class="line">		loop s</span><br><span class="line">		mov ax,4c00h</span><br><span class="line">		int 21h</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>code段中使用的标号a、b后面没有”:”，它们同时描述内存地址和单元长度的标号。标号a描述了地址<code>code:0</code>，且该地址后的内存单元均为字节单元；标号b描述了地址<code>code:8</code>，且该地址后的内存单元均为字单元。</p>
+<p>在其他段中同样可以使用数据标号来描述存储数据的单元地址和长度。注意，<strong>后面加有”:”的地址标号只能在代码段中使用，不能在其他段中使用</strong>。如果想在代码段中直接使用数据标号访问数据，则需要使用伪指令<code>assume</code>将标号所在的段和一个段寄存器联系起来。</p>
+<p>可以将标号当作数据来定义，此时编译器将标号所表示的地址当作数据的值。</p>
+<h3 id="直接定址表"><a href="#直接定址表" class="headerlink" title="直接定址表"></a>直接定址表</h3><p>通过依据数据，直接计算出所要找的元素位置的表，称为直接定址表。使用根据功能号查找地址表的方法，程序的结构清晰，便于扩充。若加入一个新的功能子程序，则只需在地址表中加入它的入口地址即可。</p>
+<h2 id="0x02-键盘输入-amp-磁盘读写"><a href="#0x02-键盘输入-amp-磁盘读写" class="headerlink" title="0x02 键盘输入&amp;磁盘读写"></a>0x02 键盘输入&amp;磁盘读写</h2><h3 id="int9h中断例程处理键盘输入"><a href="#int9h中断例程处理键盘输入" class="headerlink" title="int9h中断例程处理键盘输入"></a>int9h中断例程处理键盘输入</h3><p>一般的键盘输入，在CPU执行完<code>int 9</code>中断例程后，都放入键盘缓冲区中。键盘缓冲区中有16个字单元，可以存储15个按键的扫描码和对应的ASCII码。缓冲区的字单元中，<strong>高位字节存储扫描码</strong>，<strong>低位字节存储ASCII码</strong>。</p>
+<h3 id="int16h中断例程读取键盘缓冲区"><a href="#int16h中断例程读取键盘缓冲区" class="headerlink" title="int16h中断例程读取键盘缓冲区"></a>int16h中断例程读取键盘缓冲区</h3><p>BIOS提供<code>int 16h</code>中断例程，该例程的0号功能为从键盘缓冲区中读取一个键盘输入。</p>
+<p><code>int 16h</code>中断引发后，若缓冲区中不存在任何数据，则保持循环等待状态，一直等到<code>int 9h</code>中断发生，将数据送入缓冲区即停止等待。该过程执行IF=1的相关设置指令。</p>
+<h3 id="字符串输入"><a href="#字符串输入" class="headerlink" title="字符串输入"></a>字符串输入</h3><p>最基本的字符串输入程序具备以下功能：</p>
 <ul>
-<li>应用程序</li>
-<li>进程（*32代表32位系统进程）</li>
-<li>服务</li>
-<li>性能（详细Windows系统资源占用情况）</li>
-<li>联网（网卡流量）</li>
-<li>用户（当前运行的用户名）</li>
+<li>输入的同时产生回显</li>
+<li>输入回车符后，字符串输入结束</li>
+<li>能够删除已经输入的字符</li>
 </ul>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是正在运行的程序实例。每个进程存在属于自己的地址空间，一般包括文本区域（text region）、数据区域（data region）和堆栈（stack region）。文本区域存储<strong>处理器执行的代码</strong>；数据区域存储<strong>变量和进程执行期间使用的动态分配的内存</strong>；堆栈区域存储<strong>活动过程调用的指令和本地变量</strong>。</p>
+<p>部分功能函数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">charstack:	jmp short charstart</span><br><span class="line">table		dw charpush,charpop,charshow			;定义输入，删除和回显三个功能</span><br><span class="line">top			dw 0									;栈顶</span><br><span class="line"></span><br><span class="line">charstart:	push bx</span><br><span class="line">			push dx</span><br><span class="line">			push di</span><br><span class="line">			push es</span><br><span class="line">			</span><br><span class="line">			cmp ah,2								;提供0，1，2三号功能，若ah大于2则结束程序</span><br><span class="line">			ja sret</span><br><span class="line">			mov bl,ah</span><br><span class="line">			mov bh,0</span><br><span class="line">			add bx,bx								;address=func_index*2</span><br><span class="line">			jmp word ptr table[bx]					;采用直接定址表调用函数</span><br><span class="line">			</span><br><span class="line">charpush:	mov bx,top								;字符入栈</span><br><span class="line">			mov [si][bx],al</span><br><span class="line">			inc top</span><br><span class="line">			jmp sret</span><br><span class="line"></span><br><span class="line">charpop:	cmp top,0								;比较字符栈中是否只剩下结尾标识0</span><br><span class="line">			je sret</span><br><span class="line">			dec top</span><br><span class="line">			mov bx,top</span><br><span class="line">			mov al,[si][bx]</span><br><span class="line">			jmp sret</span><br><span class="line"></span><br><span class="line">charshow:	mov bx,0b800h</span><br><span class="line">			mov es,bx</span><br><span class="line">			mov al,160</span><br><span class="line">			mov ah,0</span><br><span class="line">			mul dh</span><br><span class="line">			mov di,ax</span><br><span class="line">			add dl,dl								;设置显示位置等参数</span><br><span class="line">			mov dh,0</span><br><span class="line">			add di,dx</span><br><span class="line">			</span><br><span class="line">			mov bx,0</span><br><span class="line"></span><br><span class="line">charshows:	cmp bx,top								;若为结尾，显示&apos;&apos;，进入结束阶段</span><br><span class="line">			jne noempty</span><br><span class="line">			mov byte ptr es:[di],&apos;&apos;</span><br><span class="line">			jmp sret</span><br><span class="line">noempty:	mov al,[si][bx]</span><br><span class="line">			mov es:[di],al</span><br><span class="line">			mov byte ptr es:[di+2],&apos;&apos;</span><br><span class="line">			inc bx</span><br><span class="line">			add di,2</span><br><span class="line">			jmp charshows</span><br><span class="line"></span><br><span class="line">sret:		pop es</span><br><span class="line">			pop di</span><br><span class="line">			pop dx</span><br><span class="line">			pop bx</span><br><span class="line">			ret</span><br></pre></td></tr></table></figure>
+<p>完整接收字符串输入子程序如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">getstr:		push ax</span><br><span class="line"></span><br><span class="line">getstrs:	;输入字符并显示在屏幕上</span><br><span class="line">			mov ah,0</span><br><span class="line">			int 16h</span><br><span class="line">			cmp al,20h</span><br><span class="line">			jb nochar								;ASCII码小于20h，说明不是字符</span><br><span class="line">			mov ah,0</span><br><span class="line">			call charstack							;字符入栈</span><br><span class="line">			mov ah,2</span><br><span class="line">			call charstack							;显示栈中字符</span><br><span class="line">			jmp getstrs</span><br><span class="line"></span><br><span class="line">nochar:		;输入非字符，分退格和Enter两种情况处理</span><br><span class="line">			cmp ah,0eh								;退格的扫描码</span><br><span class="line">			je backspace</span><br><span class="line">			cmp ah,1ch								;Enter键扫描码</span><br><span class="line">			je enter</span><br><span class="line">			jmp getstrs</span><br><span class="line"></span><br><span class="line">backspace:	;删除字符并回显</span><br><span class="line">			mov ah,1</span><br><span class="line">			call charstack							;字符出栈</span><br><span class="line">			mov ah,2</span><br><span class="line">			call charstack							;显示栈中字符</span><br><span class="line">			jmp getstrs</span><br><span class="line"></span><br><span class="line">enter:		;输入完毕，显示完整字符串</span><br><span class="line">			mov al,0</span><br><span class="line">			mov ah,0</span><br><span class="line">			call charstack							;0入栈</span><br><span class="line">			mov ah,2</span><br><span class="line">			call charstack							;显示栈中的字符</span><br><span class="line">			pop ax</span><br><span class="line">			ret</span><br></pre></td></tr></table></figure>
+<h3 id="int13h中断例程读写磁盘"><a href="#int13h中断例程读写磁盘" class="headerlink" title="int13h中断例程读写磁盘"></a>int13h中断例程读写磁盘</h3><p>3.5英寸软盘分为上下两面，每面有80个磁道，每个磁道分为18个扇区，每个扇区的大小为512字节，总存储空间约为1.44MB。</p>
+<p>磁盘的实际访问由磁盘控制器进行，只能以扇区为单位对磁盘进行读写。读写扇区时需要给出面号、磁道号和扇区号，面号和磁道号从0开始，扇区号从1开始。</p>
+<p>注意，直接向磁盘扇区写入数据有可能覆盖掉重要信息。若向软盘的0面0道1扇区中写入数据，则要使软盘在现有操作系统下可以使用，则必须重新格式化。</p>
+<p>对位于不同磁道、面上的所有扇区进行统一编号，生成逻辑扇区编号。<strong>逻辑扇区号=(面号*80+磁道号)*18+扇区号-1</strong>。</p>
+<h2 id="0x03-Intel系列微处理器的三种工作模式"><a href="#0x03-Intel系列微处理器的三种工作模式" class="headerlink" title="0x03 Intel系列微处理器的三种工作模式"></a>0x03 Intel系列微处理器的三种工作模式</h2><p>微机中常用的Intel系列微处理器的主要发展过程是：8080，8086、8088，80186，80286，80386，80486，Pentium，Pentium II，Pentium III，Pentium 4。</p>
+<p>8086/8088不具备实现一个完善的多任务操作系统的功能，为此Intel研发了80286，该处理器具备对多任务系统的支持。随后，Intel开发了80386微处理器，在以下三个模式下工作：</p>
 <ul>
-<li>虚拟机出现CPU、内存异常偏高时，可以通过任务管理器查看进程的资源利用率</li>
-<li>病毒常伪装成<strong>svchost.exe</strong>，<strong>explorer.exe</strong>和<strong>rundll32.exe</strong>等系统进程，当发现这些进程CPU及内存资源占用异常时，需要重点查杀</li>
-</ul>
-<h2 id="组策略"><a href="#组策略" class="headerlink" title="组策略"></a>组策略</h2><p>组策略在部分意义上可控制用户可以或无法在计算机上执行什么操作，提供了操作系统、应用程序和活动目录中用户设置的集中化管理和配置。在运行模式下输入<strong>gpedit.msc</strong>可以打开组策略配置。</p>
-<h3 id="刷新时间"><a href="#刷新时间" class="headerlink" title="刷新时间"></a>刷新时间</h3><p>默认情况下，Mircosoft Windows每90分钟刷新一次组策略，随机偏移为30分钟。在域控制器上，Microsoft Windows每隔5分钟刷新一次。</p>
-<h3 id="处理顺序"><a href="#处理顺序" class="headerlink" title="处理顺序"></a>处理顺序</h3><ul>
-<li>本地——任何在本地计算机的设置。在Windows Vista和之后的Windows版本中，允许每个用户账户分别拥有组策略</li>
-<li>站点——任何与计算机所在的活动目录站点关联的组策略。活动目录站点旨在管理促进物理上接近的计算机的一种逻辑分组。如果多个策略链接到一个站点，将按照管理员设置的顺序处理</li>
-<li>域——任何与计算机所在Windows域关联的组策略。如果多个策略链接到一个域，将按照管理员设置的顺序处理</li>
-<li>组织单元——任何与计算机或用户所在的活动目录组织单元（OU）关联的组策略。OU是帮助组织和管理一组用户、计算机或其他活动目录对象的逻辑单元。如果多个策略链接到一个OU，将按照管理员设置的顺序处理</li>
-</ul>
-<h2 id="安全组"><a href="#安全组" class="headerlink" title="安全组"></a>安全组</h2><p>可以列出用于定义资源和对象权限的任意访问控制列表（DACL）中的组。Windows安全组策略其实是组策略中关于安全设置的部分，囊括了账户安全策略、Windows防火墙配置等配置目录。</p>
-<p>在运行任务栏输入<strong>secpol.msc</strong>，修改安全组相关配置之后，需要重新登录Windows用户方可生效。</p>
-<h2 id="工作组"><a href="#工作组" class="headerlink" title="工作组"></a>工作组</h2><p>工作组就是将不同的电脑按功能分别列入不同的组中，以方便管理。</p>
-<p>Windows 9x/NT/2000引入工作组概念后，若要访问某个系列的资源，需要在网上邻居内找到对应的工作组名，即可找到该系列资源。</p>
-<h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><p>工作组中一切设置在本机上进行，包括各种策略、用户登录等过程，对应密码也存放在本机数据库中进行验证。</p>
-<p>域作为工作组的升级版，计算机的各种策略通过域控制器统一设定，用户名和密码的验证过程也在域控制器中完成。因此，用户信息可以实现在域中电脑上的漫游。</p>
-<h3 id="域控制器"><a href="#域控制器" class="headerlink" title="域控制器"></a>域控制器</h3><p>在域模式下，至少有一台服务器负责每台联入网络的电脑和用户的验证工作，被称为<strong>域控制器（Domain Controller，DC）</strong>。域控制器包含由这个域的账户、密码、属于这个域的计算机等信息构成的数据库。</p>
-<h2 id="安全日志"><a href="#安全日志" class="headerlink" title="安全日志"></a>安全日志</h2><p>Windows用户所有的登录注销、安全策略更改都会以安全日志的形式记录。</p>
-<p>日志位置：计算机管理—&gt;系统工具—&gt;事件查看器—&gt;Windows日志—&gt;安全</p>
-<ul>
-<li>溯源黑客入侵行为</li>
-<li>通过事件ID快速检索日志</li>
-</ul>
-<h2 id="常用网络排查命令"><a href="#常用网络排查命令" class="headerlink" title="常用网络排查命令"></a>常用网络排查命令</h2><h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3><p>通过发送Internet控制消息协议（ICMP）验证与其他TCP/IP计算机的IP级连接回显请求消息。显示相应的回音回复信息的接受以及往返时间。该命令可用于解决连接、可访问性和名称解析等问题。</p>
-<h4 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h4><ul>
-<li><code>Ping IP/域名 -t</code>：长时间执行Ping命令，以推断连接健壮性</li>
-<li><code>Ping IP/域名 -n number</code>： 指定发送数据包的数量</li>
-<li><code>Ping IP/域名 -l length</code>： 指定发送数据包的长度（默认长度为32Bytes）</li>
-</ul>
-<p>一般使用<code>Ping IP/域名 -l big-number -n big-number</code>探测连接稳定性，其中big-number为大于1000的数字，需要多次尝试以找到合适的数据包长度。</p>
-<h4 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h4><ul>
-<li>找不到主机：排查DNS是否正确解析指定域名</li>
-<li>请求超时：目标地址禁止Ping/目标地址不存在</li>
-<li>传输失败：主机网络存在问题</li>
-</ul>
-<h3 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h3><p>显示和修改地址解析协议缓存中的条目，其中包含一个或多个用于存储IP地址及其解析结果的以太网或令牌环物理地址的表。计算机上安装的每个以太网或令牌环网络适配器都存在单独的表。</p>
-<h4 id="常用选项-1"><a href="#常用选项-1" class="headerlink" title="常用选项"></a>常用选项</h4><ul>
-<li><code>Arp -a</code>：显示所有的地址信息及接口信息</li>
-<li><code>Arp -s ip_addr mac_addr</code>：静态配置ARP地址表项</li>
-<li><code>Arp -d</code>：用于删除当前ARP信息</li>
-</ul>
-<h3 id="Tracert"><a href="#Tracert" class="headerlink" title="Tracert"></a>Tracert</h3><p>确定通过发送Internet控制消息协议（ICMP）回显请求或以递增的生存时间（TTL）字段值向目标发送消息。路径显示源主机和目标之间路径中路由器的近/侧路由器接口列表。无参数使用。</p>
-<h4 id="常用选项-2"><a href="#常用选项-2" class="headerlink" title="常用选项"></a>常用选项</h4><ul>
-<li><p><code>Tracert -d</code>：不将地址解析成主机名</p>
-</li>
-<li><p><code>Tracert -h maximum_hops</code>：搜索目标的最大跃点数</p>
-</li>
-</ul>
-<h3 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h3><p>显示并修改本地IP路由表中的输入。无参数使用。需要<strong>以管理员身份打开</strong>以进行相关配置。常用命令结构：<code>Route command ip_addr mask mask_number gateway_addr</code>。</p>
-<h4 id="常用选项-3"><a href="#常用选项-3" class="headerlink" title="常用选项"></a>常用选项</h4><ul>
-<li><p>command</p>
-<ul>
-<li><code>Route PRINT</code>：打印路由表</li>
-<li><code>Route ADD</code>：添加静态路由（临时，重启后消失）</li>
-<li><code>Route DELETE</code>：删除路由信息</li>
-<li><code>Route CHANGE</code>：修改现有路由的网关和跃点数</li>
-</ul>
-</li>
-<li><p><code>Route -p</code>：使得对路由表的添加操作永久生效</p>
-</li>
-</ul>
-<h3 id="Ipconfig"><a href="#Ipconfig" class="headerlink" title="Ipconfig"></a>Ipconfig</h3><p>显示所有当前TCP/IP网络配置值，并刷新动态主机配置协议（DHCP）和域名系统（DNS）设置。无参数使用时，为所有适配器显示Internet协议版本4和IPv6地址、子网掩码和默认网关。</p>
-<h4 id="常用选项-4"><a href="#常用选项-4" class="headerlink" title="常用选项"></a>常用选项</h4><ul>
-<li><code>Ipconfig /all</code>：显示所有网络适配器的所有信息</li>
-<li><code>Ipconfig /release</code>：释放当前所有网卡的DHCP信息</li>
-<li><code>Ipconfig /renew</code>：释放当前网卡的所有DHCP信息并重新获取</li>
-<li><code>Ipconfig /displaydns</code>：展示当前DNS缓存信息</li>
-<li><code>Ipconfig /flushdns</code>：清理当前DNS缓存信息</li>
-</ul>
-<h3 id="Netstat"><a href="#Netstat" class="headerlink" title="Netstat"></a>Netstat</h3><p>显示有源TCP连接，计算机在哪个端口被侦听，以太网统计，IP路由表，IPv4统计和IPv6统计。无参数使用时，网络显示激活TCP连接。</p>
-<h4 id="常用选项-5"><a href="#常用选项-5" class="headerlink" title="常用选项"></a>常用选项</h4><ul>
-<li><code>Netstat -a</code>：展示当前监听的所有网口信息</li>
-<li><code>Netstat -n</code>：展示所有TCP&amp;UDP连接信息及端口详细信息</li>
-<li><code>Netstat -o</code>：展示当前连接的PID</li>
-<li><code>Netstat -p</code>：指定当前监听协议</li>
+<li>实模式：工作方式相当于一个8086。</li>
+<li>保护模式：提供支持多任务环境的工作方式，建立保护机制。</li>
+<li>虚拟8086模式：可从保护模式切换至其中的一种8086工作方式。该方式的提供使用户可以方便地在保护模式下运行一个或多个原8086程序。</li>
 </ul>
 
       
@@ -600,7 +531,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Windows-Foundation/" rel="tag"><i class="fa fa-tag"></i> Windows Foundation</a>
+            <a href="/tags/IoT-Foundation/" rel="tag"><i class="fa fa-tag"></i> IoT Foundation</a>
+          
+            <a href="/tags/Assembly/" rel="tag"><i class="fa fa-tag"></i> Assembly</a>
           
         </div>
       
@@ -613,8 +546,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/15/云计算基础/" rel="next" title="云计算基础">
-                <i class="fa fa-chevron-left"></i> 云计算基础
+              <a href="/2021/08/13/汇编语言学习笔记（五）/" rel="next" title="汇编语言学习笔记（五）">
+                <i class="fa fa-chevron-left"></i> 汇编语言学习笔记（五）
               </a>
             
           </div>
@@ -622,10 +555,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/09/26/21秋招深信服秋招面经/" rel="prev" title="21深信服秋招面试">
-                21深信服秋招面试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -837,7 +766,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows常见目录"><span class="nav-number">1.</span> <span class="nav-text">Windows常见目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows注册表"><span class="nav-number">2.</span> <span class="nav-text">Windows注册表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统启动项"><span class="nav-number">3.</span> <span class="nav-text">系统启动项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备管理器"><span class="nav-number">4.</span> <span class="nav-text">设备管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务管理器"><span class="nav-number">5.</span> <span class="nav-text">任务管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">6.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组策略"><span class="nav-number">7.</span> <span class="nav-text">组策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#刷新时间"><span class="nav-number">7.1.</span> <span class="nav-text">刷新时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理顺序"><span class="nav-number">7.2.</span> <span class="nav-text">处理顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全组"><span class="nav-number">8.</span> <span class="nav-text">安全组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作组"><span class="nav-number">9.</span> <span class="nav-text">工作组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域"><span class="nav-number">10.</span> <span class="nav-text">域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域控制器"><span class="nav-number">10.1.</span> <span class="nav-text">域控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全日志"><span class="nav-number">11.</span> <span class="nav-text">安全日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用网络排查命令"><span class="nav-number">12.</span> <span class="nav-text">常用网络排查命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ping"><span class="nav-number">12.1.</span> <span class="nav-text">Ping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用选项"><span class="nav-number">12.1.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误提示"><span class="nav-number">12.1.2.</span> <span class="nav-text">错误提示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP"><span class="nav-number">12.2.</span> <span class="nav-text">ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用选项-1"><span class="nav-number">12.2.1.</span> <span class="nav-text">常用选项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tracert"><span class="nav-number">12.3.</span> <span class="nav-text">Tracert</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用选项-2"><span class="nav-number">12.3.1.</span> <span class="nav-text">常用选项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Route"><span class="nav-number">12.4.</span> <span class="nav-text">Route</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用选项-3"><span class="nav-number">12.4.1.</span> <span class="nav-text">常用选项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ipconfig"><span class="nav-number">12.5.</span> <span class="nav-text">Ipconfig</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用选项-4"><span class="nav-number">12.5.1.</span> <span class="nav-text">常用选项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Netstat"><span class="nav-number">12.6.</span> <span class="nav-text">Netstat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用选项-5"><span class="nav-number">12.6.1.</span> <span class="nav-text">常用选项</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-指令系统总结"><span class="nav-number">1.</span> <span class="nav-text">0x00 指令系统总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据传送指令"><span class="nav-number">1.1.</span> <span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算数运算指令"><span class="nav-number">1.2.</span> <span class="nav-text">算数运算指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑指令"><span class="nav-number">1.3.</span> <span class="nav-text">逻辑指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转移指令"><span class="nav-number">1.4.</span> <span class="nav-text">转移指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理机控制指令"><span class="nav-number">1.5.</span> <span class="nav-text">处理机控制指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串处理指令"><span class="nav-number">1.6.</span> <span class="nav-text">串处理指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-直接定址表"><span class="nav-number">2.</span> <span class="nav-text">0x01 直接定址表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊标号"><span class="nav-number">2.1.</span> <span class="nav-text">特殊标号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接定址表"><span class="nav-number">2.2.</span> <span class="nav-text">直接定址表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-键盘输入-amp-磁盘读写"><span class="nav-number">3.</span> <span class="nav-text">0x02 键盘输入&amp;磁盘读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#int9h中断例程处理键盘输入"><span class="nav-number">3.1.</span> <span class="nav-text">int9h中断例程处理键盘输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int16h中断例程读取键盘缓冲区"><span class="nav-number">3.2.</span> <span class="nav-text">int16h中断例程读取键盘缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串输入"><span class="nav-number">3.3.</span> <span class="nav-text">字符串输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#int13h中断例程读写磁盘"><span class="nav-number">3.4.</span> <span class="nav-text">int13h中断例程读写磁盘</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-Intel系列微处理器的三种工作模式"><span class="nav-number">4.</span> <span class="nav-text">0x03 Intel系列微处理器的三种工作模式</span></a></li></ol></div>
             
 
           </div>
