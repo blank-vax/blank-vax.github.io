@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Memory Forensic,Windows Forensic,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="0x00 前言这是第一次参加美亚杯电子数据取证大赛，总体来说这次题目出题水平较高，无论是资格赛还是团体赛都有许多有趣的考点和值得深挖的地方。其中资格赛难点在于对iPhone镜像的处理，tor网页跳转关系的梳理以及内存取证部分，而且题量较大时间较短。团体赛的难点则在于RAID重组，Office软件恶意宏分析，SQLCipher微信数据库解密，题目加入了比特币相关的知识，这是一个有趣并贴合实际的考点。">
+<meta name="keywords" content="Memory Forensic,Windows Forensic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019美亚杯资格赛复现">
+<meta property="og:url" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="0x00 前言这是第一次参加美亚杯电子数据取证大赛，总体来说这次题目出题水平较高，无论是资格赛还是团体赛都有许多有趣的考点和值得深挖的地方。其中资格赛难点在于对iPhone镜像的处理，tor网页跳转关系的梳理以及内存取证部分，而且题量较大时间较短。团体赛的难点则在于RAID重组，Office软件恶意宏分析，SQLCipher微信数据库解密，题目加入了比特币相关的知识，这是一个有趣并贴合实际的考点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/1.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/2.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/3.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/4.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/5.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/6.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/7.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/8.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/9.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/10.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/11.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/12.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/13.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/14.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/15.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/16.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/17.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/18.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/19.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/20.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/21.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/22.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/23.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/24.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/25.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/26.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/27.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/28.PNG">
+<meta property="og:updated_time" content="2021-07-06T17:22:32.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019美亚杯资格赛复现">
+<meta name="twitter:description" content="0x00 前言这是第一次参加美亚杯电子数据取证大赛，总体来说这次题目出题水平较高，无论是资格赛还是团体赛都有许多有趣的考点和值得深挖的地方。其中资格赛难点在于对iPhone镜像的处理，tor网页跳转关系的梳理以及内存取证部分，而且题量较大时间较短。团体赛的难点则在于RAID重组，Office软件恶意宏分析，SQLCipher微信数据库解密，题目加入了比特币相关的知识，这是一个有趣并贴合实际的考点。">
+<meta name="twitter:image" content="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/">
+
+
+
+
+
+  <title>2019美亚杯资格赛复现 | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/2019/12/09/2019美亚杯资格赛复现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2019美亚杯资格赛复现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T20:52:00+08:00">
+                2019-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Digital-Data-Forensic/" itemprop="url" rel="index">
+                    <span itemprop="name">Digital Data Forensic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/09/2019美亚杯资格赛复现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/09/2019美亚杯资格赛复现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/09/2019美亚杯资格赛复现/" class="leancloud_visitors" data-flag-title="2019美亚杯资格赛复现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,556
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>这是第一次参加美亚杯电子数据取证大赛，总体来说这次题目出题水平较高，无论是资格赛还是团体赛都有许多有趣的考点和值得深挖的地方。其中资格赛难点在于对iPhone镜像的处理，tor网页跳转关系的梳理以及内存取证部分，而且题量较大时间较短。团体赛的难点则在于RAID重组，Office软件恶意宏分析，SQLCipher微信数据库解密，题目加入了比特币相关的知识，这是一个有趣并贴合实际的考点。下面对资格赛进行复现。   </p>
+<p>题目链接: <a href="http://www.meiyacup.com/Ar_index_gci_83.html" target="_blank" rel="noopener">2019MeiyaCup-problems</a></p>
+<h2 id="0x01-提供检材"><a href="#0x01-提供检材" class="headerlink" title="0x01 提供检材"></a>0x01 提供检材</h2><p>何源的公司计算机内存镜像路径: <code>HE_Company_Windows_RAM\memdump.mem</code>   </p>
+<p>何源的个人计算机镜像路径: <code>HE_Home_Windows\Win2\Win2.E01</code>    </p>
+<h2 id="0x02-题目分析"><a href="#0x02-题目分析" class="headerlink" title="0x02 题目分析"></a>0x02 题目分析</h2><p>这62道题目大致可以分成三部分: 纯Windows部分,iPhone手机部分和内存镜像部分,下面分别进行总结.</p>
+<h3 id="纯Windows部分"><a href="#纯Windows部分" class="headerlink" title="纯Windows部分"></a>纯Windows部分</h3><p>该部分包括1-20题和36-50题.前一部分题目主要考察Windows基础,大部分解决方案为直接将镜像拖入取证大师,根据题目需要查看,还对数据库相关问题进行考察,其中查看Windows桌面的题目需要进行仿真.后一部分题目主要考察云端介质和tor洋葱路由部分,需要用到火眼仿真以及数据库相关的知识.</p>
+<h3 id="iPhone手机部分"><a href="#iPhone手机部分" class="headerlink" title="iPhone手机部分"></a>iPhone手机部分</h3><p>该部分包括21-35题,首先需要导出iPhone的备份,然后使用手机大师打开.大部分题目的答案可以直接查找到.</p>
+<h3 id="内存镜像部分"><a href="#内存镜像部分" class="headerlink" title="内存镜像部分"></a>内存镜像部分</h3><p>该部分包括51-62题.此部分题目除了考察基本的volatility使用方法之外,大部分的难题都是针对注册表进行考察,需要将注册表导出来进行查看.</p>
+<p>下面题解部分标题加粗的题目为难题或需要储备知识的题目,加粗并倾斜的题目为与答案不符的题解.</p>
+<h2 id="0x03-解题思路"><a href="#0x03-解题思路" class="headerlink" title="0x03 解题思路"></a>0x03 解题思路</h2><p>1.何源的个人计算机硬盘已成功被取证并制作成镜像（Forensic Image），下列哪个是镜像的 SHA1 哈希值？</p>
+<p>解题过程：A，将提供的Win2.E01拖入取证大师直接查看G盘的SHA1值即可。分析过程中可以取消文件签名校验这一个选项，会加快做题速度。</p>
+<p>2.在何源的个人计算机中，硬盘中包含哪个操作系统（Operating System）？ </p>
+<p>解题过程：C，取证结果-&gt;系统信息-&gt;系统信息。</p>
+<p>3.何源个人计算机的文件系统(File System)是什么？ </p>
+<p>解题过程：D，NTFS是Windows操作系统的主流文件系统，在证据文件部分可以看到C、D、E三个盘的文件系统。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/1.PNG" alt="3.PNG-14.3kB"></p>
+<p>4.在何源的个人计算机中，你能找到操作系统分区的总容量吗 (单位：字节 byte)？ </p>
+<p>解题过程：A，分区5_OS[D]对应的分区为操作系统分区，其逻辑大小即为总容量。分区显示的结果与实际结果有出入。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/2.PNG" alt="4.PNG-24.7kB"></p>
+<p>5.在何源的个人计算机中，操作系统分区的$Bitmap 的起始物理扇区位置(Physical Sector Number)是多少？</p>
+<p>解题过程：E，直接查找系统分区的$Bitmap的物理扇区即可。</p>
+<p>6.在何源的个人计算机中，请问操作系统的安装日期是？ </p>
+<p>（答案格式 －“世界协调时间＂：YYYY-MM-DD HH:MM UTC） </p>
+<p>解题过程：A，取证结果-&gt;系统信息。</p>
+<p>7.在何源的个人计算机中，每个扇区(Sector)包含多少个字节？（单位: byte）</p>
+<p>解题过程：A，证据文件中查看G盘的扇区大小为512bytes。</p>
+<p>8.在何源的个人计算机中，操作系统的时区是哪个时区？ </p>
+<p>解题过程：E，取证结果-&gt;系统信息-&gt;时区信息。</p>
+<p>9.在何源个人计算机的操作系统中，下列哪个是计算机的主机名? </p>
+<p>解题过程：D，取证结果-&gt;系统信息-&gt;系统信息。</p>
+<p>10.在何源的个人计算机中，以下哪一个是用户“He Yuan”的 SID？</p>
+<p>解题过程：B，取证结果-&gt;系统信息-&gt;用户信息。</p>
+<p><strong><em>11</em></strong>.在何源的个人计算机中，下列哪个 USB 移动储存装置 (U 盘)曾被分配为‘E’磁盘分区代号(Drive Letter) ?</p>
+<p>解题过程：E，查看USB设备使用痕迹，找到挂载盘符为E：的USB设备即可，选择与查找结果最匹配的答案。个人感觉官方答案存在问题,因为挂载在E盘的只有<code>Generic Flash Disk USB Device</code>.</p>
+<p>官方答案：A。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/3.PNG" alt="11.PNG-29.5kB"></p>
+<p>12.在何源的个人计算机中，用户“He Yuan”曾经在挂载为“E”盘的 USB 移动储存装置中访问过一些文件/文件夹，以下哪一个不是？</p>
+<p>解题过程：C，在用户痕迹中查看其最近访问的文档，对完整路径进行排序后获取未访问的文件夹。</p>
+<p>13.在何源的个人计算机中，用户“He Yuan”最近在本机上访问过一些文件，以下哪一个不是？</p>
+<p>解题过程：B，查看用户痕迹中的最近访问文档信息进行排除。</p>
+<p>14.在何源的个人计算机中，以下哪一个是程序“VERACRYPT.EXE”的运行次数？ </p>
+<p>解题过程：C，在取证结果中搜索<code>VERACRYPT.EXE</code>，可以从应用程序运行痕迹中查看其运行次数。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/4.PNG" alt="14.PNG-10.1kB"></p>
+<p><strong>15</strong>.在何源的个人计算机中，在程序“VERACRYPT.EXE”运行时，以下哪个 dll 文件并没有同时被加载？</p>
+<p>解题过程：E，由于比赛中需要使用<code>VERACRYPT.EXE</code>软件对所给容器进行处理得到检材，于是运行存在本地的该软件，使用火绒剑查看进程调用的相关动态链接库即可进行排除作答。同样，使用软件Depends也可以查看所有动态链接库。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/5.PNG" alt="15.PNG-148.1kB"></p>
+<p><strong>16</strong>.在何源的个人计算机中，用户“He Yuan”的桌面墙纸（Wall paper）背景是什么颜色？ </p>
+<p>解题过程：C，使用火眼仿真对镜像进行仿真处理，开机之后发现屏幕壁纸为蓝色。或者在取证大师中遍历搜索关键词wallpaper，可以发现有一张蓝色桌面的照片经过反复操作，可以推测其为桌面壁纸。Windows系统中桌面壁纸的路径为：<code>OS_disk:\Users\Username\AppData\Roaming\Microsoft\Windows\Themes\CachedFiles</code>。</p>
+<p><strong><em>17</em></strong>.在何源的个人计算机中，以下哪个文件在电脑 power off 的时候仍然拥有内存的内容? 此文件具有与电脑内存(RAM)相似的大小并保存在根目录。</p>
+<p>解题过程：C，在系统盘目录中只找到了三个sys文件，获取其逻辑大小，与该PC的运行内存RAM进行大小比较，最贴近的即为所求文件。使用火眼仿真软件进行仿真之后创建虚拟机，可以发现其运行内存RAM为4G。</p>
+<p>官方答案：B。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/6.PNG" alt="17.PNG-22.8kB"></p>
+<p><strong>18</strong>.在何源的个人计算机中，以下哪个 database 文件存有此操作系统的 timeline 痕迹？ </p>
+<p>解题过程：D，常识类题目，Win10时间线信息存放的数据库名称为<code>ActivitiesCache.db</code>。Win10时间线解析过程可以参考美亚柏科的文章：<a href="https://www.300188.cn/news/sharing-show-2030.html" target="_blank" rel="noopener">Win10时间线功能解析分享</a>，此外对于Win10系统取证分析的基础知识，可以参考如下文章：<a href="http://www.xlysoft.net/detail/7-314-2677.html" target="_blank" rel="noopener">Windows取证分析基础知识大全</a>。</p>
+<p>19.在何源的个人计算机中，曾被分配过的 ip 地址是？</p>
+<p>解题过程：A，取证结果-&gt;系统信息-&gt;网络连接。</p>
+<p><strong>20</strong>.在何源的个人计算机中，用户”Administrator”的 Internet Explorer 浏览器的 start page 是以下哪个？</p>
+<p>解题过程：E，使用火眼仿真仿真进入Win10系统，登录用户”Administrator”，打开IE浏览器查看默认启动页即可。</p>
+<p>21.在何源的个人计算机中，你是否可以找到何源 iPhone 手机的线索。关于他的手机，以下哪条信息不正确？ </p>
+<p>解题过程：C，将取证大师中找到的iPhone备份导出并使用手机大师打开（添加证据-&gt;文件取证-&gt;手机备份文文件-&gt;手机平台为iTunes），遍历搜索提供的选项，可以发现只有Apple ID是无法对应的。（MSISDN指主叫用户为呼叫GSM PLMN中的一个移动用户所需拨的号码即用户的手机号，IMSI是国际移动用户识别码即SIM卡的识别码）</p>
+<p>22.用户“He Yuan”在 WhatsApp 上与谁进行了对话？</p>
+<p>解题过程：D，手机大师-&gt;取证结果-&gt;即时通讯-&gt;WhatsApp聊天记录，可以发现He Yuan分别与John Manager谈论爬虫技术以及日常生活，与Anthony Chung谈论租房事宜。</p>
+<p>23.在手机联系人中，Anthony Chung 的手机号是多少？</p>
+<p>解题过程：A，在WhatsApp的联系人中，可以发现Anthony Chung的手机号。</p>
+<p>24.He Yuan 在 iPhone 自带的 Safari 浏览器中搜索过一些关键词，以下哪一个不是？</p>
+<p>解题过程：B，在Safari浏览器的历史记录中可以找到He Yuan的搜索记录。</p>
+<p>25.用户“He Yuan”的 WeChat ID 是多少？</p>
+<p>解题过程：E，在微信相关的聊天记录和账号信息等数据中无法直接得到，于是选择使用遍历搜索的方法得到符合条件的答案。</p>
+<p>26.在 WeChat 的多个聊天记录中，用户“He Yuan”没有聊到过哪个话题？ </p>
+<p>解题过程：B，查看微信好友聊天记录，可以发现He Yuan与三名黑客Kevin、Iva、Scott谈及了数据交易，最终只与黑客Kevin达成交易。此外，他还与Tung谈及租房，与金鸽网贷谈及借钱，并与其朋友张中介谈及炒房的相关事宜，还和另外一位朋友Black Sheep谈到了生活日常。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/7.PNG" alt="26.PNG-56.2kB"></p>
+<p>27.从 WeChat 中的一个聊天记录中可知，用户“He Yuan”持有多少人的数据？ </p>
+<p>解题过程：C，从He Yuan与Kevin的聊天记录中可以发现其非法持有2000人的数据信息。</p>
+<p>28.接上题，Hacker 最后要支付多少 Bitcoin 给 He Yuan? </p>
+<p>解题过程：D，同样从上题的聊天记录中可以发现两人的成交金额为0.014594个比特币。</p>
+<p>29.接上题，He Yuan 的 Bitcoin 收款地址是多少？ </p>
+<p>解题过程：D，在He Yuan与Kevin的聊天记录中可以发现一个包含比特币收款地址的二维码，即可得到其首款地址。<br><img src="/2019/12/09/2019美亚杯资格赛复现/8.PNG" alt="29.PNG-456.2kB"></p>
+<p>30.接上题，He Yuan 分享给 Hacker 的百度网盘链接是多少?</p>
+<p>解题过程：E，接上题，在聊天记录中可以看到网盘链接。</p>
+<p>31.接上题，He Yuan 提到的解压密码是多少？</p>
+<p>解题过程：E，聊天记录中有He Yuan发送的解压密码。</p>
+<p>32.接上题，He Yuan 收到了来自哪位 hacker 的转账？ hacker 的 wechat ID 是多少？ </p>
+<p>解题过程：A，根据之前的分析，He与黑客Kevin最终达成交易。</p>
+<p>33.根据 Wechat 聊天记录，He Yuan 在 2019-10-26 号（UTC+8）晚上跟哪位朋友出去吃晚饭了？朋友的 Wechat ID 是多少? </p>
+<p>解题过程：E，根据聊天记录可以发现He在2019-10-26与Black Sheep出去进行晚餐。</p>
+<p>34.在2019-10-31(UTC+8)，何源用iPhone手机在车库拍了一些车的照片,请问最早的那张车照片是什么时候拍的？ </p>
+<p>解题过程：D，使用手机大师打开iPhone备份之后寻找文件系统中照片的存储位置，一般来说为<code>/private/var/mobile/Media/DCIM/</code>，找到之后遍历查询即可。</p>
+<p>35.接上题，请问照片”IMG_0075.HEIC”拍摄地 GPS 坐标是以下哪一个？</p>
+<p>解题过程：B，寻找方法类似上题，找到文件名对应的照片，直接寻找GPS坐标即可。</p>
+<p>36.在何源的个人计算机中，你能找到一个 Veracrypt 加密容器文件吗？它的原始文件名是？ </p>
+<p>解题过程：D，可以通过仿真进入系统，打开VeraCrypt加密容器进程，可直接看到加密文件。</p>
+<p>37.接上题，此 Veracrypt 加密容器文件之前可能被挂载为哪一个盘符(drive letter) ? </p>
+<p>解题过程：A，在取证大师的案件概览中可以发现PC使用者最近浏览了A盘，故He Yuan可能将VeraCrypt加密后的结果挂载为A盘。</p>
+<p>38.在何源的个人计算机中，何源曾在电脑上登陆过客户端百度云盘，请问他的 Baidu 账号是多少？ </p>
+<p>解题过程：C，取证大师-&gt;取证结果-&gt;云存储客户端。</p>
+<p>39.在何源的个人计算机中，何源利用客户端百度网盘上传过一些文件，请问以下哪一个是？</p>
+<p>解题过程：A，在百度云管家中查看上传文件记录。</p>
+<p>40.在何源的个人计算机中，何源 iPhone 手机中的一些图片曾被同步到他的百度网盘中，请问图片“2019-06-21  113537.jpg”的 MD5 hash 值是多少？</p>
+<p>解题过程：C，在百度云管家中查看本地缓存记录，找到图片即可。</p>
+<p>41.在何源的个人计算机中，何源用百度网盘上传文件“/美国恐怖故事/美国恐怖故事 01.mp4”的起始时间是？（格式：UNIX Timestamp UTC+8） </p>
+<p>解题过程：A，在百度云管家的上传文件记录中找到对应mp4文件的上传时间，使用python代码转换为时间戳即可。Python代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">a = time_str</span><br><span class="line">timeArray = time.strptime(a,<span class="string">"%Y-%m-%d %H:%M:%S"</span>) </span><br><span class="line">timeStamp = int(time.mktime(timeArray))</span><br></pre></td></tr></table></figure>
+<p>42.在何源的个人计算机中，可以发现有多少文件,文件夹存在于何源的百度网盘中？</p>
+<p>解题过程：B，在百度云管家的本地缓存记录中，可以发现有82个文件和2个空文件夹存在于He Yuan的百度云网盘中。</p>
+<p>43.在何源的个人计算机中，用户“He Yuan”曾用 Microsoft Edge 浏览器 google 搜索过一些信息，以下哪个不是搜索的关键词？</p>
+<p>解题过程：D，对ME的搜索记录进行排序后查询即可。</p>
+<p>44.在何源的个人计算机中，用户“He Yuan”曾用 Microsoft Edge 浏览器注册过一个新的 Gmail account,请从网页标题痕迹中找出此账号。</p>
+<p>解题过程：C，在取证大师的邮件解析中找到Win10邮件客户端，可以发现He Yuan申请的新的gmail邮箱。</p>
+<p>45.在何源的个人计算机中，用户“He Yuan”曾用 Microsoft Edge 浏览器下载过一些文件，以下哪一个不是？</p>
+<p>解题过程：B，在ME的下载记录和上网记录中进行逐项搜索，可以发现和bitcoin相关的exe没有通过ME浏览器下载。</p>
+<p>46.在何源的个人计算机中，用户“He Yuan”曾用以下哪款网页浏览器登陆过网页版百度网盘？ </p>
+<p>解题过程：D，在取证结果中暴力搜索pan，发现只有ME浏览器具有He Yuan用户的使用记录。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/9.PNG" alt="46.PNG-63.6kB"></p>
+<p>47.在何源的个人计算机中，用户“He Yuan”曾用 Tor 浏览器访问过一些网站，以下哪一个不是？</p>
+<p>解题过程：E，对于Firefox浏览器，其历史浏览记录存储在数据库文件<code>palces.sqlite</code>中，在证据文件中搜索该文件，可以发现有一个数据库位于Mozilla文件夹下的位置，另外一个位于Tor Broswer文件夹下，猜想其为洋葱浏览器的历史记录，导出之后查看moz_origins表，可以发现浏览记录。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/10.PNG" alt="47.PNG-172.4kB"></p>
+<p> <strong>48</strong>.接上题，以下哪个 URL 是由用户手动输入到 Tor 浏览器中的？ </p>
+<p>解题过程：B，该题目为推测题目。首先在上题中提到的浏览历史记录中可以发现题目所给的五个地址。根据洋葱浏览器的访问规则，推测手动输入的URL为正常的.com结尾形式，而非字段处理后的后缀为.onion的地址。</p>
+<p>官方答案：C。</p>
+<p>49.接上题，关于网页”<a href="http://rso4hutlefirefqp.onion”，以下哪一个描述是正确的？" target="_blank" rel="noopener">http://rso4hutlefirefqp.onion”，以下哪一个描述是正确的？</a> </p>
+<p>解题过程：E，在上述数据库的moz_places表中查看对应字段的description。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/11.PNG" alt="49.PNG-120kB"></p>
+<p><strong>50</strong>.接上题，哪个网页引导用户到了网页”<a href="http://vfqnd6mieccqyiit.onion”?" target="_blank" rel="noopener">http://vfqnd6mieccqyiit.onion”?</a></p>
+<p>官方答案: B。</p>
+<p>51.分析何源的公司计算机内存镜像，何源的公司计算机操作系统以及硬件架构是什么？</p>
+<p>解题过程：A，将He Yuan公司电脑的内存文件拖入虚拟机中，使用命令<code>volatility -f memedump.meme imageinfo</code>查看所有可能的硬件架构和系统版本，与题目对照。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/12.PNG" alt="51.PNG-52.6kB"></p>
+<p>52.分析何源的公司计算机内存镜像，以下哪一个是进程“explorer.exe”的 PID?</p>
+<p>解题过程：B，使用volatility命令<code>volatility -f memdump.mem --profile=Win7SP1x86_23418 pslist | grep explorer.exe</code>进行查看所有可能的PID并与题目对照。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/13.PNG" alt="52.PNG-28.3kB"></p>
+<p>53.分析何源的公司计算机内存镜像，以下哪一个是正确的用户 SID ？</p>
+<p>解题过程：B，使用volatility命令<code>volatility -f memdump.mem --profile=Win7SP1x86_23418 hashdump -y 0x8bc1a1c0 -s 0x9a5689c8 &gt; hash.txt</code>导出用户信息。由于只给出了最后的四位，与选项对照可以排除A和D，C对应的用户不存在（只有TMP_User，后续题目会得出包含该字段的有效用户路径），使用排除法得出答案。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/14.PNG" alt="53.PNG-43.4kB"></p>
+<p>54.分析何源的公司计算机内存镜像，以下哪个远程地址与本地地址建立过 TCP 连接？</p>
+<p>解题过程：A，使用volatility命令<code>volatility -f memdump.mem -profile=Win7SP1x86_23418 netscan</code>可以看到连接网络ip和端口号的信息。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/15.PNG" alt="54.PNG-91.4kB"></p>
+<p>55.接上题，在上述 TCP 连接里，远程地址的端口号是多少？</p>
+<p>解题过程：C，接上题，容易得到连接端口号。</p>
+<p>56.分析何源的公司计算机内存镜像，注册表“\SystemRoot\System32\Config\SAM”在内存镜像中的虚拟地址（Virtual Address）是多少？</p>
+<p>解题过程：B，使用volatility命令<code>volatility -f memdump.mem -profile=Win7SP1x86_23418 hivelist</code>可以看到SAM表的Virtual Address。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/16.PNG" alt="56.PNG-88.7kB"></p>
+<p>57.分析何源的公司计算机内存镜像，用户“Yuan He”登入密码的 NTLM hash 是多少？</p>
+<p>解题过程：E，接上题，使用hivelist命令获得SYSTEM和SAM的虚拟地址后，使用命令<code>volatility -f memdump.mem --profile=Win7SP1x86_23418 hashdump -y 0x8bc1a1c0 -s 0x9a5689c8 &gt; hash.txt</code>将用户登入密码的NTLM hash密码导出保存。其中hashdump的语法为： <code>volatility -f dumpname --profile=version hashdump -y virtual_address_of_SYSTEM_Path -s virtual_address_of_SAM_Path</code>。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/17.PNG" alt="57.PNG-39.6kB"></p>
+<p>58.分析何源的公司计算机内存镜像，盘符“E：”上的文件“Personal Information.xlsx”何时被访问过？</p>
+<p>解题过程：C，使用volatility的timeliner模块，可以看到2019-10-31 06:59:45时，该用户使用了explore.exe浏览器，以TMP_User的身份访问了E盘上的Personal Information.xlsx文件。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/18.PNG" alt="58.PNG-133.6kB"></p>
+<p>59.分析何源的公司计算机内存镜像，以下哪个是文件“Personal Information.xlsx”的正确路径？</p>
+<p>解题过程：D，首先使用filescan功能搜索xlsx文件，没有返回结果。于是根据上一题的结果可知所求的文件肯定在TMP_User目录下，便使用filescan搜索TMP_User目录下的所有文件，发现其不存在C选项的<code>Confidential</code>目录，故选D。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/19.PNG" alt="59.PNG-141.9kB"></p>
+<p>60.分析何源的公司计算机内存镜像，可以发现以下哪些文件夹曾被访问过？</p>
+<p><strong><em>\</em>1 …\Company_Files\Jonathan Norton**</strong></p>
+<p><strong><em>\</em>2 …\Company_Files\Stephen Chow**</strong></p>
+<p><strong><em>\</em>3 …\Company_Files\John Wick**</strong></p>
+<p><strong><em>\</em>4 …\ Company_Files\Logan Chen**</strong></p>
+<p><strong><em>\</em>5 …\Company_Files\Colleen Johnson**</strong></p>
+<p>解题过程：E，使用命令<code>volatility -f memdump.mem --profile=Win7SP1x86_23418 timeliner | grep Company_Files</code>对需要访问的路径进行查找，发现两次访问记录都是通过任务管理器<code>explorer.exe</code>访问的。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/20.PNG" alt="60_1.PNG-46.9kB"></p>
+<p>使用memdump命令保存PID3484对应的进程，在进程文件中查找对应的用户名，使用排除法可以得到结果。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/21.PNG" alt="60_2.PNG-36kB"></p>
+<p>61.分析何源的公司计算机内存镜像，以下那一项有关这台计算机的资料是正确？</p>
+<p><strong><em>\</em>A.  这台计算机安装 Window 的时间是 2019-10-31 11:56:23 UTC + 0**</strong></p>
+<p><strong><em>\</em>B.  这台计算机的名称是 WIN-VUAL29E4P0K**</strong></p>
+<p><strong><em>\</em>C.  公开资料显示这台计算机 TCPIP 的最后更新时间是 2019-10-31 04:59:00 UTC + 0**</strong></p>
+<p><strong><em>\</em>D.  A 及 C 都是正确**</strong></p>
+<p><strong><em>\</em>E.  B 及 C 都是正确**</strong></p>
+<p>解题过程：B。对提供的选项进行逐项分析。</p>
+<p>A选项错误，在Microsoft路径下寻找系统信息。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/22.PNG" alt="61_1.PNG-32.6kB"></p>
+<p>虽然没有找到安装时间InstalledDate对应的键值，但是可以通过Last updated进行大致判断。正常的系统信息会记录在如下路径：<code>(HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\InstallDate</code>。</p>
+<p>B选项正确，主机名所在的目录为：<code>ControlSet001\Control\ComputerName\ComputerName</code>。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/23.PNG" alt="61_2.PNG-31.1kB"></p>
+<p>C选项错误，使用timeliner模块并筛选TCP项，可以看到调用到TCP操作的三个时间与答案提供的04:59:00不符。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/24.PNG" alt="61_3.PNG-198.5kB"></p>
+<p>62.分析何源的公司计算机内存镜像，以下那一项关于这台计算机连接 USB 装置的描述是正确？</p>
+<p><strong><em>\</em>A.  没有，因为透析资料找不到**</strong></p>
+<p><strong><em>\</em>B.  没有，因为内存容量没有取得完整的注册表资料**</strong></p>
+<p><strong><em>\</em>C.  有，而且装置的牌子应该是 HUAWEI**</strong></p>
+<p><strong><em>\</em>D.  有，而且装置的 GUID 是 4d36e967-e325-11ce-afc1-832210318**</strong></p>
+<p><strong><em>\</em>E.  有，而且装置的首次插入时间 HEX 值是 40 43 30 b9 b8 8f d5 01**</strong></p>
+<p>解题过程：E。逐项进行分析。</p>
+<p>首先使用命令<code>volatility -h | grep service</code>查找与设备相关的命令。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/25.PNG" alt="62_1.PNG-19.9kB"></p>
+<p>然后使用设备扫描命令查询是否有USB使用痕迹。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/26.PNG" alt="62_2.PNG-26.7kB"></p>
+<p>发现确实存在USB的使用记录，排除A,B两项。在注册表中查询USB设备使用情况（注册表中与USB设备相关的路径为：<code>ControlSet001\Enum\USBSTOR</code>）。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/27.PNG" alt="62_3.PNG-31.9kB"></p>
+<p>可以发现设备的牌子为Seagate而不是HUAWEI，排除C选项。再继续搜寻注册表信息。</p>
+<p><img src="/2019/12/09/2019美亚杯资格赛复现/28.PNG" alt="62_4.PNG-95.4kB"></p>
+<p>可以看到GUID为<code>4d36e967-e325-11ce-bfc1-08002be10318</code>，至此排除D选项，得到最终答案。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/WeChat_picture.png" alt="B1ank wechat" style="width: 200px; max-width: 100%;">
+    <div></div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请作者吃个小鱼饼干吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.png" alt="B1ank 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Memory-Forensic/" rel="tag"><i class="fa fa-tag"></i> Memory Forensic</a>
+          
+            <a href="/tags/Windows-Forensic/" rel="tag"><i class="fa fa-tag"></i> Windows Forensic</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/25/RSA_Breaking/" rel="next" title="RSA Breaking">
+                <i class="fa fa-chevron-left"></i> RSA Breaking
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/20/Binary Search/" rel="prev" title="Binary Search">
+                Binary Search <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://59lx.github.io" title="rt95" target="_blank">rt95</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-前言"><span class="nav-number">1.</span> <span class="nav-text">0x00 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-提供检材"><span class="nav-number">2.</span> <span class="nav-text">0x01 提供检材</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-题目分析"><span class="nav-number">3.</span> <span class="nav-text">0x02 题目分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯Windows部分"><span class="nav-number">3.1.</span> <span class="nav-text">纯Windows部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iPhone手机部分"><span class="nav-number">3.2.</span> <span class="nav-text">iPhone手机部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存镜像部分"><span class="nav-number">3.3.</span> <span class="nav-text">内存镜像部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-解题思路"><span class="nav-number">4.</span> <span class="nav-text">0x03 解题思路</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.3k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yKnS266RqPR3nTkfOX3CWGLT-MdYXbMMI',
+        appKey: 'jbXtsnIuggbu5MBPpkU5M7Jb',
+        placeholder: '一起来进我的妙妙屋吧！',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

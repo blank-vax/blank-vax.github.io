@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JPBC,Pairing Based Cryptography,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="B1ank" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="0x00 前言本科毕业设计过程中需要使用JPBC库实现Java语言下双线性配对运算的仿真，摸索过程中遇到一些问题及特性，记录如下。本文参考李发根等编著的《基于配对的密码学》一书，首先简要介绍基于配对密码学的相关性质，随后结合JPBC文档介绍该库中部分函数的特殊性质及用法。 参考链接：  《基于配对的密码学》 链接：https://pan.baidu.com/s/1bocycprbAUtNzCopk">
+<meta name="keywords" content="JPBC,Pairing Based Cryptography">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于配对的密码学——基础知识及JPBC库">
+<meta property="og:url" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/index.html">
+<meta property="og:site_name" content="B1ank">
+<meta property="og:description" content="0x00 前言本科毕业设计过程中需要使用JPBC库实现Java语言下双线性配对运算的仿真，摸索过程中遇到一些问题及特性，记录如下。本文参考李发根等编著的《基于配对的密码学》一书，首先简要介绍基于配对密码学的相关性质，随后结合JPBC文档介绍该库中部分函数的特殊性质及用法。 参考链接：  《基于配对的密码学》 链接：https://pan.baidu.com/s/1bocycprbAUtNzCopk">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/5.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/1.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/2.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/4.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/3.PNG">
+<meta property="og:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/6.PNG">
+<meta property="og:updated_time" content="2021-07-06T15:53:21.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于配对的密码学——基础知识及JPBC库">
+<meta name="twitter:description" content="0x00 前言本科毕业设计过程中需要使用JPBC库实现Java语言下双线性配对运算的仿真，摸索过程中遇到一些问题及特性，记录如下。本文参考李发根等编著的《基于配对的密码学》一书，首先简要介绍基于配对密码学的相关性质，随后结合JPBC文档介绍该库中部分函数的特殊性质及用法。 参考链接：  《基于配对的密码学》 链接：https://pan.baidu.com/s/1bocycprbAUtNzCopk">
+<meta name="twitter:image" content="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/5.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/">
+
+
+
+
+
+  <title>基于配对的密码学——基础知识及JPBC库 | B1ank</title>
+  
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/blank-vax" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">B1ank</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blank-vax.github.io/2021/07/05/基于配对的密码学——基础知识及JPBC库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="B1ank">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/picture.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="B1ank">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于配对的密码学——基础知识及JPBC库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-05T11:46:00+08:00">
+                2021-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crypto-Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Crypto_Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/05/基于配对的密码学——基础知识及JPBC库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/07/05/基于配对的密码学——基础知识及JPBC库/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/07/05/基于配对的密码学——基础知识及JPBC库/" class="leancloud_visitors" data-flag-title="基于配对的密码学——基础知识及JPBC库">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃<span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,835
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </span></span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>本科毕业设计过程中需要使用JPBC库实现Java语言下双线性配对运算的仿真，摸索过程中遇到一些问题及特性，记录如下。本文参考李发根等编著的《基于配对的密码学》一书，首先简要介绍基于配对密码学的相关性质，随后结合JPBC文档介绍该库中部分函数的特殊性质及用法。</p>
+<p>参考链接：</p>
+<ul>
+<li><p>《基于配对的密码学》</p>
+<p>链接：<a href="https://pan.baidu.com/s/1bocycprbAUtNzCopkF1v-A" target="_blank" rel="noopener">https://pan.baidu.com/s/1bocycprbAUtNzCopkF1v-A</a>  提取码：oe09 </p>
+</li>
+<li><p>JPBC jar包</p>
+<p>链接：<a href="https://pan.baidu.com/s/1MOZCaplESGF0gVk5dNeLGQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1MOZCaplESGF0gVk5dNeLGQ</a>  提取码：sa5m </p>
+</li>
+<li><p>JPBC DOCS</p>
+<p>链接：<a href="http://gas.dia.unisa.it/projects/jpbc" target="_blank" rel="noopener">http://gas.dia.unisa.it/projects/jpbc</a></p>
+</li>
+</ul>
+<h2 id="0x01-椭圆曲线密码体制"><a href="#0x01-椭圆曲线密码体制" class="headerlink" title="0x01 椭圆曲线密码体制"></a>0x01 椭圆曲线密码体制</h2><p>椭圆曲线密码体制（elliptic curve cryptosystem, ECC）是公钥密码体制的一个重要分支，其安全性基于椭圆曲线离散对数问题的困难性。该问题比大整数因子分解问题和有限域上的离散对数问题难得多。由于还没有找到求解椭圆曲线离散对数的亚指数算法，因此椭圆曲线密码体制可使用更短的密钥以保证相同的安全性。</p>
+<h3 id="有限域上的椭圆曲线"><a href="#有限域上的椭圆曲线" class="headerlink" title="有限域上的椭圆曲线"></a>有限域上的椭圆曲线</h3><p>有限域上的椭圆曲线是指变量和系数均为有限域中元素的椭圆曲线。有限域$GF(p)$上的椭圆曲线是指满足方程</p>
+<script type="math/tex; mode=display">y^2 \equiv x^3+ax+b(mod  p)</script><p>的所有点$(x,y)$及一个无穷远点O构成的集合，其中a,b,x和y均在有限域$GF(p)$上取值，p是素数。这里将该椭圆曲线记为$E_p(a,b)$，曲线上只有有限个点，其个数N由Hasse定理确定。</p>
+<p><strong>Hasse定理</strong> 设E是有限域$GF(p)$上的椭圆曲线，N是E上点的个数，则满足</p>
+<script type="math/tex; mode=display">p+1-2\sqrt(p) \leq N \leq p+1+2\sqrt(p)</script><p>当$4a^3+27b^2(mod p) \neq 0$时，基于集合$E_p(a,b)$可以定义一个Abel群，其加法规则与实数域上描述的代数方法一致。设$P,Q \in E_p(a,b)$，则</p>
+<script type="math/tex; mode=display">P+O=P</script><ul>
+<li><p>如果$P = (x,y)$，那么$(x,y) + (x,-y) = O$，即点(x,-y)是P的加法逆元，表示为-P。</p>
+</li>
+<li><p>设$P=(x_1,y_1)$和$Q=(x_2,y_2)$,$P \neq -Q$，则$S = P+Q = (x_3,y_3)$由以下规则确定：</p>
+<script type="math/tex; mode=display">x_3 \equiv \lambda^2 - x_1 - x_2 (mod p)</script><script type="math/tex; mode=display">y_3 \equiv \lambda(x_1-x_3) - y_1 (mod p)</script><p>式中</p>
+<script type="math/tex; mode=display">\lambda \equiv (y_2-y_1)/(x_2-x_1) (mod p), if P \neq Q</script><script type="math/tex; mode=display">\lambda \equiv (3x_1^2+a)/2y_1 (mod p), if P = Q</script></li>
+<li><p>倍点运算定义为重复加法，即$3P = P+P+P$。</p>
+</li>
+</ul>
+<h3 id="椭圆曲线上的ElGamal加密体制"><a href="#椭圆曲线上的ElGamal加密体制" class="headerlink" title="椭圆曲线上的ElGamal加密体制"></a>椭圆曲线上的ElGamal加密体制</h3><ul>
+<li><p>定义1 椭圆曲线的阶</p>
+<p>椭圆曲线$E_p(a,b)$上点P的阶是指满足</p>
+<script type="math/tex; mode=display">nP = \sum^{n}P = O</script><p>的最小正整数，记为$ord(P)$，其中O是无穷远点。</p>
+</li>
+<li><p>定义2 椭圆曲线上离散对数问题</p>
+<p>设G是椭圆曲线$E_p(a,b)$上的一个循环子群，P是G的一个生成元，$Q \in G$。已知P和Q，求满足</p>
+<script type="math/tex; mode=display">mP = Q</script><p>的整数m，$0 \leq m \leq ord(P)-1$，称为椭圆曲线上的离散对数问题（elliptic curve discrete logarithm problem, ECDLP）。计算$mP$的过程称为点乘运算。</p>
+</li>
+</ul>
+<p>EC-ElGamal密码体制包含以下四个元操作：</p>
+<ul>
+<li><p>编码与解码</p>
+<p>将待发送的明文m<strong>编码</strong>为椭圆曲线上的点$P_m = (x_m, y_m)$，随后执行的加解密操作均针对点$P_m$，解密后的点$P_m$需执行<strong>逆向解码</strong>操作才可以获得明文。</p>
+</li>
+<li><p>密钥生成</p>
+<p>在椭圆曲线$E_p(a,b)$上选取一个阶为大素数n的生成元P。随机选取整数x满足$1 &lt; x &lt; n$，计算$Q = xP$，将x作为私钥，Q作为公钥。</p>
+</li>
+<li><p>加密</p>
+<p>为加密$P_m$，随机选取一个整数k满足$1 &lt; k &lt; n$，计算</p>
+<script type="math/tex; mode=display">C_1 = kP, C_2 = P_m+kQ</script><p>则密文$c =(C_1, C_2)$。</p>
+</li>
+<li><p>解密</p>
+<p>为解密密文$c = (C_1, C_2)$，计算</p>
+<script type="math/tex; mode=display">C_2 - xC_1 = P_m+kQ-xkP = P_m+kxP-xkP = P_m</script><p>攻击者若妄图通过$c = (C_1,C_2)$计算出$P_m$，则必须获得k。攻击者需要通过P和kP推算出k的值，这一过程面临求解椭圆曲线上的离散对数问题。</p>
+</li>
+</ul>
+<h2 id="0x02-双线性配对理论"><a href="#0x02-双线性配对理论" class="headerlink" title="0x02 双线性配对理论"></a>0x02 双线性配对理论</h2><h3 id="抽象双线性配对"><a href="#抽象双线性配对" class="headerlink" title="抽象双线性配对"></a>抽象双线性配对</h3><p>设k为安全参数，p为k比特长的素数。令$G_1$为由P生成的循环加法群，阶为p，$G_T$为具有相同阶p的循环乘法群，a，b是$Z_p^*$中的元素。0表示$G_1$中的单位元，1表示$G_T$中的单位元。假设$G_1$和$G_T$这两个群中的离散对数问题都是困难问题。双线性配对是指满足下列性质的映射$e: G_1 \times G_1 \rightarrow G_T$。</p>
+<ul>
+<li>双线性性（bilinearity）：对于任意的$P,Q \in G_1$和$a, b \in Z_p^*$，$e(aP, bQ) = e(P, Q)^{ab}$成立。</li>
+<li>非退化性（non-degeneracy）：存在$P, Q \in G_1$，使得$e(P, Q) \neq 1$。同时，满足$e(0, Q) = e(Q, 0) = 1$。</li>
+<li>可计算性（computability）：对于所有$P, Q \in G_1$，存在有效的算法计算$e(P, Q)$。</li>
+</ul>
+<p>双线性映射可以通过有限域上的超奇异椭圆曲线或超奇异超椭圆曲线中的Weil配对或Tate配对推导出来。</p>
+<h3 id="非对称双线性配对"><a href="#非对称双线性配对" class="headerlink" title="非对称双线性配对"></a>非对称双线性配对</h3><p>设计密码体制时，有时会遇到非对称的配对。</p>
+<p>令$G_1, G_2, G_T$为具有相同阶p的群，P为$G_1$的生成元，Q为$G_2$的生成元。非对称双线性配对指满足下列性质的一个映射：$e: G_1 \times G_2 \rightarrow G_T$。</p>
+<ul>
+<li>双线性性：对于任意$(S, T) \in G_1 \times G_2$和$a, b \in Z_p^*$，$e(aS, bT) = e(S, T)^{ab}$成立。</li>
+<li>非退化性：存在$(S, T) \in G_1 \times G_2$，使得$e(S, T) \neq 1$。</li>
+<li>可计算性：对于所有的$(S, T) \in G_1 \times G_2$，存在有效算法计算$e(S, T)$。</li>
+<li>存在一个有效的、可公开计算的同构映射$\phi:G_2 \rightarrow G_1$，满足$\phi(Q) = P$。这个映射必须是不可逆的。</li>
+</ul>
+<p>若令$G_2 = G_1$且映射$\phi$为恒等映射，此时非对称配对就变成了对称配对。尽管对称配对比较简单且应用方便，但只能从超奇异超椭圆曲线中的Weil配对或Tate配对推导出来。非对称配对比较复杂，但不仅可以从超奇异超椭圆曲线中推导出来，还可以从普通椭圆曲线中的Weil配对或Tate配对推导出来。</p>
+<h2 id="0x03-困难问题"><a href="#0x03-困难问题" class="headerlink" title="0x03 困难问题"></a>0x03 困难问题</h2><h3 id="计算Diffie-Hellman问题"><a href="#计算Diffie-Hellman问题" class="headerlink" title="计算Diffie-Hellman问题"></a>计算Diffie-Hellman问题</h3><p>给定一个阶为p的循环加法群$G_1$和一个生成元P，$G_1$中的计算Diffie-Hellman（computational Diffie-Hellman，CDH）问题是给定$(P, aP, bP)$，计算$abP \in G_1$。这里$a, b \in Z_p^*$是未知整数。</p>
+<h3 id="判定Diffie-Hellman问题"><a href="#判定Diffie-Hellman问题" class="headerlink" title="判定Diffie-Hellman问题"></a>判定Diffie-Hellman问题</h3><p>给定一个阶为p的循环加法群$G_1$和一个生成元P，$G_1$中的判定Diffie-Hellman（decisional Diffie-Hellman，DDH）问题是给定$(P, aP, bP, cP)$，判断$c \equiv ab mod p$是否成立。这里$a, b, c \in Z_p^*$是未知整数。若$(P, aP, bP, cP)$满足上述条件，则称其为一个”Diffie-Hellman元组”，可采用记号$cP = DH_p(aP, bP)$来表示。</p>
+<h3 id="间隙Diffie-Hellman问题"><a href="#间隙Diffie-Hellman问题" class="headerlink" title="间隙Diffie-Hellman问题"></a>间隙Diffie-Hellman问题</h3><p>给定一个阶为p的循环加法群$G_1$和一个生成元P，$G_1$中的间隙Diffie-Hellman（gap Diffie-Hellman，GDH）问题是在DDH预言机的帮助下，求解一个给定元组$(P, aP, bP)$的CDH问题。DDH预言机可以判断$(P, aP, bP, cP)$是否满足$c \equiv ab mod p$。</p>
+<h3 id="q-强Diffie-Hellman问题"><a href="#q-强Diffie-Hellman问题" class="headerlink" title="q-强Diffie-Hellman问题"></a>q-强Diffie-Hellman问题</h3><p>给定一个阶为p的循环加法群$G_1$和一个生成元P，$G_1$中的q-强Diffie-Hellman（q-strong Diffie-Hellman，q-SDH）问题是给定$(P, xP, x^2P, … , x^qP)$，计算</p>
+<script type="math/tex; mode=display">(c, P/(x+c)) \in Z_p \times G_1</script><h3 id="双线性Diffie-Hellman问题"><a href="#双线性Diffie-Hellman问题" class="headerlink" title="双线性Diffie-Hellman问题"></a>双线性Diffie-Hellman问题</h3><p>给定两个阶都为p的循环加法群$G_1$和循环乘法群$G_T$，一个双线性映射$e:G_1 \times G_1 \rightarrow G_T$和一个群$G_1$的生成元P，双线性Diffie-Hellman（bilinear Diffie-Hellman，BDH）问题是给定$(P, aP, bP, cP)$，计算$e(P, P)^{abc} \in G_T$。这里的$a, b, c \in Z_p^*$是未知整数。</p>
+<h3 id="判定双线性Diffie-Hellman问题"><a href="#判定双线性Diffie-Hellman问题" class="headerlink" title="判定双线性Diffie-Hellman问题"></a>判定双线性Diffie-Hellman问题</h3><p>给定两个阶都为p的循环加法群$G_1$和循环乘法群$G_T$，一个双线性映射$e:G_1 \times G_1 \rightarrow G_T$和一个群$G_1$的生成元P，判定双线性Diffie-Hellman（decisional bilinear Diffie-Hellman，DBDH）问题是给定$(P, aP, bP, cP)$和$z \in G_T$，判断</p>
+<script type="math/tex; mode=display">z = e(P, P)^{abc}</script><p>是否成立。这里的$a, b, c \in Z_p^*$是未知整数。</p>
+<h3 id="间隙双线性Diffie-Hellman问题"><a href="#间隙双线性Diffie-Hellman问题" class="headerlink" title="间隙双线性Diffie-Hellman问题"></a>间隙双线性Diffie-Hellman问题</h3><p>给定两个阶都为p的循环加法群$G_1$和循环乘法群$G_T$，一个双线性映射$e:G_1 \times G_1 \rightarrow G_T$和一个群$G_1$的生成元P，间隙双线性Diffie-Hellman（gap bilinear Diffie-Hellman，GBDH）问题是在DBDH预言机的帮助下，求解一个给定元组$(P, aP, bP, cP)$的BDH问题。DBDH预言机可以判断一个元组$(P, aP, bP, cP, z)$是否满足</p>
+<script type="math/tex; mode=display">z = e(P, P)^{abc}</script><p>上述问题通常被视为困难问题，但其困难程度不尽相同。显然，判定问题不比计算问题更难，即如果能够求解CDH问题，那么DDH问题就容易解决；同样如果能够求解BDH问题，那么DBDH问题就容易解决。</p>
+<h2 id="0x04-JPBC库"><a href="#0x04-JPBC库" class="headerlink" title="0x04 JPBC库"></a>0x04 JPBC库</h2><p>PBC库（pairing-based cryptography library）是斯坦福大学研究人员开发的一个免费可移植C语言库。它通过提供一个抽象的接口，使程序设计人员可以不必考虑具体的数学细节，甚至不必考虑椭圆曲线和数论的相关知识就可以实现基于配对的密码体制。JPBC库（Java Pairing-Based Cryptography Library）是对PBC库的Java封装，常用于基于配对的密码学算法仿真程序编写中。</p>
+<p>该库提供的各类API结构如下。</p>
+<p><img src="/2021/07/05/基于配对的密码学——基础知识及JPBC库/5.PNG" alt="API Structure"></p>
+<h3 id="入门教程"><a href="#入门教程" class="headerlink" title="入门教程"></a>入门教程</h3><p>除JPBC文档外，整理一些优秀视频及技术博客，链接如下：</p>
+<p><a href="https://www.bilibili.com/video/av456320837/" target="_blank" rel="noopener">JPBC库（基于配对的密码学）入门和避坑指南</a></p>
+<p><a href="https://www.bilibili.com/video/BV1jA41147vt" target="_blank" rel="noopener">JPBC库应用之BLS签名</a></p>
+<p><a href="https://blog.csdn.net/qq_41359358/category_10659429.html" target="_blank" rel="noopener">CSDN JPBC Library 专栏</a></p>
+<p><a href="https://blog.csdn.net/liuweiran900217" target="_blank" rel="noopener">刘巍然大佬的博客</a></p>
+<h3 id="群上点的特性"><a href="#群上点的特性" class="headerlink" title="群上点的特性"></a>群上点的特性</h3><p>JPBC库共提供四个循环群，其中$G_1,G_2,G_T$均为阶为p的乘法循环群，而$Z_p$为整数域上的加法循环群。乘法循环群上的点是z值为0的椭圆曲线上的点，而整数循环群上的点是数，二者均可抽象为<code>Element</code>数据类型并用于仿真中。生成测试元素并打印，结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成测试元素</span></span><br><span class="line">Element g1 = G1.newRandomElement();</span><br><span class="line">System.out.println(g1);</span><br><span class="line">Element g2 = G2.newRandomElement();</span><br><span class="line">System.out.println(g2);</span><br><span class="line">Element gt = Gt.newRandomElement();</span><br><span class="line">System.out.println(gt);</span><br><span class="line">Element zp = Zr.newRandomElement();</span><br><span class="line">System.out.println(zp);</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/05/基于配对的密码学——基础知识及JPBC库/1.PNG" alt="Characteristic of point in group"></p>
+<h3 id="群运算"><a href="#群运算" class="headerlink" title="群运算"></a>群运算</h3><p>JPBC库支持的运算如下：</p>
+<ul>
+<li>$G_1,G_2,G_T$中元素的模幂运算、倍乘运算以及互相之间的加法运算，运算结果均为对应群上的元素。</li>
+<li>$Z_p$中元素的加减乘除运算及乘方运算，运算结果为整数循环群上的元素。</li>
+</ul>
+<p>测试相关运算，并打印对应结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相关运算</span></span><br><span class="line">Element a = Zr.newRandomElement();</span><br><span class="line">Element b = Zr.newRandomElement();</span><br><span class="line"><span class="comment">// 1. g1^a</span></span><br><span class="line">Element g1_pow_a = g1.duplicate().powZn(a);</span><br><span class="line">System.out.println(<span class="string">"g1^a"</span>);</span><br><span class="line">System.out.println(g1_pow_a);</span><br><span class="line"><span class="comment">// 2. a*g1</span></span><br><span class="line">Element g1_mul_a = g1.duplicate().mulZn(a);</span><br><span class="line">System.out.println(<span class="string">"a*g1"</span>);</span><br><span class="line">System.out.println(g1_mul_a);</span><br><span class="line"><span class="comment">// 3. g1+g2</span></span><br><span class="line">Element g1_add_g2 = g1.duplicate().add(g2);</span><br><span class="line">System.out.println(<span class="string">"g1+g2"</span>);</span><br><span class="line">System.out.println(g1_add_g2);</span><br><span class="line"><span class="comment">// 4. gt^b</span></span><br><span class="line">Element gt_pow_b = gt.duplicate().powZn(b);</span><br><span class="line">System.out.println(<span class="string">"gt^b"</span>);</span><br><span class="line">System.out.println(gt_pow_b);</span><br><span class="line"><span class="comment">// 5. b*gt</span></span><br><span class="line">Element gt_mul_b = gt.duplicate().mulZn(b);</span><br><span class="line">System.out.println(<span class="string">"b*gt"</span>);</span><br><span class="line">System.out.println(gt_mul_b);</span><br><span class="line"><span class="comment">// 6. gt+gt</span></span><br><span class="line">Element gt_add_gt = gt.duplicate().add(gt);</span><br><span class="line">System.out.println(<span class="string">"gt+gt"</span>);</span><br><span class="line">System.out.println(gt_add_gt);</span><br><span class="line"><span class="comment">// 7. a+b</span></span><br><span class="line">Element a_add_b = a.duplicate().add(b);</span><br><span class="line">System.out.println(<span class="string">"a+b"</span>);</span><br><span class="line">System.out.println(a_add_b);</span><br><span class="line"><span class="comment">// 8. a*b</span></span><br><span class="line">Element a_mul_b = a.duplicate().mulZn(b);</span><br><span class="line">System.out.println(<span class="string">"a*b"</span>);</span><br><span class="line">System.out.println(a_mul_b);</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/05/基于配对的密码学——基础知识及JPBC库/2.PNG" alt="2.PNG-77.4kB"></p>
+<p><strong>值得注意的是</strong>，现在的密码学相关论文中，习惯将$G_1, G_2$设置为乘法循环群。但是基于椭圆曲线的双线性群构造中，$G_1, G_2$是加法循环群。所以在2005年以前的论文中，双线性群一般写成加法群的形式。JPBC库中将$G_1, G_2$表示成了乘法循环群，因此在加法循环群形式方案的仿真过程中，应特别注意将加法群改写为乘法群的写法再完成进一步仿真。由于加法群中的加法运算对应乘法群中的乘法运算，减法运算对应除法运算（即求逆元），乘法运算对应幂指数运算，而除法运算对应对数运算。故改写过程需要结合以上运算法则。</p>
+<h3 id="初始化双线性群"><a href="#初始化双线性群" class="headerlink" title="初始化双线性群"></a>初始化双线性群</h3><p>双线性群（即椭圆曲线）的初始化在JPBC中表现为对Pairing对象的初始化。JPBC库支持A、A1、D、E、F、G六种椭圆曲线，对比如下。我们可以通过代码动态产生和从文件中读取相关参数这两种方法完成上述初始化过程。</p>
+<p><img src="/2021/07/05/基于配对的密码学——基础知识及JPBC库/4.PNG" alt="4.PNG-38.7kB"></p>
+<h4 id="代码动态产生"><a href="#代码动态产生" class="headerlink" title="代码动态产生"></a>代码动态产生</h4><p>动态产生的方法大概包括以下几个步骤：</p>
+<ul>
+<li>指定椭圆曲线的种类</li>
+<li>产生椭圆曲线参数</li>
+<li>初始化Pairing对象</li>
+</ul>
+<p>Type A曲线初始化过程中需要提供两个参数：<code>rBit</code>代表$Z_p$中阶数p的比特长度，<code>qBit</code>代表$G$中阶数的比特长度，生成代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TypeACurveGenerator pg = <span class="keyword">new</span> TypeACurveGenerator(rBit, qBit);</span><br><span class="line">PairingParameters typeAParams = pg.generate();</span><br><span class="line">Pairing bp = PairingFactory.getPairing(typeAParams);</span><br></pre></td></tr></table></figure>
+<p>Type A1曲线需要提供两个参数：<code>numPrime</code>是阶数N中包含质数因子的数量，<code>qBit</code>是每个质数因子的比特长度。由于Type A1曲线涉及到的阶数较大，故参数产生的时间较长，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TypeA1CurveGenerator pg = <span class="keyword">new</span> TypeA1CurveGenerator(numPrime, qBit);</span><br><span class="line">PairingParameters typeA1Params = pg.generate();</span><br><span class="line">Pairing pairing = PairingFactory.getPairing(typeA1Params);</span><br></pre></td></tr></table></figure>
+<h4 id="文件读取产生"><a href="#文件读取产生" class="headerlink" title="文件读取产生"></a>文件读取产生</h4><p>当然我们可以选择事先生成参数并存放至文件中。在后续初始化过程中直接从文件中读取参数，就可以快速地完成双线性群的初始化过程。</p>
+<p>可以利用Princeton大学封装的文件输出库将初始化后的椭圆曲线对象<code>PairingParameters</code>封装至<code>x.properties</code>文件中。后续使用过程中直接从对应配置文件中读取即可还原。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Type A曲线</span></span><br><span class="line">TypeACurveGenerator pg = <span class="keyword">new</span> TypeACurveGenerator(rBit, qBit);</span><br><span class="line"><span class="comment">// Type A1曲线</span></span><br><span class="line">TypeA1CurveGenerator pg = <span class="keyword">new</span> TypeA1CurveGenerator(numPrimes, qBit);</span><br><span class="line">PairingParameters typeAParams = pg.generate();</span><br><span class="line"><span class="comment">//将参数写入文件a.properties中，使用Princeton大学封装的文件输出库</span></span><br><span class="line">Out out = <span class="keyword">new</span> Out(<span class="string">"a.properties"</span>);</span><br><span class="line">out.println(typeAParams);</span><br><span class="line"><span class="comment">//从文件a.properties中读取参数初始化双线性群</span></span><br><span class="line">Pairing pairing = PairingFactory.getPairing(<span class="string">"a.properties"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="随机数内部机制"><a href="#随机数内部机制" class="headerlink" title="随机数内部机制"></a>随机数内部机制</h3><p>重点关注椭圆曲线循环群初始化过程中的相关事项。当确定椭圆曲线参数后重复调用<code>getG1()</code>，<code>newElement()</code>和<code>newRandomElement()</code>方法，验证生成结果是否相同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Group_Test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Pairing bp = PairingFactory.getPairing(<span class="string">"a.properties"</span>);</span><br><span class="line">        Field G1 = bp.getG1();</span><br><span class="line">        Field G3 = bp.getG1();</span><br><span class="line"></span><br><span class="line">        Element g_1 = G1.newElement();</span><br><span class="line">        Element g_2 = G1.newElement();</span><br><span class="line"></span><br><span class="line">        Element g_3 = G1.newRandomElement();</span><br><span class="line">        Element g_4 = G1.newRandomElement();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(G1.equals(G3))&#123;</span><br><span class="line">            System.out.println(<span class="string">"YES1!!!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">"Nope!!!"</span>);</span><br><span class="line">        <span class="keyword">if</span>(g_1.equals(g_2))&#123;</span><br><span class="line">            System.out.println(<span class="string">"YES2!!!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">"Nope!!!"</span>);</span><br><span class="line">        <span class="keyword">if</span>(g_3.equals(g_4))&#123;</span><br><span class="line">            System.out.println(<span class="string">"YES3!!!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">"Nope!!!"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>运行以上程序，结果如下：</p>
+<p><img src="/2021/07/05/基于配对的密码学——基础知识及JPBC库/3.PNG" alt="3.PNG-14kB"></p>
+<p>可以看出，使用<code>PairingFactory.getPairing(filename)</code>函数导入特定参数的椭圆曲线后，每次调用<code>getG1()</code>函数生成的循环群都是相同的，故可以通过保存椭圆曲线参数至<code>xxx.properties</code>文件并导入这一操作实现循环群的保存。</p>
+<p>对于群$G_1$，每次调用<code>G1.newElement()</code>函数生成的生成元g都是相同的。然而调用<code>G1.newRandomElement()</code>函数随机获取的群上元素则是不同的。</p>
+<h3 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数"></a>工具函数</h3><p>该部分总结利用JPBC库编写算法仿真程序过程中需要用到的工具函数。代码如下：</p>
+<h4 id="String-amp-Byte"><a href="#String-amp-Byte" class="headerlink" title="String&amp;Byte"></a>String&amp;Byte</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//16进制的byte[]数组转换为字符串</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hexBytesToString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] hexChars = <span class="keyword">new</span> <span class="keyword">char</span>[bytes.length * <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; bytes.length; j++) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = bytes[j] &amp; <span class="number">0xFF</span>;</span><br><span class="line">        hexChars[j * <span class="number">2</span>] = HEX_ARRAY[v &gt;&gt;&gt; <span class="number">4</span>];</span><br><span class="line">        hexChars[j * <span class="number">2</span> + <span class="number">1</span>] = HEX_ARRAY[v &amp; <span class="number">0x0F</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(hexChars);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//16进制的字符串转换为byte[]数组</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] hexStringToBytes(String s) &#123;</span><br><span class="line">    <span class="keyword">int</span> len = s.length();</span><br><span class="line">    <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[len / <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i += <span class="number">2</span>) &#123;</span><br><span class="line">        data[i / <span class="number">2</span>] = (<span class="keyword">byte</span>) ((Character.digit(s.charAt(i), <span class="number">16</span>) &lt;&lt; <span class="number">4</span>)                             + Character.digit(s.charAt(i+<span class="number">1</span>), <span class="number">16</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取特定元素"><a href="#获取特定元素" class="headerlink" title="获取特定元素"></a>获取特定元素</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//G1中获取随机元素，获取1，获取0</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">getRandomFromG1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getG1().newRandomElement().getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">getOneFromG1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getG1().newOneElement().getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">getZeroFromG1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getG1().newZeroElement().getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Zr中获取随机元素，获取1，获取0</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">getRandomFromZp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getZr().newRandomElement().getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">getOneFromZp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getZr().newOneElement().getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">getZeroFromZp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getZr().newZeroElement().getImmutable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="哈希映射"><a href="#哈希映射" class="headerlink" title="哈希映射"></a>哈希映射</h4><ul>
+<li><p>$H_0: {0, 1}^* \rightarrow Z_p $</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">hashFromStringToZp</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getZr().newElement().setFromHash(str.getBytes(), <span class="number">0</span>, str.length()).getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">hashFromBytesToZp</span><span class="params">( <span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getZr().newElement().setFromHash(bytes, <span class="number">0</span>, bytes.length).getImmutable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$H_1: {0, 1}^* \rightarrow G_1$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">hashFromStringToG1</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getG1().newElement().setFromHash(str.getBytes(), <span class="number">0</span>, str.length()).getImmutable();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">hashFromBytesToG1</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pairing.getG1().newElement().setFromHash(bytes, <span class="number">0</span>, bytes.length).getImmutable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$H_2: G_1 \rightarrow Z_p$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">hashFromG1ToZp</span><span class="params">( Element g1_element)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// h(y) : G1 -&gt; Zp</span></span><br><span class="line">    <span class="keyword">byte</span>[] g1_bytes = g1_element.getImmutable().toCanonicalRepresentation();       <span class="keyword">byte</span>[] zp_bytes = g1_bytes;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        MessageDigest hasher = MessageDigest.getInstance(<span class="string">"SHA-512"</span>);</span><br><span class="line">        zp_bytes = hasher.digest(g1_bytes);   <span class="comment">//先把G1元素hash成512bits</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//再把hash后的bits映射到Zp</span></span><br><span class="line">    Element hash_result = pairing.getZr().newElementFromHash(zp_bytes, <span class="number">0</span>, zp_bytes.length).getImmutable();</span><br><span class="line">    <span class="keyword">return</span> hash_result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$H_{ch}: G_T \rightarrow Z_p$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">transformFromGtToZp</span><span class="params">(Element pairing_result)</span></span>&#123;  </span><br><span class="line">    BigInteger pairing_params = pairing_result.toBigInteger();</span><br><span class="line">    <span class="keyword">return</span> pairing.getZr().newElement().set(pairing_params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Element-I-O"><a href="#Element-I-O" class="headerlink" title="Element I/O"></a>Element I/O</h4><ul>
+<li><p>定义<code>writeElement(Element elem, String filename, Pairing pairing)</code>函数，实现将<code>Element</code>对象写入文件。该函数的三个参数分别为待写入的<code>Element</code>对象，写入文件路径以及对象所在椭圆曲线。返回结果为<code>void</code>类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeElement</span><span class="params">(Element elem, String filename, Pairing pairing)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    DataOutputStream dOut = <span class="keyword">new</span> DataOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"Parameters_file/"</span>+filename+<span class="string">".dat"</span>));  </span><br><span class="line">    dOut.writeBoolean(elem == <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">if</span> (elem == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dOut.writeInt(pairing.getFieldIndex(elem.getField()));</span><br><span class="line">    <span class="keyword">byte</span>[] bytes = elem.toBytes();</span><br><span class="line">    dOut.writeInt(bytes.length);</span><br><span class="line">    dOut.write(bytes);</span><br><span class="line">    <span class="comment">// this is a workaround because it.unisa.dia.gas.plaf.jpbc.field.curve.CurveElement does not serialize the infFlag</span></span><br><span class="line">    dOut.writeBoolean(elem <span class="keyword">instanceof</span> CurveElement &amp;&amp; elem.isZero());</span><br><span class="line">    <span class="keyword">if</span> (elem <span class="keyword">instanceof</span> CurveElement &amp;&amp; elem.isZero()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Infinite element detected. They should not happen."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义<code>readElement(String filename, Pairing pairing)</code>函数，实现从文件中读取<code>Element</code>对象。该函数的两个参数为读取文件路径和对象所在椭圆曲线，返回结果为<code>Element</code>类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Element <span class="title">readElement</span><span class="params">(String filename, Pairing pairing)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    DataInputStream dIn = <span class="keyword">new</span> DataInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Parameters_file/"</span>+filename+<span class="string">".dat"</span>));</span><br><span class="line">    <span class="keyword">if</span> (dIn.readBoolean()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> fieldIndex = dIn.readInt(); <span class="comment">// <span class="doctag">TODO:</span> check if this is in a sensible range</span></span><br><span class="line">    <span class="keyword">int</span> length = dIn.readInt(); <span class="comment">// <span class="doctag">TODO:</span> check if this is in a sensible range</span></span><br><span class="line">    <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[length];</span><br><span class="line">    dIn.readFully(bytes); <span class="comment">// throws an exception if there is a premature EOF </span></span><br><span class="line">    Element e = pairing.getFieldAt(fieldIndex).newElementFromBytes(bytes);        <span class="comment">// this is a workaround because it.unisa.dia.gas.plaf.jpbc.field.curve.CurveElement does not serialize the infFlag</span></span><br><span class="line">    <span class="keyword">boolean</span> instOfCurveElementAndInf = dIn.readBoolean();</span><br><span class="line">    <span class="keyword">if</span> (instOfCurveElementAndInf) &#123;</span><br><span class="line">        <span class="comment">//e.setToZero(); // according to the code this simply sets the infFlag to 1</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"The point is infinite. This shouldn't happen."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="函数运行效率"><a href="#函数运行效率" class="headerlink" title="函数运行效率"></a>函数运行效率</h3><p>结合文章《jPBC: java Pairing Based Cryptography》，比较jPBC和PBC之间的运算效率。用于比较效率的计算机配置为Intel@R CoreTM2 Quad CPU Q6600，2.40GHz，3 GB 内存，Ubuntu 10.04系统。JDK版本是Oracle jdk1.6.0 20。结果如下。</p>
+<p><img src="/2021/07/05/基于配对的密码学——基础知识及JPBC库/6.PNG" alt="6.PNG-72.8kB"></p>
+<p>可以看出，由于Java语言特性的限制，JPBC库在处理乘法循环群上运算及配对运算方面效率远低于PBC库，但在处理整数循环群上运算方面效率高于PBC库。显然，可以通过预处理的方法提高JPBC库对应函数的运行效率。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/WeChat_picture.png" alt="B1ank wechat" style="width: 200px; max-width: 100%;">
+    <div></div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请作者吃个小鱼饼干吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.png" alt="B1ank 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JPBC/" rel="tag"><i class="fa fa-tag"></i> JPBC</a>
+          
+            <a href="/tags/Pairing-Based-Cryptography/" rel="tag"><i class="fa fa-tag"></i> Pairing Based Cryptography</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/04/剑指offer刷题记录（一）/" rel="next" title="剑指offer刷题记录（一）">
+                <i class="fa fa-chevron-left"></i> 剑指offer刷题记录（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/12/汇编语言学习笔记（一）/" rel="prev" title="汇编语言学习笔记（一）">
+                汇编语言学习笔记（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/picture.png" alt="B1ank">
+            
+              <p class="site-author-name" itemprop="name">B1ank</p>
+              <p class="site-description motion-element" itemprop="description">U can be what you wanna B</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/blank-vax" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:18682924517@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lzwgiter.github.io" title="flo@t" target="_blank">flo@t</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alicerabbit.github.io" title="Compass" target="_blank">Compass</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k1ng0fic3.github.io" title="k1ng0fic3" target="_blank">k1ng0fic3</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://59lx.github.io" title="rt95" target="_blank">rt95</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-前言"><span class="nav-number">1.</span> <span class="nav-text">0x00 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-椭圆曲线密码体制"><span class="nav-number">2.</span> <span class="nav-text">0x01 椭圆曲线密码体制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有限域上的椭圆曲线"><span class="nav-number">2.1.</span> <span class="nav-text">有限域上的椭圆曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#椭圆曲线上的ElGamal加密体制"><span class="nav-number">2.2.</span> <span class="nav-text">椭圆曲线上的ElGamal加密体制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-双线性配对理论"><span class="nav-number">3.</span> <span class="nav-text">0x02 双线性配对理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象双线性配对"><span class="nav-number">3.1.</span> <span class="nav-text">抽象双线性配对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称双线性配对"><span class="nav-number">3.2.</span> <span class="nav-text">非对称双线性配对</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-困难问题"><span class="nav-number">4.</span> <span class="nav-text">0x03 困难问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算Diffie-Hellman问题"><span class="nav-number">4.1.</span> <span class="nav-text">计算Diffie-Hellman问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判定Diffie-Hellman问题"><span class="nav-number">4.2.</span> <span class="nav-text">判定Diffie-Hellman问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间隙Diffie-Hellman问题"><span class="nav-number">4.3.</span> <span class="nav-text">间隙Diffie-Hellman问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-强Diffie-Hellman问题"><span class="nav-number">4.4.</span> <span class="nav-text">q-强Diffie-Hellman问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双线性Diffie-Hellman问题"><span class="nav-number">4.5.</span> <span class="nav-text">双线性Diffie-Hellman问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判定双线性Diffie-Hellman问题"><span class="nav-number">4.6.</span> <span class="nav-text">判定双线性Diffie-Hellman问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间隙双线性Diffie-Hellman问题"><span class="nav-number">4.7.</span> <span class="nav-text">间隙双线性Diffie-Hellman问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-JPBC库"><span class="nav-number">5.</span> <span class="nav-text">0x04 JPBC库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#入门教程"><span class="nav-number">5.1.</span> <span class="nav-text">入门教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群上点的特性"><span class="nav-number">5.2.</span> <span class="nav-text">群上点的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群运算"><span class="nav-number">5.3.</span> <span class="nav-text">群运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化双线性群"><span class="nav-number">5.4.</span> <span class="nav-text">初始化双线性群</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码动态产生"><span class="nav-number">5.4.1.</span> <span class="nav-text">代码动态产生</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件读取产生"><span class="nav-number">5.4.2.</span> <span class="nav-text">文件读取产生</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机数内部机制"><span class="nav-number">5.5.</span> <span class="nav-text">随机数内部机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具函数"><span class="nav-number">5.6.</span> <span class="nav-text">工具函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String-amp-Byte"><span class="nav-number">5.6.1.</span> <span class="nav-text">String&amp;Byte</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取特定元素"><span class="nav-number">5.6.2.</span> <span class="nav-text">获取特定元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈希映射"><span class="nav-number">5.6.3.</span> <span class="nav-text">哈希映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element-I-O"><span class="nav-number">5.6.4.</span> <span class="nav-text">Element I/O</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数运行效率"><span class="nav-number">5.7.</span> <span class="nav-text">函数运行效率</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">B1ank</span>
+
+  
+</div>
+
+
+ <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  访客数量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共166.3k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+   <!-- ҳ����С���� -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yKnS266RqPR3nTkfOX3CWGLT-MdYXbMMI',
+        appKey: 'jbXtsnIuggbu5MBPpkU5M7Jb',
+        placeholder: '一起来进我的妙妙屋吧！',
+        avatar:'/uploads/picture.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YPjXkPpqx6UDV4Qi9FeAtmb7-gzGzoHsz", "ftBBWgvQkPRDCOJfwV7zzsfr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
