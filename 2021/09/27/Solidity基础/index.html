@@ -143,7 +143,7 @@
 <meta property="og:image" content="https://blank-vax.github.io/2021/09/27/Solidity基础/solidity_1.PNG">
 <meta property="og:image" content="https://blank-vax.github.io/2021/09/27/Solidity基础/solidity_2.PNG">
 <meta property="og:image" content="https://blank-vax.github.io/2021/09/27/Solidity基础/solidity_3.PNG">
-<meta property="og:updated_time" content="2021-09-27T11:38:18.751Z">
+<meta property="og:updated_time" content="2021-09-27T11:43:01.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solidity基础">
 <meta name="twitter:description" content="0x00 数据类型值类型 fixed/unfixed：有符号和无符号的定长浮点型 fixedMxN：带符号的定长浮点型，其中M表示按类型取的位数，N表示小数点。M应该能被8整除，N可以是0到80。fixed默认为fixed128x18。 ufixedMxN：无符号的定长浮点型，其中M表示按类型取的位数，N表示小数点。  地址类型地址类型表示以太坊地址，长度为20字节。地址可以使用.balance放">
@@ -437,7 +437,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,981
+                  3,982
                 </span>
               
 
@@ -497,8 +497,12 @@
 <li>Storage</li>
 <li>Memory</li>
 <li>Calldata</li>
-<li>Stack<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3>该存储位置存储永久数据，这意味着该数据可以被合约中的所有函数访问。可类比为计算机的<strong>硬盘数据</strong>，所有数据都永久存储。与其他数据位置相比，存储区数据位置的成本较高。<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3>Memory是临时数据，比存储位置便宜，只能在函数中访问。可类比成每个单独函数的内存RAM。<h3 id="Calldata"><a href="#Calldata" class="headerlink" title="Calldata"></a>Calldata</h3>Calldata是不可修改的非持久性数据位置，所有传递给函数的值都存储在这里。此外，Calldata是外部函数参数的默认位置。<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3>堆栈是由EVM维护的非持久性数据。EVM使用堆栈数据位置在执行期间加载变量，该位置最多有1024个级别限制。</li>
+<li>Stack</li>
 </ul>
+<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3><p>该存储位置存储永久数据，这意味着该数据可以被合约中的所有函数访问。可类比为计算机的<strong>硬盘数据</strong>，所有数据都永久存储。与其他数据位置相比，存储区数据位置的成本较高。</p>
+<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p>Memory是临时数据，比存储位置便宜，只能在函数中访问。可类比成每个单独函数的内存RAM。</p>
+<h3 id="Calldata"><a href="#Calldata" class="headerlink" title="Calldata"></a>Calldata</h3><p>Calldata是不可修改的非持久性数据位置，所有传递给函数的值都存储在这里。此外，Calldata是外部函数参数的默认位置。</p>
+<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><p>堆栈是由EVM维护的非持久性数据。EVM使用堆栈数据位置在执行期间加载变量，该位置最多有1024个级别限制。</p>
 <h2 id="0x04-变量数据位置规则"><a href="#0x04-变量数据位置规则" class="headerlink" title="0x04 变量数据位置规则"></a>0x04 变量数据位置规则</h2><h3 id="状态变量"><a href="#状态变量" class="headerlink" title="状态变量"></a>状态变量</h3><p>状态变量总是存储在Storage中，不能显式地标记状态变量的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragam solidity ^0.5.0;</span><br><span class="line"></span><br><span class="line">contract DataLocation &#123;</span><br><span class="line">    </span><br><span class="line">    // storage</span><br><span class="line">    uint stateVariable;</span><br><span class="line">    uint[] stateArray;</span><br><span class="line">    </span><br><span class="line">    uint storage stateVariable; // Error</span><br><span class="line">    uint[] memory stateArray; // Error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="函数参数与返回值"><a href="#函数参数与返回值" class="headerlink" title="函数参数与返回值"></a>函数参数与返回值</h3><p>函数参数包括返回参数都存储在Memory中。</p>
 <h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>值类型的局部变量存储在Memory中。但是对于引用类型，需要显式地指定数据位置。不能显式地覆盖具有值类型的局部变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.0;</span><br><span class="line"></span><br><span class="line">contract Locations &#123;</span><br><span class="line">    /* 此处是状态变量 */</span><br><span class="line">    </span><br><span class="line">    // 存储在Storage中</span><br><span class="line">    bool flag;</span><br><span class="line">    uint number;</span><br><span class="line">    address account;</span><br><span class="line">    </span><br><span class="line">    function doSomething() public &#123; </span><br><span class="line">        /* 此处是局部变量 */</span><br><span class="line">        // 由于是值类型，故被存储在Memory中</span><br><span class="line">        bool flag2;</span><br><span class="line">        uint number2;</span><br><span class="line">        address account2;</span><br><span class="line">        </span><br><span class="line">        // 引用类型需要显式指定数据位置</span><br><span class="line">        uint[] memory localArray;</span><br><span class="line">        </span><br><span class="line">        // 不能显式覆盖具有值类型的局部变量</span><br><span class="line">        bool memory flag2; // Error</span><br><span class="line">        uint Storage number2; // Error</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
